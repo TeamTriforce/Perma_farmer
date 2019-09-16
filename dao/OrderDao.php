@@ -18,7 +18,7 @@ class OrderDao extends AbstractDao
     public function create(Order $order)
     {
         try {
-            $statement = sprintf("INSERT INTO %s (%s, %s, %s) VALUES (?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
@@ -39,12 +39,12 @@ class OrderDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return
+     * @return null|Order
      */
     public function read(int $id)
     {
         try {
-            $statement = sprintf("SELECT * FROM %s WHERE %s = :i",
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
                 OrderSchema::TABLE,
                 OrderSchema::ID);
             $req = $this->db->prepare($statement);
@@ -68,14 +68,14 @@ class OrderDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return
+     * @return bool
      */
     public function delete(int $id)
     {
         try {
             $this->deleteAssociateProducts($id);
 
-            $statement = sprintf("DELETE FROM %s WHERE %s = :i", OrderSchema::TABLE, OrderSchema::ID);
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", OrderSchema::TABLE, OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -97,16 +97,18 @@ class OrderDao extends AbstractDao
         try {
             $this->deleteAssociateProducts($order->getId());
 
-            $statement = sprintf("UPDATE %s SET %s = :ad, %s = :pd, %s = :ns",
+            $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns WHERE %s = :i",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
-                OrderSchema::NOTIFICATION_SENT);
+                OrderSchema::NOTIFICATION_SENT,
+                OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":ad", $order->getAvailableDate(), PDO::PARAM_STR);
             $req->bindValue(":pd", $order->getPickedDate(), PDO::PARAM_STR);
             $req->bindValue(":ns", $order->getNotificationSent(), PDO::PARAM_STR);
+            $req->bindValue(":i", $order->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
 
@@ -125,7 +127,7 @@ class OrderDao extends AbstractDao
     public function queryAll() {
         try {
             $orders = [];
-            $statement = sprintf("SELECT * FROM %s",
+            $statement = sprintf("SELECT * FROM `%s`",
                 OrderSchema::ID);
             $req = $this->db->exec($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -153,7 +155,7 @@ class OrderDao extends AbstractDao
     private function createAssociatedProducts(Order $order) {
         try {
             foreach ($order->getProducts() as $product) {
-                $statement = sprintf("INSERT INTO %s (%s, %s, %s) VALUES (:io, :ip, :q)",
+                $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:io, :ip, :q)",
                     OrderSchema::JOINED_TABLE,
                     OrderSchema::ID,
                     ProductSchema::ID,
@@ -181,7 +183,7 @@ class OrderDao extends AbstractDao
         $products = [];
 
         try {
-            $statement = sprintf("SELECT * FROM %s WHERE %s = :i",
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
                 OrderSchema::JOINED_TABLE,
                 OrderSchema::ID);
             $req = $this->db->prepare($statement);
@@ -209,7 +211,7 @@ class OrderDao extends AbstractDao
      */
     private function deleteAssociateProducts(int $id) {
         try {
-            $statement = sprintf("DELETE FROM %s WHERE %s = :i", OrderSchema::JOINED_TABLE, OrderSchema::ID);
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", OrderSchema::JOINED_TABLE, OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);

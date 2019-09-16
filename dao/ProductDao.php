@@ -7,18 +7,18 @@
  */
 
 /**
- * Class PurchaseManager
+ * Class ProductDao
  */
 class ProductDao extends AbstractDao
 {
     /**
      * @param Product $product
-     * @return
+     * @return bool
      */
     public function create(Product $product)
     {
         try {
-            $statement = sprintf("INSERT INTO %s (%s, %s, %s) VALUES (?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
                 ProductSchema::PRICE,
@@ -36,12 +36,12 @@ class ProductDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return
+     * @return null|Product
      */
     public function read(int $id)
     {
         try {
-            $statement = sprintf("SELECT * FROM %s WHERE %s = :i",
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
                 ProductSchema::TABLE,
                 ProductSchema::ID);
             $req = $this->db->prepare($statement);
@@ -61,12 +61,12 @@ class ProductDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return
+     * @return bool
      */
     public function delete(int $id)
     {
         try {
-            $statement = sprintf("DELETE FROM %s WHERE %s = :i", ProductSchema::TABLE, ProductSchema::ID);
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", ProductSchema::TABLE, ProductSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -86,15 +86,18 @@ class ProductDao extends AbstractDao
     public function update(Product $product)
     {
         try {
-            $statement = sprintf("UPDATE %s SET %s = :l, %s = :p, %s = :s",
+            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :s WHERE %s = :i",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
-                ProductSchema::PRICE);
+                ProductSchema::PRICE,
+                ProductSchema::STOCK,
+                ProductSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":l", $product->getLabel(), PDO::PARAM_STR);
             $req->bindValue(":p", $product->getPrice(), PDO::PARAM_INT);
-            $req->bindValue(":p", Product::getStock(), PDO::PARAM_INT);
+            $req->bindValue(":s", Product::getStock(), PDO::PARAM_INT);
+            $req->bindValue(":i", $product->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
@@ -110,7 +113,7 @@ class ProductDao extends AbstractDao
     public function queryAll() {
         try {
             $products = [];
-            $statement = sprintf("SELECT * FROM %s",
+            $statement = sprintf("SELECT * FROM `%s`",
                 ProductSchema::TABLE);
             $req = $this->db->exec($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);

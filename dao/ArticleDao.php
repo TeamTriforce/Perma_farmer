@@ -7,26 +7,25 @@
  */
 
 /**
- * Class PurchaseManager
+ * Class ArticleDao
  */
-class CustomerDao extends AbstractDao
+class ArticleDao extends AbstractDao
 {
     /**
-     * @param Customer $customer
+     * @param Article $article
      * @return bool
      */
-    public function create(Customer $customer)
+    public function create(Article $article)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
-                CustomerSchema::TABLE,
-                CustomerSchema::FIRST_NAME,
-                CustomerSchema::LAST_NAME,
-                CustomerSchema::EMAIL,
-                CustomerSchema::PASSWORD);
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
+                ArticleSchema::TABLE,
+                ArticleSchema::TITLE,
+                ArticleSchema::CONTENT,
+                ArticleSchema::IMAGE);
             $req = $this->db->prepare($statement);
 
-            $req->execute($customer->toArray(true));
+            $req->execute($article->toArray(true));
             $req->closeCursor();
         } catch (PDOException $e) {
             return false;
@@ -37,14 +36,14 @@ class CustomerDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return Customer|null
+     * @return null|Product
      */
     public function read(int $id)
     {
         try {
             $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
-                CustomerSchema::TABLE,
-                CustomerSchema::ID);
+                ArticleSchema::TABLE,
+                ArticleSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -57,7 +56,7 @@ class CustomerDao extends AbstractDao
             return null;
         }
 
-        return new Customer($data);
+        return new Product($data);
     }
 
     /**
@@ -67,7 +66,7 @@ class CustomerDao extends AbstractDao
     public function delete(int $id)
     {
         try {
-            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", CustomerSchema::TABLE, CustomerSchema::ID);
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", ArticleSchema::TABLE, ArticleSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -81,26 +80,24 @@ class CustomerDao extends AbstractDao
     }
 
     /**
-     * @param Customer $customer
+     * @param Article $article
      * @return bool
      */
-    public function update(Customer $customer)
+    public function update(Article $article)
     {
         try {
-            $statement = sprintf("UPDATE `%s` SET %s = :fn, %s = :ln, %s = :e, %s = :p WHERE %s = :i",
-                CustomerSchema::TABLE,
-                CustomerSchema::FIRST_NAME,
-                CustomerSchema::LAST_NAME,
-                CustomerSchema::EMAIL,
-                CustomerSchema::PASSWORD,
-                CustomerSchema::ID);
+            $statement = sprintf("UPDATE `%s` SET %s = :t, %s = :c, %s = :img WHERE %s = :i",
+                ArticleSchema::TABLE,
+                ArticleSchema::TITLE,
+                ArticleSchema::CONTENT,
+                ArticleSchema::IMAGE,
+                ArticleSchema::ID);
             $req = $this->db->prepare($statement);
 
-            $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
-            $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
-            $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
-            $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
-            $req->bindValue(":i", $customer->getId(), PDO::PARAM_INT);
+            $req->bindValue(":t", $article->getTitle(), PDO::PARAM_STR);
+            $req->bindValue(":c", $article->getContent(), PDO::PARAM_INT);
+            $req->bindValue(":img", $article->getImage(), PDO::PARAM_STR);
+            $req->bindValue(":i", $article->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
@@ -115,14 +112,14 @@ class CustomerDao extends AbstractDao
      */
     public function queryAll() {
         try {
-            $customers = [];
+            $articles = [];
             $statement = sprintf("SELECT * FROM `%s`",
-                CustomerSchema::TABLE);
+                ArticleSchema::TABLE);
             $req = $this->db->exec($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
-                $customers[] = new Customer($key);
+                $articles[] = new Article($key);
             }
 
             $req->closeCursor();
@@ -130,7 +127,7 @@ class CustomerDao extends AbstractDao
             return null;
         }
 
-        return $customers;
+        return $articles;
     }
 
 }
