@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="logo.png">
-    <title>Perma Farmer</title>
+    <title>Perma Farmer | Nos Produits</title>
 
     <!--Template based on URL below-->
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/starter-template/">
@@ -30,89 +30,72 @@
             <a href="contact.php">Contact</a>
         </div>
     </nav>
-
-    <div class="d-flex justify-content-center align-items-center banner-home">
-        <div class="div-banner-logo"><img src="logo.png" class="banner-logo"></div>
-    </div>
-
-
-    <div class="container-fluid" style="margin-top: 50px;">
-        <div class="row">
-            <div class="col-md-4">
-                <img class="img-fluid" src="logo.png" />
-            </div>
-            <div class="col-md-8">
-                <h1>Perma Farmer</h1>
-                <p class="lead">Nous avons ouvert nos portes à Rennes en Mars 2018.<br />De la volaille à la crémerie, des légumes aux boissons, en passant par l‘épicerie fine, ces produits sont tous de véritables produits fermiers, avec la qualité et les saveurs qui leur sont propres.<br> All you get is this text and a mostly barebones HTML document.</p>
-            </div>
-        </div>
-
+    <div class="container-fluid div-produits" style="padding-top: 80px;">
         <div>
-            <h2>Nos produits</h2>
+            <h2 class="text-center pt-3 pb-4">Nos produits</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-2 offset-md-1">
+                <!-- image produit -->
+                <img src="assets/produits/oeufs.jpg"/>
+                <h3 class="text-center">Oeufs</h3>
+                <p></p>
+            </div>
+            <div class="col-md-2">
+                <!-- image produit -->
+                <img src="assets/produits/pommes-de-terre.jpg"/>
+                <h3 class="text-center">Pommes de terre</h3>
+                <p></p>
+            </div>
+            <div class="col-md-2">
+                <!-- image produit -->
+                <img src="assets/produits/carottes.jpeg"/>
+                <h3 class="text-center">Carottes</h3>
+                <p></p>
+            </div>
+            <div class="col-md-2">
+                <!-- image produit -->
+                <img src="assets/produits/salade.jpg"/>
+                <h3 class="text-center">Salades</h3>
+                <p></p>
+            </div>
+            <div class="col-md-2">
+                <!-- image produit -->
+                <img src="assets/produits/tomates.jpg"/>
+                <h3 class="text-center">Tomates</h3>
+                <p></p>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-2 offset-md-1">
                 <!-- image produit -->
-                <img />
-                <h4>Oeufs</h4>
+                <img src="assets/produits/oignons.jpeg"/>
+                <h3 class="text-center">Oignons</h3>
                 <p></p>
             </div>
             <div class="col-md-2">
                 <!-- image produit -->
-                <img />
-                <h4>Pommes de terre</h4>
+                <img src="assets/produits/courgettes.jpg"/>
+                <h3 class="text-center">Courgettes</h3>
                 <p></p>
             </div>
             <div class="col-md-2">
                 <!-- image produit -->
-                <img />
-                <h4>Carottes</h4>
+                <img src="assets/produits/poivrons.jpg"/>
+                <h3 class="text-center">Poivrons</h3>
                 <p></p>
             </div>
             <div class="col-md-2">
                 <!-- image produit -->
-                <img />
-                <h4>Salades</h4>
+                <img src="assets/produits/aubergines.jpg"/>
+                <h3 class="text-center">Aubergines</h3>
                 <p></p>
             </div>
             <div class="col-md-2">
                 <!-- image produit -->
-                <img />
-                <h4>Tomates</h4>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img />
-                <h4>Oignons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Courgettes</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Poivrons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Aubergines</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Brocolis</h4>
+                <img src="assets/produits/brocolis.jpeg"/>
+                <h3 class="text-center">Brocolis</h3>
                 <p></p>
             </div>
         </div>
