@@ -8,95 +8,76 @@
 
 class CustomerFormatter
 {
-    private $id;
-
-    private $firstName;
-
-    private $lastName;
-
-    private $email;
-
-    private $password;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * @param mixed $firstName
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * @param mixed $lastName
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param mixed $email
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-
+    public static function format(Customer $customer) 
+        {
+            $str = '<div class="container">
+                        <div class="row">
+                            <h1>Profil</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <h2>Informations personnelles</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3"> /* Avatar du client */
+                                        <img src="' . customer->getPhoto() . '"/>
+                                    </div>
+                                    <div class="col-md-9"> /* Informations du client */
+                                        <p>' . customer->getFirstName() . '</p>
+                                        <p>' . customer->getLastName() . '</p>
+                                        <p>' . customer->getLocalisation() . '</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <h2>Corriger des informations</h2>
+                                </div>
+                                <div class="row">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="Nom">' . customer->getLastName() . '</label>
+                                            <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . customer->getLastName() . '">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Prenom">' . customer->getFirstName() . '</label>
+                                            <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . customer->getFirstName() . '">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Localisation">' . customer->getLocalisation() . '</label>
+                                            <input type="text" class="form-control" id="Localisation" aria-describedby="localisationHelp" placeholder="' . customer->getLocalisation() . '">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Mail">' . customer->getMail() . '</label>
+                                            <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . customer->getMail() . '">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Password">' . customer->getPassword() . '</label>
+                                            <input type="password" class="form-control" id="Password" placeholder="' . customer->getPassword() . '">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </div>
+                                <div class="row">
+                                    <p>Supprimer mon compte</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <h2>Dernières commandes</h2>
+                                </div>
+                                <div class="row">
+                                    <h3>Produits achetés</h3>
+                                    <p>' . order->getProducts() . '</p>
+                                    <div class="row">
+                                        <p>' . order->getPickedDate() . '</p>
+                                        <p>' . order->getPriceOrder() . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+        }
 }
