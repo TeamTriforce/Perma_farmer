@@ -20,16 +20,9 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-part-1">
-            <img src="logo.png" class="nav-logo">
-        </div>
-        <div class="nav-part-2">
-            <a href="accueil.php">Accueil</a>
-            <a href="nos-produits.php">Nos produits</a>
-            <a href="contact.php">Contact</a>
-        </div>
-    </nav>
+    <?php
+        include("header.php");
+    ?>
     <div class="container-fluid div-produits" style="padding-top: 80px;">
         <div>
             <h2 class="text-center pt-3 pb-4">Nos produits</h2>
@@ -42,6 +35,9 @@
                             <div class="overlay-produit">
                                 <p><strong>1.99 €</strong> les 6 oeufs</p>
                                 <p class="bouton-produit">Plus de détails</p>
+                                <div class="div-ajout-produit">
+                                    <img src="assets/ajout-panier.png" class="ajout-panier-img">
+                                </div>
                             </div>
                             <img src="assets/produits/oeufs.jpg" />
                         </div>

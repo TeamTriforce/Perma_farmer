@@ -20,16 +20,9 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-part-1">
-            <img src="logo.png" class="nav-logo">
-        </div>
-        <div class="nav-part-2">
-            <a href="accueil.php">Accueil</a>
-            <a href="nos-produits.php">Nos produits</a>
-            <a href="contact.php">Contact</a>
-        </div>
-    </nav>
+    <?php
+        include("header.php");
+    ?>
 
     <div class="d-flex justify-content-center align-items-center banner-home">
         <div class="div-banner-logo"><img src="logo.png" class="banner-logo"></div>
