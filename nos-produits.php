@@ -36,67 +36,121 @@
         </div>
         <div class="row">
             <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img src="assets/produits/oeufs.jpg"/>
-                <h3 class="text-center">Oeufs</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <div class="overlay-produit">
+                                <p><strong>1.99 €</strong> les 6 oeufs</p>
+                                <p class="bouton-produit">Plus de détails</p>
+                            </div>
+                            <img src="assets/produits/oeufs.jpg" />
+                        </div>
+                        <h3>Oeufs</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/pommes-de-terre.jpg"/>
-                <h3 class="text-center">Pommes de terre</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/pommes-de-terre.jpg" />
+                        </div>
+                        <h3>Pommes de terre</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/carottes.jpeg"/>
-                <h3 class="text-center">Carottes</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/carottes.jpeg" />
+                        </div>
+                        <h3>Carottes</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/salade.jpg"/>
-                <h3 class="text-center">Salades</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/salade.jpg" />
+                        </div>
+                        <h3>Salades</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/tomates.jpg"/>
-                <h3 class="text-center">Tomates</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/tomates.jpg" />
+                        </div>
+                        <h3>Tomates</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img src="assets/produits/oignons.jpeg"/>
-                <h3 class="text-center">Oignons</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/oignons.jpeg" />
+                        </div>
+                        <h3>Oignons</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/courgettes.jpg"/>
-                <h3 class="text-center">Courgettes</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/courgettes.jpg" />
+                        </div>
+                        <h3>Courgettes</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/poivrons.jpg"/>
-                <h3 class="text-center">Poivrons</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/poivrons.jpg" />
+                        </div>
+                        <h3>Poivrons</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/aubergines.jpg"/>
-                <h3 class="text-center">Aubergines</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/aubergines.jpg" />
+                        </div>
+                        <h3>Aubergines</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-2">
-                <!-- image produit -->
-                <img src="assets/produits/brocolis.jpeg"/>
-                <h3 class="text-center">Brocolis</h3>
-                <p></p>
+                <a href="#">
+                    <div class="div-produit">
+                        <div class="div-img-produit">
+                            <img src="assets/produits/brocolis.jpeg" />
+                        </div>
+                        <h3>Brocolis</h3>
+                        <p></p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
