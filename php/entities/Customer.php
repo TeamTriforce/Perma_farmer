@@ -10,6 +10,7 @@ require_once "AbstractEntity.php";
 
 class Customer extends AbstractEntity
 {
+
     private $id;
 
     private $firstName;
@@ -20,6 +21,12 @@ class Customer extends AbstractEntity
 
     private $password;
 
+    private $code;
+
+    private $authToken;
+
+    private $idSubscription;
+
     /**
      *
      * @param $id
@@ -27,9 +34,12 @@ class Customer extends AbstractEntity
      * @param $lastName
      * @param $email
      * @param $password
+     * @param $code
+     * @param $authToken
+     * @param $idSubscription
      * @return Customer
      */
-    public static function newInstance($id, $firstName, $lastName, $email, $password)
+    public static function newInstance($id, $firstName, $lastName, $email, $password, $code, $authToken, $idSubscription)
     {
         $customer = new Customer([]);
 
@@ -38,6 +48,9 @@ class Customer extends AbstractEntity
         $customer->setLastName($lastName);
         $customer->setEmail($email);
         $customer->setPassword($password);
+        $customer->setCode($code);
+        $customer->setAuthToken($authToken);
+        $customer->setIdSubscription($idSubscription);
 
         return $customer;
     }
@@ -122,5 +135,52 @@ class Customer extends AbstractEntity
         $this->password = $password;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthToken()
+    {
+        return $this->authToken;
+    }
+
+    /**
+     * @param mixed $authToken
+     */
+    public function setAuthToken($authToken)
+    {
+        $this->authToken = $authToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdSubscription()
+    {
+        return $this->idSubscription;
+    }
+
+    /**
+     * @param mixed $idSubscription
+     */
+    public function setIdSubscription($idSubscription)
+    {
+        $this->idSubscription = $idSubscription;
+    }
 
 }

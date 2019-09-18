@@ -8,6 +8,7 @@
 
 abstract class OrderSchema
 {
+
     const TABLE = "order";
 
     const ID = "order_id";
@@ -23,5 +24,7 @@ abstract class OrderSchema
     const JOINED_TABLE = "cart";
 
     const CUSTOMER = "order_idCustomer";
+
+    const PICKED = "order_picked";
 
 }

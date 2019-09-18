@@ -7,43 +7,34 @@
  */
 
 require_once "AbstractDao.php";
-include(dirname(__FILE__) . "/../schemas/CustomerSchema.php");
+include(dirname(__FILE__) . "/../schemas/AdminSchema.php");
 
 /**
- * Class CustomerDao
+ * Class AdminDao
  */
-class CustomerDao extends AbstractDao
+class AdminDao extends AbstractDao
 {
-
     const TOKEN_LENGTH = 50;
 
     /**
-     * @param Customer $customer
+     * @param Admin $admin
      * @return bool
      */
-    public function create(Customer $customer)
+    public function create(Admin $admin)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s, %s, %s, %s) VALUES (:fn, :ln, :e, :p, :c, :t, :s)",
-                CustomerSchema::TABLE,
-                CustomerSchema::FIRST_NAME,
-                CustomerSchema::LAST_NAME,
-                CustomerSchema::EMAIL,
-                CustomerSchema::PASSWORD,
-                CustomerSchema::CODE,
-                CustomerSchema::TOKEN,
-                CustomerSchema::SUBSCRIPTION);
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:l, :p, :t)",
+                AdminSchema::TABLE,
+                AdminSchema::LOGIN,
+                AdminSchema::PASSWORD,
+                AdminSchema::TOKEN);
             $req = $this->db->prepare($statement);
 
-            $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
-            $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
-            $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
-            $req->bindValue(":p", password_hash($customer->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
-            $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
-            $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
-            $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_INT);
+            $req->bindValue(":l", $admin->getLogin(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($admin->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
+            $req->bindValue(":t", $admin->getAuthToken(), PDO::PARAM_STR);
             $req->execute();
-            $customer->setId($this->db->lastInsertId());
+            $admin->setId($this->db->lastInsertId());
             $req->closeCursor();
         } catch (PDOException $e) {
             echo $e;
@@ -56,14 +47,14 @@ class CustomerDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return Customer|null
+     * @return Admin|null
      */
     public function read(int $id)
     {
         try {
             $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
-                CustomerSchema::TABLE,
-                CustomerSchema::ID);
+                AdminSchema::TABLE,
+                AdminSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -78,7 +69,7 @@ class CustomerDao extends AbstractDao
             return null;
         }
 
-        return new Customer($data);
+        return new Admin($data);
     }
 
     /**
@@ -88,7 +79,7 @@ class CustomerDao extends AbstractDao
     public function delete(int $id)
     {
         try {
-            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", CustomerSchema::TABLE, CustomerSchema::ID);
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", AdminSchema::TABLE, AdminSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);
@@ -104,32 +95,24 @@ class CustomerDao extends AbstractDao
     }
 
     /**
-     * @param Customer $customer
+     * @param Admin $admin
      * @return bool
      */
-    public function update(Customer $customer)
+    public function update(Admin $admin)
     {
         try {
-            $statement = sprintf("UPDATE `%s` SET %s = :fn, %s = :ln, %s = :e, %s = :p, %s = :c, %s = :t, %s = :s WHERE %s = :i",
-                CustomerSchema::TABLE,
-                CustomerSchema::FIRST_NAME,
-                CustomerSchema::LAST_NAME,
-                CustomerSchema::EMAIL,
-                CustomerSchema::PASSWORD,
-                CustomerSchema::CODE,
-                CustomerSchema::TOKEN,
-                CustomerSchema::SUBSCRIPTION,
-                CustomerSchema::ID);
+            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :t WHERE %s = :i",
+                AdminSchema::TABLE,
+                AdminSchema::LOGIN,
+                AdminSchema::PASSWORD,
+                AdminSchema::TOKEN,
+                AdminSchema::ID);
             $req = $this->db->prepare($statement);
 
-            $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
-            $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
-            $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
-            $req->bindValue(":p", password_hash($customer->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
-            $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
-            $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
-            $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_STR);
-            $req->bindValue(":i", $customer->getId(), PDO::PARAM_INT);
+            $req->bindValue(":l", $admin->getLogin(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($admin->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
+            $req->bindValue(":t", $admin->getAuthToken(), PDO::PARAM_STR);
+            $req->bindValue(":i", $admin->getId(), PDO::PARAM_STR);
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
@@ -146,14 +129,14 @@ class CustomerDao extends AbstractDao
      */
     public function queryAll() {
         try {
-            $customers = [];
+            $admins = [];
             $statement = sprintf("SELECT * FROM `%s`",
-                CustomerSchema::TABLE);
+                AdminSchema::TABLE);
             $req = $this->db->query($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
-                $customers[] = new Customer($key);
+                $admins[] = new Admin($key);
             }
 
             $req->closeCursor();
@@ -163,13 +146,18 @@ class CustomerDao extends AbstractDao
             return null;
         }
 
-        return $customers;
+        return $admins;
     }
 
+    /**
+     * @param string $login
+     * @param string $password
+     * @return null
+     */
     public function login(string $login, string $password) {
         try {
             $statement = sprintf("SELECT %s, %s FROM `%s` WHERE %s = :l",
-                CustomerSchema::ID, CustomerSchema::PASSWORD, CustomerSchema::TABLE, CustomerSchema::EMAIL);
+                AdminSchema::ID, AdminSchema::PASSWORD, AdminSchema::TABLE, AdminSchema::LOGIN);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":l", $login, PDO::PARAM_STR);
@@ -177,23 +165,23 @@ class CustomerDao extends AbstractDao
 
             $data = $req->fetch(PDO::FETCH_ASSOC);
 
-            if (password_verify($password, $data[CustomerSchema::PASSWORD])) {
+            if (password_verify($password, $data[AdminSchema::PASSWORD])) {
                 $result = [];
-                $result[CustomerSchema::ID] = $data[CustomerSchema::ID];
+                $result[AdminSchema::ID] = $data[AdminSchema::ID];
 
                 $req->closeCursor();
 
                 try {
                     $token = bin2hex(random_bytes(static::TOKEN_LENGTH));
-                    $result[CustomerSchema::TOKEN] = $token;
+                    $result[AdminSchema::TOKEN] = $token;
                     $statement = sprintf("UPDATE `%s` SET %s = :t WHERE %s = :i",
-                        CustomerSchema::TABLE,
-                        CustomerSchema::TOKEN,
-                        CustomerSchema::ID);
+                        AdminSchema::TABLE,
+                        AdminSchema::TOKEN,
+                        AdminSchema::ID);
                     $req = $this->db->prepare($statement);
 
                     $req->bindValue(":t", $token, PDO::PARAM_STR);
-                    $req->bindValue(":i", $result[CustomerSchema::ID], PDO::PARAM_INT);
+                    $req->bindValue(":i", $result[AdminSchema::ID], PDO::PARAM_INT);
                     $req->execute();
                     $req->closeCursor();
 
@@ -218,9 +206,9 @@ class CustomerDao extends AbstractDao
     public function checkToken(int $id, string $token) {
         try {
             $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i AND %s = :t",
-                CustomerSchema::TABLE,
-                CustomerSchema::ID,
-                CustomerSchema::TOKEN);
+                AdminSchema::TABLE,
+                AdminSchema::ID,
+                AdminSchema::TOKEN);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":i", $id, PDO::PARAM_INT);

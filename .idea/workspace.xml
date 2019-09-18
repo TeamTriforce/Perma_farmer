@@ -2,31 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245d0815-04c7-42b7-8118-43faa54b75f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php-test-framework.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/Autoloader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/dao/DbConnector.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/tests/ArticleDaoTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/tests/CustomerDaoTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/tests/OrderDaoTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/php/tests/ProductDaoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/AbstractDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/AbstractDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/ArticleDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/ArticleDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/CustomerDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/CustomerDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/OrderDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/OrderDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/PDOFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dao/ProductDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/ProductDao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/orders.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/Perma_farmer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Perma_farmer.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/AbstractEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/AbstractEntity.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/ArticleSchema.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/schemas/ArticleSchema.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/CustomerSchema.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/schemas/CustomerSchema.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/OrderSchema.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/schemas/OrderSchema.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schemas/ProductSchema.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/schemas/ProductSchema.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/dao/OrderDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/OrderDao.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/entities/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/schemas/OrderSchema.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/schemas/OrderSchema.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/tests/OrderDaoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/tests/OrderDaoTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +21,20 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Perma_farmer$tests.xml" NAME="tests Coverage Results" MODIFIED="1568710021759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="2066820343">
       <usages-collector id="statistics.lifecycle.project">
@@ -52,25 +47,27 @@
         <counts>
           <entry key="ini" value="1" />
           <entry key="json" value="1" />
-          <entry key="php" value="85" />
-          <entry key="sql" value="4" />
+          <entry key="php" value="129" />
+          <entry key="png" value="1" />
+          <entry key="sql" value="9" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Image" value="1" />
           <entry key="Ini" value="1" />
           <entry key="JSON" value="1" />
-          <entry key="PHP" value="85" />
-          <entry key="SQL" value="4" />
+          <entry key="PHP" value="129" />
+          <entry key="SQL" value="9" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="7" />
-          <entry key="php" value="5955" />
-          <entry key="sql" value="54" />
+          <entry key="php" value="11334" />
+          <entry key="sql" value="184" />
           <entry key="txt" value="17" />
           <entry key="xml" value="54" />
         </counts>
@@ -78,9 +75,9 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="7" />
-          <entry key="PHP" value="5955" />
+          <entry key="PHP" value="11334" />
           <entry key="PLAIN_TEXT" value="17" />
-          <entry key="SQL" value="54" />
+          <entry key="SQL" value="184" />
           <entry key="XML" value="54" />
         </counts>
       </usages-collector>
@@ -106,20 +103,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/php/tests/OrderDaoTest.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/php/tests/AdminDaoTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
+            <state relative-caret-position="45">
+              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/tests/ProductDaoTest.php">
+        <entry file="file://$PROJECT_DIR$/php/tests/CustomerDaoTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="79" column="83" lean-forward="true" selection-start-line="79" selection-start-column="83" selection-end-line="79" selection-end-column="83" />
+            <state relative-caret-position="322">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/orders.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="44" column="66" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/Perma_farmer.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -127,26 +142,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/dao/OrderDao.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
+            <state relative-caret-position="305">
+              <caret line="122" column="36" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/entities/Order.php">
+        <entry file="file://$PROJECT_DIR$/php/tests/OrderDaoTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/schemas/CustomerSchema.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+            <state relative-caret-position="1935">
+              <caret line="134" column="90" lean-forward="true" selection-start-line="134" selection-start-column="90" selection-end-line="134" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -154,44 +160,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/schemas/OrderSchema.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="330">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/dao/ProductDao.php">
+        <entry file="file://$PROJECT_DIR$/php/entities/Order.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="147" column="23" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
+            <state relative-caret-position="460">
+              <caret line="163" column="5" selection-start-line="163" selection-start-column="5" selection-end-line="163" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/dao/CustomerDao.php">
+        <entry file="file://$PROJECT_DIR$/api/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/dao/ArticleDao.php">
+        <entry file="file://$PROJECT_DIR$/api/common_config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="906">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/php/entities/AbstractEntity.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="525">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
             </state>
           </provider>
         </entry>
@@ -200,14 +197,27 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ProductSchema</find>
       <find>catch (PDOException $e) {\n            return false;</find>
       <find>catch (PDOException $e) {\\n</find>
       <find>Customer</find>
+      <find>CustomerSchema</find>
+      <find>ProductSchema</find>
+      <find>PASSWORD_BCRYPT</find>
+      <find>PASSWORD_ARGON2I</find>
+      <find>CRYPT_SHA512</find>
+      <find>MHASH_SHA512</find>
+      <find>AdminSchema</find>
     </findStrings>
     <replaceStrings>
       <replace>catch \(PDOException \$e\) \{\n            return false\;</replace>
       <replace>ArticleSchema</replace>
+      <replace>AdminSchema</replace>
+      <replace>SubscriptionSchema</replace>
+      <replace>PASSWORD_ARGON2I</replace>
+      <replace>CRYPT_SHA512</replace>
+      <replace>MHASH_SHA512</replace>
+      <replace>PASSWORD_BCRYPT</replace>
+      <replace>CustomerSchema</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/entities/Article.php" />
         <option value="$PROJECT_DIR$/schemas/ArticleSchema.php" />
         <option value="$PROJECT_DIR$/dao/ArticleDao.php" />
         <option value="$PROJECT_DIR$/dao/CustomerDao.php" />
@@ -233,28 +242,41 @@
         <option value="$PROJECT_DIR$/php/autoload.php" />
         <option value="$PROJECT_DIR$/config/phpunit.xml" />
         <option value="$PROJECT_DIR$/php/Autoloader.php" />
-        <option value="$PROJECT_DIR$/php/schemas/ProductSchema.php" />
         <option value="$PROJECT_DIR$/conf/phpunit.xml" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/php/dao/DbManager.php" />
         <option value="$PROJECT_DIR$/php/dao/AbstractDao.php" />
         <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
         <option value="$PROJECT_DIR$/main.php" />
-        <option value="$PROJECT_DIR$/php/entities/Article.php" />
-        <option value="$PROJECT_DIR$/php/entities/Customer.php" />
-        <option value="$PROJECT_DIR$/php/entities/Order.php" />
-        <option value="$PROJECT_DIR$/php/entities/AbstractEntity.php" />
-        <option value="$PROJECT_DIR$/php/tests/CustomerDaoTest.php" />
-        <option value="$PROJECT_DIR$/php/entities/Product.php" />
-        <option value="$PROJECT_DIR$/php/tests/ArticleDaoTest.php" />
-        <option value="$PROJECT_DIR$/php/tests/ProductDaoTest.php" />
-        <option value="$PROJECT_DIR$/docs/Perma_farmer.sql" />
-        <option value="$PROJECT_DIR$/php/dao/ProductDao.php" />
-        <option value="$PROJECT_DIR$/php/dao/CustomerDao.php" />
         <option value="$PROJECT_DIR$/php/dao/ArticleDao.php" />
+        <option value="$PROJECT_DIR$/php/schemas/SubscriptionSchema.php" />
+        <option value="$PROJECT_DIR$/php/schemas/ArticleSchema.php" />
+        <option value="$PROJECT_DIR$/php/schemas/ProductSchema.php" />
+        <option value="$PROJECT_DIR$/php/entities/Admin.php" />
+        <option value="$PROJECT_DIR$/php/entities/Subscription.php" />
+        <option value="$PROJECT_DIR$/php/entities/Customer.php" />
+        <option value="$PROJECT_DIR$/php/entities/AbstractEntity.php" />
+        <option value="$PROJECT_DIR$/php/schemas/CustomerSchema.php" />
+        <option value="$PROJECT_DIR$/php/schemas/AdminSchema.php" />
+        <option value="$PROJECT_DIR$/php/entities/Product.php" />
+        <option value="$PROJECT_DIR$/php/entities/Article.php" />
+        <option value="$PROJECT_DIR$/php/tests/ArticleDaoTest.php" />
+        <option value="$PROJECT_DIR$/php/dao/SubscriptionDao.php" />
+        <option value="$PROJECT_DIR$/php/tests/SubscriptionDaoTest.php" />
+        <option value="$PROJECT_DIR$/php/dao/ProductDao.php" />
+        <option value="$PROJECT_DIR$/php/tests/ProductDaoTest.php" />
+        <option value="$PROJECT_DIR$/php/tests/AdminDaoTest.php" />
+        <option value="$PROJECT_DIR$/php/dao/AdminDao.php" />
+        <option value="$PROJECT_DIR$/php/dao/CustomerDao.php" />
+        <option value="$PROJECT_DIR$/php/tests/CustomerDaoTest.php" />
+        <option value="$PROJECT_DIR$/api/common_config.php" />
+        <option value="$PROJECT_DIR$/api/login.php" />
         <option value="$PROJECT_DIR$/php/schemas/OrderSchema.php" />
+        <option value="$PROJECT_DIR$/php/entities/Order.php" />
         <option value="$PROJECT_DIR$/php/dao/OrderDao.php" />
+        <option value="$PROJECT_DIR$/docs/Perma_farmer.sql" />
         <option value="$PROJECT_DIR$/php/tests/OrderDaoTest.php" />
+        <option value="$PROJECT_DIR$/api/orders.php" />
       </list>
     </option>
   </component>
@@ -271,8 +293,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="315" />
-    <option name="y" value="35" />
+    <option name="x" value="35" />
+    <option name="y" value="23" />
     <option name="width" value="1680" />
     <option name="height" value="1027" />
   </component>
@@ -288,6 +310,11 @@
             <path>
               <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
               <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
@@ -339,8 +366,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/php/tests" />
       <recent name="$PROJECT_DIR$/php/dao" />
-      <recent name="$PROJECT_DIR$/dao" />
+      <recent name="$PROJECT_DIR$/php/entities" />
+      <recent name="$PROJECT_DIR$/php/schemas" />
+      <recent name="$PROJECT_DIR$/docs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/php/dao" />
@@ -361,20 +391,20 @@
     </option>
   </component>
   <component name="RunManager" selected="PHPUnit.tests">
-    <configuration name="ArticleDaoTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="ArticleDaoTest" file="$PROJECT_DIR$/php/tests/ArticleDaoTest.php" scope="Class" />
+    <configuration name="AdminDaoTest.testCheckToken" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AdminDaoTest" file="$PROJECT_DIR$/php/tests/AdminDaoTest.php" method="testCheckToken" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AdminDaoTest.testUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AdminDaoTest" file="$PROJECT_DIR$/php/tests/AdminDaoTest.php" method="testUpdate" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="CustomerDaoTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="CustomerDaoTest" file="$PROJECT_DIR$/php/tests/CustomerDaoTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="OrderDaoTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="OrderDaoTest" file="$PROJECT_DIR$/php/tests/OrderDaoTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ProductDaoTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="ProductDaoTest" file="$PROJECT_DIR$/php/tests/ProductDaoTest.php" scope="Class" />
+    <configuration name="CustomerDaoTest.testUpdate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="CustomerDaoTest" file="$PROJECT_DIR$/php/tests/CustomerDaoTest.php" method="testUpdate" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="tests" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -382,19 +412,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="PHPUnit.tests" />
-      <item itemvalue="PHPUnit.ArticleDaoTest" />
       <item itemvalue="PHPUnit.CustomerDaoTest" />
-      <item itemvalue="PHPUnit.OrderDaoTest" />
-      <item itemvalue="PHPUnit.ProductDaoTest" />
+      <item itemvalue="PHPUnit.CustomerDaoTest.testUpdate" />
+      <item itemvalue="PHPUnit.AdminDaoTest.testUpdate" />
+      <item itemvalue="PHPUnit.tests" />
+      <item itemvalue="PHPUnit.AdminDaoTest.testCheckToken" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="PHPUnit.tests" />
-        <item itemvalue="PHPUnit.ProductDaoTest" />
-        <item itemvalue="PHPUnit.OrderDaoTest" />
+        <item itemvalue="PHPUnit.AdminDaoTest.testCheckToken" />
         <item itemvalue="PHPUnit.CustomerDaoTest" />
-        <item itemvalue="PHPUnit.ArticleDaoTest" />
+        <item itemvalue="PHPUnit.AdminDaoTest.testUpdate" />
+        <item itemvalue="PHPUnit.CustomerDaoTest.testUpdate" />
       </list>
     </recent_temporary>
   </component>
@@ -408,51 +438,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568636368567</updated>
-      <workItem from="1568636369674" duration="28506000" />
+      <workItem from="1568636369674" duration="45927000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="OrderDaoTest - 2019.09.17 at 16h 32m 59s.xml">
-      <configuration name="OrderDaoTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="AdminDaoTest_testUpdate - 2019.09.18 at 14h 42m 44s.xml">
+      <configuration name="AdminDaoTest.testUpdate" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest - 2019.09.17 at 16h 35m 15s.xml">
-      <configuration name="OrderDaoTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="CustomerDaoTest - 2019.09.18 at 14h 45m 56s.xml">
+      <configuration name="CustomerDaoTest" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest - 2019.09.17 at 16h 38m 06s.xml">
-      <configuration name="OrderDaoTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="tests - 2019.09.18 at 14h 46m 21s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testDelete - 2019.09.17 at 16h 39m 48s.xml">
-      <configuration name="OrderDaoTest.testDelete" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="AdminDaoTest_testCheckToken - 2019.09.18 at 14h 56m 39s.xml">
+      <configuration name="AdminDaoTest.testCheckToken" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testUpdate - 2019.09.17 at 16h 40m 12s.xml">
-      <configuration name="OrderDaoTest.testUpdate" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="AdminDaoTest_testCheckToken - 2019.09.18 at 14h 58m 17s.xml">
+      <configuration name="AdminDaoTest.testCheckToken" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest - 2019.09.17 at 16h 41m 46s.xml">
-      <configuration name="OrderDaoTest" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="AdminDaoTest_testCheckToken - 2019.09.18 at 14h 59m 45s.xml">
+      <configuration name="AdminDaoTest.testCheckToken" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testDelete - 2019.09.17 at 16h 43m 29s.xml">
-      <configuration name="OrderDaoTest.testDelete" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="tests - 2019.09.18 at 14h 59m 54s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testUpdate - 2019.09.17 at 16h 43m 46s.xml">
-      <configuration name="OrderDaoTest.testUpdate" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="tests - 2019.09.18 at 15h 01m 52s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testRemoveProduct - 2019.09.17 at 16h 44m 05s.xml">
-      <configuration name="OrderDaoTest.testRemoveProduct" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="tests - 2019.09.18 at 15h 02m 27s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="OrderDaoTest_testAddProduct - 2019.09.17 at 16h 45m 03s.xml">
-      <configuration name="OrderDaoTest.testAddProduct" configurationId="PHPUnitRunConfigurationType" />
+    <history-entry file="tests - 2019.09.18 at 15h 48m 59s.xml">
+      <configuration name="tests" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28506000" />
+    <option name="totallyTimeSpent" value="45927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="24" width="1680" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="PHP-CGI Server" />
@@ -462,7 +492,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -516,13 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/schemas/ProductSchema.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/phpunit.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -564,13 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/schemas/ArticleSchema.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/dao/DbConnector.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -599,115 +615,209 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/entities/Article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/docs/MCD.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/entities/Customer.php">
+    <entry file="file://$PROJECT_DIR$/php/entities/Admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/entities/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/tests/ArticleDaoTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" column="87" selection-start-line="21" selection-start-column="87" selection-end-line="21" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/tests/CustomerDaoTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="80" column="87" selection-start-line="80" selection-start-column="87" selection-end-line="80" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Perma_farmer.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/dao/ProductDao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="147" column="23" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/dao/CustomerDao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="41" column="25" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/dao/ArticleDao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="906">
-          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="24" />
+        <state relative-caret-position="465">
+          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/entities/AbstractEntity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/entities/Order.php">
+    <entry file="file://$PROJECT_DIR$/php/entities/Customer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        <state relative-caret-position="105">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/entities/Subscription.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/schemas/AdminSchema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/schemas/CustomerSchema.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        <state relative-caret-position="330">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/php/schemas/OrderSchema.php">
+    <entry file="file://$PROJECT_DIR$/php/schemas/SubscriptionSchema.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
+        <state relative-caret-position="225">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/schemas/ProductSchema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/entities/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="128" column="36" selection-start-line="128" selection-start-column="36" selection-end-line="128" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/entities/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/schemas/ArticleSchema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/ArticleDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/SubscriptionDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-222">
+          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tests/SubscriptionDaoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="77" column="51" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/tests/ProductDaoTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="79" column="83" lean-forward="true" selection-start-line="79" selection-start-column="83" selection-end-line="79" selection-end-column="83" />
+        <state relative-caret-position="339">
+          <caret line="70" column="90" selection-start-line="70" selection-start-column="90" selection-end-line="70" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tests/ArticleDaoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/ProductDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="873">
+          <caret line="165" column="36" selection-start-line="165" selection-start-column="36" selection-end-line="165" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/AdminDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="221" column="25" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/CustomerDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3232">
+          <caret line="229" column="21" selection-start-line="229" selection-start-column="21" selection-end-line="229" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tests/CustomerDaoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/tests/AdminDaoTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/common_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/entities/Order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="163" column="5" selection-start-line="163" selection-start-column="5" selection-end-line="163" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/schemas/OrderSchema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/dao/OrderDao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="142" column="20" selection-start-line="142" selection-start-column="20" selection-end-line="142" selection-end-column="20" />
+        <state relative-caret-position="305">
+          <caret line="122" column="36" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Perma_farmer.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="89" column="57" selection-start-line="89" selection-start-column="57" selection-end-line="89" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/php/tests/OrderDaoTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
+        <state relative-caret-position="1935">
+          <caret line="134" column="90" lean-forward="true" selection-start-line="134" selection-start-column="90" selection-end-line="134" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="44" column="66" selection-start-line="44" selection-start-column="66" selection-end-line="44" selection-end-column="66" />
         </state>
       </provider>
     </entry>

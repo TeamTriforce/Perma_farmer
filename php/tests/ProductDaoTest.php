@@ -19,7 +19,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         parent::__construct($name, $data, $dataName);
 
         $this->dao = new ProductDao();
-        $this->entity = Product::newInstance(0, "testLabel", 10000, 0, "testImage", 10);
+        $this->entity = Product::newInstance(0, "testLabel", 10000, 0, "testImage", 10, "testDescription");
     }
 
     public function testRead()
@@ -32,6 +32,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getPrice(), $customer->getPrice());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getQuantity(), $customer->getQuantity());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getImage(), $customer->getImage());
+        \PHPUnit\Framework\Assert::assertEquals($this->entity->getDescription(), $customer->getDescription());
 
         $this->dao->delete($customer->getId());
     }
@@ -48,7 +49,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         $products = [];
 
         for ($i = 0; $i < 5; $i++) {
-            $product = Product::newInstance($i, "Label" . $i, $i, $i, "Image" . $i, $i);
+            $product = Product::newInstance($i, "Label" . $i, $i, $i, "Image" . $i, $i, "Description" . $i);
 
             $this->dao->create($product);
 
@@ -56,6 +57,25 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         }
 
         \PHPUnit\Framework\Assert::assertEquals(5, count($this->dao->queryAll()));
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->dao->delete($products[$i]->getId());
+        }
+    }
+
+    public function testQueryAllAvailable()
+    {
+        $products = [];
+
+        for ($i = 0; $i < 5; $i++) {
+            $product = Product::newInstance($i, "Label" . $i, $i, $i, "Image" . $i, $i % 2, "Description" . $i);
+
+            $this->dao->create($product);
+
+            $products[] = $product;
+        }
+
+        \PHPUnit\Framework\Assert::assertEquals(2, count($this->dao->queryAllAvailable()));
 
         for ($i = 0; $i < 5; $i++) {
             $this->dao->delete($products[$i]->getId());
@@ -70,6 +90,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         $this->entity->setPrice(666);
         $this->entity->setImage("newImage");
         $this->entity->setStock(1);
+        $this->entity->setDescription("newDescription");
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->update($this->entity));
 
@@ -79,6 +100,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals(666, $customer->getPrice());
         \PHPUnit\Framework\Assert::assertEquals("newImage", $customer->getImage());
         \PHPUnit\Framework\Assert::assertEquals(1, $customer->getStock());
+        \PHPUnit\Framework\Assert::assertEquals("newDescription", $customer->getDescription());
 
         $this->dao->delete($this->entity->getId());
     }

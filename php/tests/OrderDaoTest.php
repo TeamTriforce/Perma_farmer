@@ -22,8 +22,8 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         $dateAvailable = new DateTime();
         $datePicked = new DateTime();
         $this->entity = Order::newInstance(0, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
-            [Product::newInstance(0, "label1", 10, 10, "img1", 1),
-                Product::newInstance(0, "label2", 100, 100, "img2", 10)], 1);
+            [Product::newInstance(0, "label1", 10, 10, "img1", 1, "desc1"),
+                Product::newInstance(0, "label2", 100, 100, "img2", 10, "desc2")], 1, 0);
     }
 
     public function testRead()
@@ -39,6 +39,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals(count($this->entity->getProducts()), count($order->getProducts()));
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getNotificationSent(), $order->getNotificationSent());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getIdCustomer(), $order->getIdCustomer());
+        \PHPUnit\Framework\Assert::assertEquals($this->entity->getPicked(), $order->getPicked());
 
         $this->dao->delete($order->getId());
         $this->deleteRelated();
@@ -58,19 +59,24 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     {
         $orders = [];
         $customers = [];
+        $subscriptionDao = new SubscriptionDao();
         $customerDao = new CustomerDao();
         $productDao = new ProductDao();
         $prdId = 0;
 
         for ($i = 0; $i < 5; $i++) {
-            $customers[] = Customer::newInstance($i, "first" . $i, "last" . $i, "mail" . $i, "password" . $i);
+            $subscription = Subscription::newInstance($i, "Label" . $i, 20, 10);
+
+            $subscriptionDao->create($subscription);
+
+            $customers[] = Customer::newInstance($i, "first" . $i, "last" . $i, "mail" . $i, "password" . $i, "code" . $i, "token" . $i, $subscription->getId());
 
             $customerDao->create($customers[$i]);
 
             $dateAvailable = new DateTime();
             $datePicked = new DateTime();
             $order = Order::newInstance($i, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
-                [Product::newInstance($i, "label" . $prdId, $prdId, $prdId, "img" . $prdId, $prdId)], $customers[$i]->getId());
+                [Product::newInstance($i, "label" . $prdId, $prdId, $prdId, "img" . $prdId, $prdId, "description")], $customers[$i]->getId(), 0);
 
             foreach ($order->getProducts() as $product) {
                 $productDao->create($product);
@@ -87,6 +93,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         for ($i = 0; $i < 5; $i++) {
             $this->dao->delete($orders[$i]->getId());
             $customerDao->delete($customers[$i]->getId());
+            $subscriptionDao->delete($customers[$i]->getIdSubscription());
 
             foreach ($orders[$i]->getProducts() as $product) {
                 $productDao->delete($product->getId());
@@ -96,6 +103,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
 
     public function testUpdate()
     {
+        $subscriptionDao = new SubscriptionDao();
         $customerDao = new CustomerDao();
 
         $this->initRelated();
@@ -103,8 +111,10 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
 
         $newAvailable = new DateTime;
         $newPicked = new DateTime;
-        $newCustomer = Customer::newInstance(2, "newFirst", "newLast", "newMail", "newPassword");
+
+        $oldSubscriptionId = $customerDao->read($this->entity->getIdCustomer())->getIdSubscription();
         $oldCustomerId = $this->entity->getIdCustomer();
+        $newCustomer = Customer::newInstance(2, "newFirst", "newLast", "newMail", "newPassword", "newCode", "newToken", $oldSubscriptionId);
 
         $customerDao->create($newCustomer);
 
@@ -112,6 +122,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         $this->entity->setPickedDate($newPicked->format("Y-m-d H:i:s"));
         $this->entity->setNotificationSent(true);
         $this->entity->setIdCustomer($newCustomer->getId());
+        $this->entity->setPicked(1);
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->update($this->entity));
 
@@ -121,10 +132,12 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals($newPicked->format("Y-m-d H:i:s"), $order->getPickedDate());
         \PHPUnit\Framework\Assert::assertEquals(true, $order->getNotificationSent());
         \PHPUnit\Framework\Assert::assertEquals($newCustomer->getId(), $order->getIdCustomer());
+        \PHPUnit\Framework\Assert::assertEquals($order->getPicked(), $order->getPicked());
 
         $this->dao->delete($this->entity->getId());
         $this->deleteRelated();
         $customerDao->delete($oldCustomerId);
+        $subscriptionDao->delete($oldSubscriptionId);
     }
 
     public function testDelete()
@@ -161,7 +174,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
 
         $this->dao->create($this->entity);
 
-        $toAdd = Product::newInstance(0, "lbl", 1, 1, "img", 1);
+        $toAdd = Product::newInstance(0, "lbl", 1, 1, "img", 1, "description");
 
         $productDao->create($toAdd);
 
@@ -176,9 +189,14 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function initRelated() {
+        $subscriptionDao = new SubscriptionDao();
         $productDao = new ProductDao();
         $customerDao = new CustomerDao();
-        $customer = Customer::newInstance(1, "first", "last", "mail", "password");
+        $subscription = Subscription::newInstance(1, "label", 10, 1);
+
+        $subscriptionDao->create($subscription);
+
+        $customer = Customer::newInstance(1, "first", "last", "mail", "password", "code", "token", $subscription->getId());
 
         $customerDao->create($customer);
 
@@ -190,10 +208,13 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function deleteRelated() {
+        $subscriptionDao = new SubscriptionDao();
         $productDao = new ProductDao();
         $customerDao = new CustomerDao();
+        $subscriptionId = $customerDao->read($this->entity->getIdCustomer())->getIdSubscription();
 
         $customerDao->delete($this->entity->getIdCustomer());
+        $subscriptionDao->delete($subscriptionId);
 
         foreach ($this->entity->getProducts() as $elt) {
             $productDao->delete($elt->getId());

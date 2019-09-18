@@ -289,3 +289,36 @@ h2{
 .etoiles-article{
     width: 80% !important;
 }
+
+.contact-form{
+    width: 100%;
+}
+.contact-form .form-control{
+    border-radius:1rem;
+}
+.contact-form form{
+    padding: 0px 14%;
+}
+.contact-form form .row{
+    margin-bottom: -7%;
+}
+.contact-form .btnContact {
+    width: 50%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: #dc3545;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+.btnContactSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    color: #fff;
+    background-color: #0062cc;
+    border: none;
+    cursor: pointer;
+}

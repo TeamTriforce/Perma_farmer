@@ -10,6 +10,7 @@ require_once "AbstractEntity.php";
 
 class Order extends AbstractEntity
 {
+
     private $id;
 
     private $availableDate;
@@ -22,6 +23,8 @@ class Order extends AbstractEntity
 
     private $idCustomer;
 
+    private $picked;
+
     /**
      *
      * @param $id
@@ -30,9 +33,10 @@ class Order extends AbstractEntity
      * @param $notificationSent
      * @param $products
      * @param $idCustomer
+     * @param $picked
      * @return Order
      */
-    public static function newInstance($id, $availableDate, $pickedDate, $notificationSent, $products, $idCustomer)
+    public static function newInstance($id, $availableDate, $pickedDate, $notificationSent, $products, $idCustomer, $picked)
     {
         $order = new Order([]);
 
@@ -42,6 +46,7 @@ class Order extends AbstractEntity
         $order->setNotificationSent($notificationSent);
         $order->setProducts($products);
         $order->setIdCustomer($idCustomer);
+        $order->setPicked($picked);
 
         return $order;
     }
@@ -140,6 +145,22 @@ class Order extends AbstractEntity
     public function setIdCustomer($idCustomer)
     {
         $this->idCustomer = $idCustomer;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicked()
+    {
+        return $this->picked;
+    }
+
+    /**
+     * @param mixed $picked
+     */
+    public function setPicked($picked)
+    {
+        $this->picked = $picked;
     }
 
 }
