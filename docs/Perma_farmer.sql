@@ -86,7 +86,8 @@ CREATE TABLE `order`(
         order_availableDate    Datetime NOT NULL ,
         order_pickedDate       Datetime NOT NULL ,
         order_notificationSent Int NOT NULL ,
-        order_idCustomer            Int NOT NULL
+        order_idCustomer       Int NOT NULL ,
+        order_picked           Int (1) NOT NULL DEFAULT 0,
 	,CONSTRAINT order_PK PRIMARY KEY (order_id)
 
 	,CONSTRAINT order_customer_FK FOREIGN KEY (order_idCustomer) REFERENCES customer(customer_id)

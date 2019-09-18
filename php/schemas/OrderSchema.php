@@ -25,4 +25,6 @@ abstract class OrderSchema
 
     const CUSTOMER = "order_idCustomer";
 
+    const PICKED = "order_picked";
+
 }

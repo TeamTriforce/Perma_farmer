@@ -30,6 +30,20 @@ if (isset($_SESSION["id"]) && isset($_SESSION["token"])) {
                 if (isset($_PUT[OrderSchema::NOTIFICATION_SENT])) {
                     $order->setNotificationSent($_PUT[OrderSchema::NOTIFICATION_SENT]);
                 }
+
+                if (isset($_PUT[OrderSchema::PICKED])) {
+                    $order->setPicked($_PUT[OrderSchema::PICKED]);
+                }
+
+                if ($orderDao->update($order)) {
+                    $response_code = 200;
+
+                    echo "Order successfully updated.";
+                } else {
+                    $response_code = 400;
+
+                    echo "An error occurred with the order update.";
+                }
             } else {
                 $response_code = 404;
 

@@ -21,18 +21,20 @@ class OrderDao extends AbstractDao
     public function create(Order $order)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:ad, :pd, :ns, :ci)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s, %s) VALUES (:ad, :pd, :ns, :ci, :p)",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
                 OrderSchema::NOTIFICATION_SENT,
-                OrderSchema::CUSTOMER);
+                OrderSchema::CUSTOMER,
+                OrderSchema::PICKED);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":ad", $order->getAvailableDate(), PDO::PARAM_STR);
             $req->bindValue(":pd", $order->getPickedDate(), PDO::PARAM_STR);
             $req->bindValue(":ns", $order->getNotificationSent(), PDO::PARAM_INT);
             $req->bindValue(":ci", $order->getIdCustomer(), PDO::PARAM_INT);
+            $req->bindValue(":p", $order->getPicked(), PDO::PARAM_INT);
 
             $req->execute();
             $req->closeCursor();
@@ -112,12 +114,13 @@ class OrderDao extends AbstractDao
         try {
             $this->deleteAssociateProducts($order->getId());
 
-            $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns, %s = :ci WHERE %s = :i",
+            $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns, %s = :ci, %s = :p WHERE %s = :i",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
                 OrderSchema::NOTIFICATION_SENT,
                 OrderSchema::CUSTOMER,
+                OrderSchema::PICKED,
                 OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
@@ -125,6 +128,7 @@ class OrderDao extends AbstractDao
             $req->bindValue(":pd", $order->getPickedDate(), PDO::PARAM_STR);
             $req->bindValue(":ns", $order->getNotificationSent(), PDO::PARAM_STR);
             $req->bindValue(":ci", $order->getIdCustomer(), PDO::PARAM_INT);
+            $req->bindValue(":p", $order->getPicked(), PDO::PARAM_INT);
             $req->bindValue(":i", $order->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
