@@ -20,6 +20,7 @@ nav{
     position: fixed;
     background-color: #002120;
     display: flex;
+    z-index: 9999;
 }
 
 .nav-part-1{
@@ -200,9 +201,91 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+}
+
+.div-ajout-produit:hover .ajout-panier-img{
+    transform: rotate(360deg);
+    transition: 0.5s;
 }
 
 .ajout-panier-img{
     width: 20px;
     height: 20px;
+    transition: 0.5s;
+}
+
+.img-produit-panier{
+    width: 100%;
+}
+
+.p-quantite{
+    padding-top: 25px;
+    font-size: 20px;
+}
+
+.p-quantite-input{
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.description-article h3{
+    color: #002120;
+    text-transform: uppercase;
+    font-size: 45px !important;
+}
+
+.description-article h4{
+    color: #002120;
+    text-transform: uppercase;
+    font-size: 30px !important;
+}
+
+.description-article p{
+    color: #002120;
+    font-size: 18px !important;
+}
+
+.div-ajout-panier-article{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: -50px;
+    right: 50px;
+    padding: 10px;
+    background-color: #002120;
+    animation: ajoutPanierArticle 1s ease-in-out forwards;
+    user-select: none;
+    cursor: pointer;
+}
+
+@keyframes ajoutPanierArticle{
+    0%{}
+    100%{bottom: 0;}
+}
+
+.div-ajout-panier-article p{
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px !important;
+    padding-right: 10px;
+}
+
+.div-ajout-panier-article img{
+    width:30px;
+}
+
+.avis-clients-div{
+    margin-bottom: 20px;
+}
+
+.avis-clients-div img{
+    border-radius: 50%;
+    width: 100%;
+}
+
+.etoiles-article{
+    width: 80% !important;
 }
