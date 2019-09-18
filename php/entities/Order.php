@@ -6,6 +6,8 @@
  * Time: 10:33
  */
 
+require_once "AbstractEntity.php";
+
 class Order extends AbstractEntity
 {
     private $id;
@@ -19,6 +21,30 @@ class Order extends AbstractEntity
     private $products;
 
     private $idCustomer;
+
+    /**
+     *
+     * @param $id
+     * @param $availableDate
+     * @param $pickedDate
+     * @param $notificationSent
+     * @param $products
+     * @param $idCustomer
+     * @return Order
+     */
+    public static function newInstance($id, $availableDate, $pickedDate, $notificationSent, $products, $idCustomer)
+    {
+        $order = new Order([]);
+
+        $order->setId($id);
+        $order->setAvailableDate($availableDate);
+        $order->setPickedDate($pickedDate);
+        $order->setNotificationSent($notificationSent);
+        $order->setProducts($products);
+        $order->setIdCustomer($idCustomer);
+
+        return $order;
+    }
 
     /**
      * @return mixed

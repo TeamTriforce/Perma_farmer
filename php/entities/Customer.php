@@ -6,6 +6,8 @@
  * Time: 10:32
  */
 
+require_once "AbstractEntity.php";
+
 class Customer extends AbstractEntity
 {
     private $id;
@@ -17,6 +19,28 @@ class Customer extends AbstractEntity
     private $email;
 
     private $password;
+
+    /**
+     *
+     * @param $id
+     * @param $firstName
+     * @param $lastName
+     * @param $email
+     * @param $password
+     * @return Customer
+     */
+    public static function newInstance($id, $firstName, $lastName, $email, $password)
+    {
+        $customer = new Customer([]);
+
+        $customer->setId($id);
+        $customer->setFirstName($firstName);
+        $customer->setLastName($lastName);
+        $customer->setEmail($email);
+        $customer->setPassword($password);
+
+        return $customer;
+    }
 
     /**
      * @return mixed

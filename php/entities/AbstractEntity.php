@@ -25,7 +25,9 @@ abstract class AbstractEntity
     {
         foreach ($data as $key => $value)
         {
-            $method = "set" . ucfirst($key);
+            $field = explode("_", $key)[1];
+            $method = "set" . ucfirst($field);
+
             if (method_exists($this, $method))
             {
                 $this->$method($value);
@@ -40,11 +42,13 @@ abstract class AbstractEntity
     public function toArray(bool $assoc = false)
     {
         $objArray = array();
+
         if ($assoc)
         {
-            foreach ($this as $attr => $value)
+            foreach (get_object_vars($this) as $attr => $value)
             {
-                $objArray[$attr] = $value;
+                $field = strtolower(get_class($this)) . "_" . $attr;
+                $objArray[$field] = $value;
             }
         }
         else

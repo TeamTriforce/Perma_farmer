@@ -18,4 +18,6 @@ abstract class ProductSchema
 
     const STOCK = "product_stock";
 
+    const IMAGE = "product_image";
+
 }

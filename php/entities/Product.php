@@ -6,9 +6,10 @@
  * Time: 10:32
  */
 
+require_once "AbstractEntity.php";
+
 class Product extends AbstractEntity
 {
-    private static $stock;
 
     private $id;
 
@@ -18,20 +19,32 @@ class Product extends AbstractEntity
 
     private $quantity;
 
-    /**
-     * @return mixed
-     */
-    public static function getStock()
-    {
-        return self::$stock;
-    }
+    private $image;
+
+    private $stock;
 
     /**
-     * @param mixed $stock
+     *
+     * @param $id
+     * @param $label
+     * @param $price
+     * @param $quantity
+     * @param $image
+     * @param $stock
+     * @return Product
      */
-    public static function setStock($stock)
+    public static function newInstance($id, $label, $price, $quantity, $image, $stock)
     {
-        self::$stock = $stock;
+        $product = new Product([]);
+
+        $product->setId($id);
+        $product->setLabel($label);
+        $product->setPrice($price);
+        $product->setQuantity($quantity);
+        $product->setImage($image);
+        $product->setStock($stock);
+
+        return $product;
     }
 
     /**
@@ -96,6 +109,38 @@ class Product extends AbstractEntity
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param mixed $stock
+     */
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
     }
 
 }
