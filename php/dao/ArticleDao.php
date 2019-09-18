@@ -6,6 +6,9 @@
  * Time: 11:09
  */
 
+require_once "AbstractDao.php";
+include(dirname(__FILE__) . "/../schemas/ArticleSchema.php");
+
 /**
  * Class ArticleDao
  */
@@ -18,16 +21,22 @@ class ArticleDao extends AbstractDao
     public function create(Article $article)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:t, :c, :i)",
                 ArticleSchema::TABLE,
                 ArticleSchema::TITLE,
                 ArticleSchema::CONTENT,
                 ArticleSchema::IMAGE);
             $req = $this->db->prepare($statement);
 
-            $req->execute($article->toArray(true));
+            $req->bindValue(":t", $article->getTitle(), PDO::PARAM_STR);
+            $req->bindValue(":c", $article->getContent(), PDO::PARAM_STR);
+            $req->bindValue(":i", $article->getImage(), PDO::PARAM_STR);
+            $req->execute();
+            $article->setId($this->db->lastInsertId());
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -36,7 +45,7 @@ class ArticleDao extends AbstractDao
 
     /**
      * @param int $id
-     * @return null|Product
+     * @return null|Article
      */
     public function read(int $id)
     {
@@ -53,10 +62,12 @@ class ArticleDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
-        return new Product($data);
+        return new Article($data);
     }
 
     /**
@@ -73,6 +84,8 @@ class ArticleDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -101,6 +114,8 @@ class ArticleDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -115,7 +130,7 @@ class ArticleDao extends AbstractDao
             $articles = [];
             $statement = sprintf("SELECT * FROM `%s`",
                 ArticleSchema::TABLE);
-            $req = $this->db->exec($statement);
+            $req = $this->db->query($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
@@ -124,6 +139,8 @@ class ArticleDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 

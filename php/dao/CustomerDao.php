@@ -6,6 +6,9 @@
  * Time: 11:09
  */
 
+require_once "AbstractDao.php";
+include(dirname(__FILE__) . "/../schemas/CustomerSchema.php");
+
 /**
  * Class PurchaseManager
  */
@@ -18,7 +21,7 @@ class CustomerDao extends AbstractDao
     public function create(Customer $customer)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (?, ?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:fn, :ln, :e, :p)",
                 CustomerSchema::TABLE,
                 CustomerSchema::FIRST_NAME,
                 CustomerSchema::LAST_NAME,
@@ -26,9 +29,16 @@ class CustomerDao extends AbstractDao
                 CustomerSchema::PASSWORD);
             $req = $this->db->prepare($statement);
 
-            $req->execute($customer->toArray(true));
+            $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
+            $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
+            $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
+            $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
+            $req->execute();
+            $customer->setId($this->db->lastInsertId());
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -54,6 +64,8 @@ class CustomerDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
@@ -74,6 +86,8 @@ class CustomerDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -104,6 +118,8 @@ class CustomerDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -118,7 +134,7 @@ class CustomerDao extends AbstractDao
             $customers = [];
             $statement = sprintf("SELECT * FROM `%s`",
                 CustomerSchema::TABLE);
-            $req = $this->db->exec($statement);
+            $req = $this->db->query($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
@@ -127,6 +143,8 @@ class CustomerDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 

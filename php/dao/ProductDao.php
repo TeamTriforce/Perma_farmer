@@ -6,6 +6,9 @@
  * Time: 11:09
  */
 
+require_once "AbstractDao.php";
+include(dirname(__FILE__) . "/../schemas/ProductSchema.php");
+
 /**
  * Class ProductDao
  */
@@ -18,16 +21,24 @@ class ProductDao extends AbstractDao
     public function create(Product $product)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:l, :p, :s, :i)",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
                 ProductSchema::PRICE,
-                ProductSchema::STOCK);
+                ProductSchema::STOCK,
+                ProductSchema::IMAGE);
             $req = $this->db->prepare($statement);
 
-            $req->execute($product->toArray(true));
+            $req->bindValue(":l", $product->getLabel(), PDO::PARAM_INT);
+            $req->bindValue(":p", $product->getPrice(), PDO::PARAM_INT);
+            $req->bindValue(":s", $product->getStock(), PDO::PARAM_INT);
+            $req->bindValue(":i", $product->getImage(), PDO::PARAM_STR);
+            $req->execute();
+            $product->setId($this->db->lastInsertId());
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -53,6 +64,8 @@ class ProductDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
@@ -73,6 +86,8 @@ class ProductDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -86,21 +101,25 @@ class ProductDao extends AbstractDao
     public function update(Product $product)
     {
         try {
-            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :s WHERE %s = :i",
+            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :s, %s = :img WHERE %s = :i",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
                 ProductSchema::PRICE,
                 ProductSchema::STOCK,
+                ProductSchema::IMAGE,
                 ProductSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":l", $product->getLabel(), PDO::PARAM_STR);
             $req->bindValue(":p", $product->getPrice(), PDO::PARAM_INT);
-            $req->bindValue(":s", Product::getStock(), PDO::PARAM_INT);
+            $req->bindValue(":s", $product->getStock(), PDO::PARAM_INT);
+            $req->bindValue(":img", $product->getImage(), PDO::PARAM_STR);
             $req->bindValue(":i", $product->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -115,7 +134,7 @@ class ProductDao extends AbstractDao
             $products = [];
             $statement = sprintf("SELECT * FROM `%s`",
                 ProductSchema::TABLE);
-            $req = $this->db->exec($statement);
+            $req = $this->db->query($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
@@ -124,6 +143,8 @@ class ProductDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
