@@ -10,6 +10,7 @@ require_once "AbstractEntity.php";
 
 class Order extends AbstractEntity
 {
+
     private $id;
 
     private $availableDate;

@@ -21,18 +21,20 @@ class ProductDao extends AbstractDao
     public function create(Product $product)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:l, :p, :s, :i)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s, %s) VALUES (:l, :p, :s, :i, :d)",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
                 ProductSchema::PRICE,
                 ProductSchema::STOCK,
-                ProductSchema::IMAGE);
+                ProductSchema::IMAGE,
+                ProductSchema::DESCRIPTION);
             $req = $this->db->prepare($statement);
 
-            $req->bindValue(":l", $product->getLabel(), PDO::PARAM_INT);
+            $req->bindValue(":l", $product->getLabel(), PDO::PARAM_STR);
             $req->bindValue(":p", $product->getPrice(), PDO::PARAM_INT);
             $req->bindValue(":s", $product->getStock(), PDO::PARAM_INT);
             $req->bindValue(":i", $product->getImage(), PDO::PARAM_STR);
+            $req->bindValue(":d", $product->getDescription(), PDO::PARAM_STR);
             $req->execute();
             $product->setId($this->db->lastInsertId());
             $req->closeCursor();
@@ -101,12 +103,13 @@ class ProductDao extends AbstractDao
     public function update(Product $product)
     {
         try {
-            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :s, %s = :img WHERE %s = :i",
+            $statement = sprintf("UPDATE `%s` SET %s = :l, %s = :p, %s = :s, %s = :img, %s = :d WHERE %s = :i",
                 ProductSchema::TABLE,
                 ProductSchema::LABEL,
                 ProductSchema::PRICE,
                 ProductSchema::STOCK,
                 ProductSchema::IMAGE,
+                ProductSchema::DESCRIPTION,
                 ProductSchema::ID);
             $req = $this->db->prepare($statement);
 
@@ -114,6 +117,7 @@ class ProductDao extends AbstractDao
             $req->bindValue(":p", $product->getPrice(), PDO::PARAM_INT);
             $req->bindValue(":s", $product->getStock(), PDO::PARAM_INT);
             $req->bindValue(":img", $product->getImage(), PDO::PARAM_STR);
+            $req->bindValue(":d", $product->getDescription(), PDO::PARAM_STR);
             $req->bindValue(":i", $product->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();

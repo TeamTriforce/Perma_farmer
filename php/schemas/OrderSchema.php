@@ -8,6 +8,7 @@
 
 abstract class OrderSchema
 {
+
     const TABLE = "order";
 
     const ID = "order_id";

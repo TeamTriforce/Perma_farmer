@@ -10,7 +10,7 @@ require_once "AbstractDao.php";
 include(dirname(__FILE__) . "/../schemas/CustomerSchema.php");
 
 /**
- * Class PurchaseManager
+ * Class CustomerDao
  */
 class CustomerDao extends AbstractDao
 {
@@ -21,18 +21,24 @@ class CustomerDao extends AbstractDao
     public function create(Customer $customer)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:fn, :ln, :e, :p)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s, %s, %s, %s) VALUES (:fn, :ln, :e, :p, :c, :t, :s)",
                 CustomerSchema::TABLE,
                 CustomerSchema::FIRST_NAME,
                 CustomerSchema::LAST_NAME,
                 CustomerSchema::EMAIL,
-                CustomerSchema::PASSWORD);
+                CustomerSchema::PASSWORD,
+                CustomerSchema::CODE,
+                CustomerSchema::TOKEN,
+                CustomerSchema::SUBSCRIPTION);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
             $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
             $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
             $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
+            $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
+            $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_INT);
             $req->execute();
             $customer->setId($this->db->lastInsertId());
             $req->closeCursor();
@@ -101,12 +107,15 @@ class CustomerDao extends AbstractDao
     public function update(Customer $customer)
     {
         try {
-            $statement = sprintf("UPDATE `%s` SET %s = :fn, %s = :ln, %s = :e, %s = :p WHERE %s = :i",
+            $statement = sprintf("UPDATE `%s` SET %s = :fn, %s = :ln, %s = :e, %s = :p, %s = :c, %s = :t, %s = :s WHERE %s = :i",
                 CustomerSchema::TABLE,
                 CustomerSchema::FIRST_NAME,
                 CustomerSchema::LAST_NAME,
                 CustomerSchema::EMAIL,
                 CustomerSchema::PASSWORD,
+                CustomerSchema::CODE,
+                CustomerSchema::TOKEN,
+                CustomerSchema::SUBSCRIPTION,
                 CustomerSchema::ID);
             $req = $this->db->prepare($statement);
 
@@ -114,6 +123,9 @@ class CustomerDao extends AbstractDao
             $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
             $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
             $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
+            $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
+            $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_STR);
             $req->bindValue(":i", $customer->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
