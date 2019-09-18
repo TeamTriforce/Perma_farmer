@@ -29,7 +29,7 @@ class AdminDaoTest extends \PHPUnit\Framework\TestCase
         $admin = $this->dao->read($this->entity->getId());
 
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getLogin(), $admin->getLogin());
-        \PHPUnit\Framework\Assert::assertEquals($this->entity->getPassword(), $admin->getPassword());
+        \PHPUnit\Framework\Assert::assertTrue(password_verify($this->entity->getPassword(), $admin->getPassword()));
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getAuthToken(), $admin->getAuthToken());
 
         $this->dao->delete($admin->getId());
@@ -74,7 +74,7 @@ class AdminDaoTest extends \PHPUnit\Framework\TestCase
         $admin = $this->dao->read($this->entity->getId());
 
         \PHPUnit\Framework\Assert::assertEquals("newLogin", $admin->getLogin());
-        \PHPUnit\Framework\Assert::assertEquals("newPassword", $admin->getPassword());
+        \PHPUnit\Framework\Assert::assertTrue(password_verify($this->entity->getPassword(), $admin->getPassword()));
         \PHPUnit\Framework\Assert::assertEquals("newToken", $admin->getAuthToken());
 
         $this->dao->delete($this->entity->getId());
@@ -86,4 +86,30 @@ class AdminDaoTest extends \PHPUnit\Framework\TestCase
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->delete($this->entity->getId()));
     }
+
+    public function testLogin() {
+        $this->dao->create($this->entity);
+        $idData = $this->dao->login($this->entity->getLogin(), $this->entity->getPassword());
+
+        \PHPUnit\Framework\Assert::assertTrue($idData != null);
+
+        $entity = $this->dao->read($this->entity->getId());
+
+        \PHPUnit\Framework\Assert::assertEquals($entity->getId(), $idData[AdminSchema::ID]);
+        \PHPUnit\Framework\Assert::assertEquals($entity->getAuthToken(), $idData[AdminSchema::TOKEN]);
+
+        $this->dao->delete($this->entity->getId());
+    }
+
+    public function testCheckToken() {
+        $this->dao->create($this->entity);
+
+        $idData = $this->dao->login($this->entity->getLogin(), $this->entity->getPassword());
+
+        \PHPUnit\Framework\Assert::assertTrue($this->dao->checkToken($idData[AdminSchema::ID], $idData[AdminSchema::TOKEN]));
+        \PHPUnit\Framework\Assert::assertFalse($this->dao->checkToken(-8000, $idData[AdminSchema::TOKEN]));
+
+        $this->dao->delete($this->entity->getId());
+    }
+
 }

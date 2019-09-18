@@ -14,6 +14,8 @@ include(dirname(__FILE__) . "/../schemas/AdminSchema.php");
  */
 class AdminDao extends AbstractDao
 {
+    const TOKEN_LENGTH = 50;
+
     /**
      * @param Admin $admin
      * @return bool
@@ -29,7 +31,7 @@ class AdminDao extends AbstractDao
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":l", $admin->getLogin(), PDO::PARAM_STR);
-            $req->bindValue(":p", $admin->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($admin->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
             $req->bindValue(":t", $admin->getAuthToken(), PDO::PARAM_STR);
             $req->execute();
             $admin->setId($this->db->lastInsertId());
@@ -108,7 +110,7 @@ class AdminDao extends AbstractDao
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":l", $admin->getLogin(), PDO::PARAM_STR);
-            $req->bindValue(":p", $admin->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($admin->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
             $req->bindValue(":t", $admin->getAuthToken(), PDO::PARAM_STR);
             $req->bindValue(":i", $admin->getId(), PDO::PARAM_STR);
             $req->execute();
@@ -145,6 +147,84 @@ class AdminDao extends AbstractDao
         }
 
         return $admins;
+    }
+
+    /**
+     * @param string $login
+     * @param string $password
+     * @return null
+     */
+    public function login(string $login, string $password) {
+        try {
+            $statement = sprintf("SELECT %s, %s FROM `%s` WHERE %s = :l",
+                AdminSchema::ID, AdminSchema::PASSWORD, AdminSchema::TABLE, AdminSchema::LOGIN);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":l", $login, PDO::PARAM_STR);
+            $req->execute();
+
+            $data = $req->fetch(PDO::FETCH_ASSOC);
+
+            if (password_verify($password, $data[AdminSchema::PASSWORD])) {
+                $result = [];
+                $result[AdminSchema::ID] = $data[AdminSchema::ID];
+
+                $req->closeCursor();
+
+                try {
+                    $token = bin2hex(random_bytes(static::TOKEN_LENGTH));
+                    $result[AdminSchema::TOKEN] = $token;
+                    $statement = sprintf("UPDATE `%s` SET %s = :t WHERE %s = :i",
+                        AdminSchema::TABLE,
+                        AdminSchema::TOKEN,
+                        AdminSchema::ID);
+                    $req = $this->db->prepare($statement);
+
+                    $req->bindValue(":t", $token, PDO::PARAM_STR);
+                    $req->bindValue(":i", $result[AdminSchema::ID], PDO::PARAM_INT);
+                    $req->execute();
+                    $req->closeCursor();
+
+                    return $result;
+                } catch (Exception $e) {
+                    echo $e;
+
+                    return null;
+                }
+            } else {
+                $req->closeCursor();
+
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo $e;
+
+            return null;
+        }
+    }
+
+    public function checkToken(int $id, string $token) {
+        try {
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i AND %s = :t",
+                AdminSchema::TABLE,
+                AdminSchema::ID,
+                AdminSchema::TOKEN);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":i", $id, PDO::PARAM_INT);
+            $req->bindValue(":t", $token, PDO::PARAM_STR);
+            $req->execute();
+
+            $valid = $req->fetch(PDO::FETCH_ASSOC) != false;
+
+            $req->closeCursor();
+
+            return $valid;
+        } catch (PDOException $e) {
+            echo $e;
+
+            return false;
+        }
     }
 
 }

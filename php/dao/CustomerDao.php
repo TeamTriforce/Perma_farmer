@@ -14,6 +14,9 @@ include(dirname(__FILE__) . "/../schemas/CustomerSchema.php");
  */
 class CustomerDao extends AbstractDao
 {
+
+    const TOKEN_LENGTH = 50;
+
     /**
      * @param Customer $customer
      * @return bool
@@ -35,7 +38,7 @@ class CustomerDao extends AbstractDao
             $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
             $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
             $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
-            $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($customer->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
             $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
             $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
             $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_INT);
@@ -122,7 +125,7 @@ class CustomerDao extends AbstractDao
             $req->bindValue(":fn", $customer->getFirstName(), PDO::PARAM_STR);
             $req->bindValue(":ln", $customer->getLastName(), PDO::PARAM_STR);
             $req->bindValue(":e", $customer->getEmail(), PDO::PARAM_STR);
-            $req->bindValue(":p", $customer->getPassword(), PDO::PARAM_STR);
+            $req->bindValue(":p", password_hash($customer->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);
             $req->bindValue(":c", $customer->getCode(), PDO::PARAM_STR);
             $req->bindValue(":t", $customer->getAuthToken(), PDO::PARAM_STR);
             $req->bindValue(":s", $customer->getIdSubscription(), PDO::PARAM_STR);
@@ -161,6 +164,79 @@ class CustomerDao extends AbstractDao
         }
 
         return $customers;
+    }
+
+    public function login(string $login, string $password) {
+        try {
+            $statement = sprintf("SELECT %s, %s FROM `%s` WHERE %s = :l",
+                CustomerSchema::ID, CustomerSchema::PASSWORD, CustomerSchema::TABLE, CustomerSchema::EMAIL);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":l", $login, PDO::PARAM_STR);
+            $req->execute();
+
+            $data = $req->fetch(PDO::FETCH_ASSOC);
+
+            if (password_verify($password, $data[CustomerSchema::PASSWORD])) {
+                $result = [];
+                $result[CustomerSchema::ID] = $data[CustomerSchema::ID];
+
+                $req->closeCursor();
+
+                try {
+                    $token = bin2hex(random_bytes(static::TOKEN_LENGTH));
+                    $result[CustomerSchema::TOKEN] = $token;
+                    $statement = sprintf("UPDATE `%s` SET %s = :t WHERE %s = :i",
+                        CustomerSchema::TABLE,
+                        CustomerSchema::TOKEN,
+                        CustomerSchema::ID);
+                    $req = $this->db->prepare($statement);
+
+                    $req->bindValue(":t", $token, PDO::PARAM_STR);
+                    $req->bindValue(":i", $result[CustomerSchema::ID], PDO::PARAM_INT);
+                    $req->execute();
+                    $req->closeCursor();
+
+                    return $result;
+                } catch (Exception $e) {
+                    echo $e;
+
+                    return null;
+                }
+            } else {
+                $req->closeCursor();
+
+                return null;
+            }
+        } catch (PDOException $e) {
+            echo $e;
+
+            return null;
+        }
+    }
+
+    public function checkToken(int $id, string $token) {
+        try {
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i AND %s = :t",
+                CustomerSchema::TABLE,
+                CustomerSchema::ID,
+                CustomerSchema::TOKEN);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":i", $id, PDO::PARAM_INT);
+            $req->bindValue(":t", $token, PDO::PARAM_STR);
+            $req->execute();
+
+            $valid = $req->fetch(PDO::FETCH_ASSOC) != false;
+
+            $req->closeCursor();
+
+            return $valid;
+        } catch (PDOException $e) {
+            echo $e;
+
+            return false;
+        }
     }
 
 }

@@ -32,7 +32,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getFirstName(), $customer->getFirstName());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getLastName(), $customer->getLastName());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getEmail(), $customer->getEmail());
-        \PHPUnit\Framework\Assert::assertEquals($this->entity->getPassword(), $customer->getPassword());
+        \PHPUnit\Framework\Assert::assertTrue(password_verify($this->entity->getPassword(), $customer->getPassword()));
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getAuthToken(), $customer->getAuthToken());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getIdSubscription(), $customer->getIdSubscription());
 
@@ -102,7 +102,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals("newFirstName", $customer->getFirstName());
         \PHPUnit\Framework\Assert::assertEquals("newLastName", $customer->getLastName());
         \PHPUnit\Framework\Assert::assertEquals("newEmail", $customer->getEmail());
-        \PHPUnit\Framework\Assert::assertEquals("newPassword", $customer->getPassword());
+        \PHPUnit\Framework\Assert::assertTrue(password_verify($this->entity->getPassword(), $customer->getPassword()));
         \PHPUnit\Framework\Assert::assertEquals("newCode", $customer->getCode());
         \PHPUnit\Framework\Assert::assertEquals("newToken", $customer->getAuthToken());
         \PHPUnit\Framework\Assert::assertEquals($newSubscription->getId(), $customer->getIdSubscription());
@@ -120,6 +120,23 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->delete($this->entity->getId()));
 
+        $this->deleteRelated();
+    }
+
+    public function testLogin() {
+        $this->initRelated();
+
+        $this->dao->create($this->entity);
+        $idData = $this->dao->login($this->entity->getEmail(), $this->entity->getPassword());
+
+        \PHPUnit\Framework\Assert::assertTrue($idData != null);
+
+        $entity = $this->dao->read($this->entity->getId());
+
+        \PHPUnit\Framework\Assert::assertEquals($entity->getId(), $idData[CustomerSchema::ID]);
+        \PHPUnit\Framework\Assert::assertEquals($entity->getAuthToken(), $idData[CustomerSchema::TOKEN]);
+
+        $this->dao->delete($this->entity->getId());
         $this->deleteRelated();
     }
 

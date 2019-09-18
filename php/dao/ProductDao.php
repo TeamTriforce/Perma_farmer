@@ -155,4 +155,30 @@ class ProductDao extends AbstractDao
         return $products;
     }
 
+    /**
+     * @return array|null
+     */
+    public function queryAllAvailable() {
+        try {
+            $products = [];
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s > 0",
+                ProductSchema::TABLE,
+                ProductSchema::STOCK);
+            $req = $this->db->query($statement);
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($data as $key) {
+                $products[] = new Product($key);
+            }
+
+            $req->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+
+            return null;
+        }
+
+        return $products;
+    }
+
 }

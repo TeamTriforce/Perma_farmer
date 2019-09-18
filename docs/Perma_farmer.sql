@@ -38,8 +38,8 @@ CREATE TABLE `article`(
 
 CREATE TABLE `admin`(
         admin_id        Int  Auto_increment  NOT NULL ,
-        admin_password  Varchar (100) NOT NULL ,
-        admin_authToken Varchar (100) NOT NULL ,
+        admin_password  Varchar (255) NOT NULL ,
+        admin_authToken Varchar (255) ,
         admin_login     Varchar (100) NOT NULL
 	,CONSTRAINT admin_AK UNIQUE (admin_login)
 	,CONSTRAINT admin_PK PRIMARY KEY (admin_id)
@@ -68,9 +68,9 @@ CREATE TABLE `customer`(
         customer_firstName Varchar (100) NOT NULL ,
         customer_lastName  Varchar (100) NOT NULL ,
         customer_email     Varchar (100) NOT NULL ,
-        customer_password  Varchar (50) NOT NULL ,
+        customer_password  Varchar (255) NOT NULL ,
         customer_code      Varchar (255) NOT NULL ,
-        customer_authToken Varchar (255) NOT NULL ,
+        customer_authToken Varchar (255) ,
         customer_idSubscription    Int NOT NULL
 	,CONSTRAINT customer_PK PRIMARY KEY (customer_id)
 	,CONSTRAINT customer_subscription_FK FOREIGN KEY (customer_idSubscription) REFERENCES subscription(subscription_id)

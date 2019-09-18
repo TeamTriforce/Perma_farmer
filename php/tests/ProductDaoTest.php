@@ -63,6 +63,25 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         }
     }
 
+    public function testQueryAllAvailable()
+    {
+        $products = [];
+
+        for ($i = 0; $i < 5; $i++) {
+            $product = Product::newInstance($i, "Label" . $i, $i, $i, "Image" . $i, $i % 2, "Description" . $i);
+
+            $this->dao->create($product);
+
+            $products[] = $product;
+        }
+
+        \PHPUnit\Framework\Assert::assertEquals(2, count($this->dao->queryAllAvailable()));
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->dao->delete($products[$i]->getId());
+        }
+    }
+
     public function testUpdate()
     {
         $this->dao->create($this->entity);
