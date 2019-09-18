@@ -23,7 +23,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         $datePicked = new DateTime();
         $this->entity = Order::newInstance(0, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
             [Product::newInstance(0, "label1", 10, 10, "img1", 1, "desc1"),
-                Product::newInstance(0, "label2", 100, 100, "img2", 10, "desc2")], 1);
+                Product::newInstance(0, "label2", 100, 100, "img2", 10, "desc2")], 1, 0);
     }
 
     public function testRead()
@@ -39,6 +39,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals(count($this->entity->getProducts()), count($order->getProducts()));
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getNotificationSent(), $order->getNotificationSent());
         \PHPUnit\Framework\Assert::assertEquals($this->entity->getIdCustomer(), $order->getIdCustomer());
+        \PHPUnit\Framework\Assert::assertEquals($this->entity->getPicked(), $order->getPicked());
 
         $this->dao->delete($order->getId());
         $this->deleteRelated();
@@ -75,7 +76,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
             $dateAvailable = new DateTime();
             $datePicked = new DateTime();
             $order = Order::newInstance($i, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
-                [Product::newInstance($i, "label" . $prdId, $prdId, $prdId, "img" . $prdId, $prdId, "description")], $customers[$i]->getId());
+                [Product::newInstance($i, "label" . $prdId, $prdId, $prdId, "img" . $prdId, $prdId, "description")], $customers[$i]->getId(), 0);
 
             foreach ($order->getProducts() as $product) {
                 $productDao->create($product);
@@ -121,6 +122,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         $this->entity->setPickedDate($newPicked->format("Y-m-d H:i:s"));
         $this->entity->setNotificationSent(true);
         $this->entity->setIdCustomer($newCustomer->getId());
+        $this->entity->setPicked(1);
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->update($this->entity));
 
@@ -130,6 +132,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertEquals($newPicked->format("Y-m-d H:i:s"), $order->getPickedDate());
         \PHPUnit\Framework\Assert::assertEquals(true, $order->getNotificationSent());
         \PHPUnit\Framework\Assert::assertEquals($newCustomer->getId(), $order->getIdCustomer());
+        \PHPUnit\Framework\Assert::assertEquals($order->getPicked(), $order->getPicked());
 
         $this->dao->delete($this->entity->getId());
         $this->deleteRelated();
