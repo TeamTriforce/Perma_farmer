@@ -6,6 +6,9 @@
  * Time: 11:09
  */
 
+require_once "AbstractDao.php";
+include(dirname(__FILE__) . "/../schemas/OrderSchema.php");
+
 /**
  * Class OrderDao
  */
@@ -18,19 +21,27 @@ class OrderDao extends AbstractDao
     public function create(Order $order)
     {
         try {
-            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (?, ?, ?)",
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s, %s) VALUES (:ad, :pd, :ns, :ci)",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
-                OrderSchema::NOTIFICATION_SENT);
+                OrderSchema::NOTIFICATION_SENT,
+                OrderSchema::CUSTOMER);
             $req = $this->db->prepare($statement);
 
-            $req->execute($order->toArray(true));
+            $req->bindValue(":ad", $order->getAvailableDate(), PDO::PARAM_STR);
+            $req->bindValue(":pd", $order->getPickedDate(), PDO::PARAM_STR);
+            $req->bindValue(":ns", $order->getNotificationSent(), PDO::PARAM_INT);
+            $req->bindValue(":ci", $order->getIdCustomer(), PDO::PARAM_INT);
+
+            $req->execute();
             $req->closeCursor();
             $order->setId($this->db->lastInsertId());
 
             $this->createAssociatedProducts($order);
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -60,6 +71,8 @@ class OrderDao extends AbstractDao
 
             $order->setProducts($this->getAssociatedProducts($order));
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
@@ -82,6 +95,8 @@ class OrderDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -97,17 +112,19 @@ class OrderDao extends AbstractDao
         try {
             $this->deleteAssociateProducts($order->getId());
 
-            $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns WHERE %s = :i",
+            $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns, %s = :ci WHERE %s = :i",
                 OrderSchema::TABLE,
                 OrderSchema::AVAILABLE_DATE,
                 OrderSchema::PICKED_DATE,
                 OrderSchema::NOTIFICATION_SENT,
+                OrderSchema::CUSTOMER,
                 OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
             $req->bindValue(":ad", $order->getAvailableDate(), PDO::PARAM_STR);
             $req->bindValue(":pd", $order->getPickedDate(), PDO::PARAM_STR);
             $req->bindValue(":ns", $order->getNotificationSent(), PDO::PARAM_STR);
+            $req->bindValue(":ci", $order->getIdCustomer(), PDO::PARAM_INT);
             $req->bindValue(":i", $order->getId(), PDO::PARAM_INT);
             $req->execute();
             $req->closeCursor();
@@ -115,6 +132,52 @@ class OrderDao extends AbstractDao
             $this->createAssociatedProducts($order);
 
         } catch (PDOException $e) {
+            echo $e;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function addProduct(Order $order, Product $product) {
+        try {
+            $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:io, :ip, :q)",
+                OrderSchema::JOINED_TABLE,
+                OrderSchema::ID,
+                ProductSchema::ID,
+                OrderSchema::QUANTITY);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":io", $order->getId(), PDO::PARAM_INT);
+            $req->bindValue(":ip", $product->getId(), PDO::PARAM_INT);
+            $req->bindValue(":q", $product->getQuantity(), PDO::PARAM_INT);
+            $req->execute();
+            $req->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public function removeProduct(Order $order, Product $product) {
+        try {
+            $statement = sprintf("DELETE FROM `%s` WHERE %s = :io AND %s = :ip",
+                OrderSchema::JOINED_TABLE,
+                OrderSchema::ID,
+                ProductSchema::ID);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":io", $order->getId(), PDO::PARAM_INT);
+            $req->bindValue(":ip", $product->getId(), PDO::PARAM_INT);
+            $req->execute();
+            $req->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -128,8 +191,8 @@ class OrderDao extends AbstractDao
         try {
             $orders = [];
             $statement = sprintf("SELECT * FROM `%s`",
-                OrderSchema::ID);
-            $req = $this->db->exec($statement);
+                OrderSchema::TABLE);
+            $req = $this->db->query($statement);
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($data as $key) {
@@ -142,6 +205,8 @@ class OrderDao extends AbstractDao
 
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
@@ -163,12 +228,14 @@ class OrderDao extends AbstractDao
                 $req = $this->db->prepare($statement);
 
                 $req->bindValue(":io", $order->getId(), PDO::PARAM_INT);
-                $req->bindValue(":io", $product->getId(), PDO::PARAM_INT);
+                $req->bindValue(":ip", $product->getId(), PDO::PARAM_INT);
                 $req->bindValue(":q", $product->getQuantity(), PDO::PARAM_INT);
                 $req->execute();
                 $req->closeCursor();
             }
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 
@@ -193,12 +260,16 @@ class OrderDao extends AbstractDao
 
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
-            $req->closeCursor();
+            $productDao = new ProductDao();
 
             foreach ($result as $elt) {
-                $products[] = new Product($elt);
+                $products[] = $productDao->read($elt[ProductSchema::ID]);
             }
+
+            $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return null;
         }
 
@@ -218,6 +289,8 @@ class OrderDao extends AbstractDao
             $req->execute();
             $req->closeCursor();
         } catch (PDOException $e) {
+            echo $e;
+
             return false;
         }
 

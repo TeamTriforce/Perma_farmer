@@ -12,14 +12,16 @@ abstract class OrderSchema
 
     const ID = "order_id";
 
-    const AVAILABLE_DATE = "order_available_date";
+    const AVAILABLE_DATE = "order_availableDate";
 
-    const PICKED_DATE = "order_picked_date";
+    const PICKED_DATE = "order_pickedDate";
 
-    const NOTIFICATION_SENT = "order_notification_sent";
+    const NOTIFICATION_SENT = "order_notificationSent";
 
     const QUANTITY = "product_quantity";
 
     const JOINED_TABLE = "cart";
+
+    const CUSTOMER = "order_idCustomer";
 
 }

@@ -12,9 +12,9 @@ abstract class CustomerSchema
 
     const ID = "customer_id";
 
-    const FIRST_NAME = "customer_first_name";
+    const FIRST_NAME = "customer_firstName";
 
-    const LAST_NAME = "customer_last_name";
+    const LAST_NAME = "customer_lastName";
 
     const EMAIL = "customer_email";
 

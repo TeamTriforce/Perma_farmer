@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `article` (
   `article_id` int(11) NOT NULL,
-  `article_title` varchar(255) NOT NULL,
+  `article_title` varchar(255) NOT NULL UNIQUE,
   `article_content` text NOT NULL,
   `article_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -53,10 +53,10 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `customer` (
   `customer_id` int(11) NOT NULL,
-  `customer_first_name` varchar(50) NOT NULL,
-  `customer_last_name` varchar(50) NOT NULL,
+  `customer_firstName` varchar(50) NOT NULL,
+  `customer_lastName` varchar(50) NOT NULL,
   `customer_password` varchar(50) NOT NULL,
-  `customer_email` varchar(50) NOT NULL
+  `customer_email` varchar(50) NOT NULL UNIQUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,9 +67,9 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
-  `order_available_date` datetime NOT NULL,
-  `order_picked_date` datetime NOT NULL,
-  `order_notification_send` tinyint(1) NOT NULL,
+  `order_availableDate` datetime NOT NULL,
+  `order_pickedDate` datetime NOT NULL,
+  `order_notificationSent` tinyint(1) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -83,7 +83,8 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_stock` double NOT NULL,
   `product_price` float NOT NULL,
-  `product_label` varchar(50) NOT NULL
+  `product_label` varchar(50) NOT NULL UNIQUE,
+  `product_image` varchar(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

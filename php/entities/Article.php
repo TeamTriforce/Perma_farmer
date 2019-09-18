@@ -6,8 +6,11 @@
  * Time: 14:37
  */
 
+require_once "AbstractEntity.php";
+
 class Article extends AbstractEntity
 {
+
     private $id;
 
     private $title;
@@ -15,6 +18,26 @@ class Article extends AbstractEntity
     private $content;
 
     private $image;
+
+    /**
+     *
+     * @param $id
+     * @param $title
+     * @param $content
+     * @param $image
+     * @return Article
+     */
+    public static function newInstance($id, $title, $content, $image)
+    {
+        $article = new Article([]);
+
+        $article->setId($id);
+        $article->setTitle($title);
+        $article->setContent($content);
+        $article->setImage($image);
+
+        return $article;
+    }
 
     /**
      * @return mixed
