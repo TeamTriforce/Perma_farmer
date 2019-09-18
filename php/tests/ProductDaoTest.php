@@ -18,7 +18,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new ProductDao();
+        $this->dao = new ProductDao(true);
         $this->entity = Product::newInstance(0, "testLabel", 10000, 0, "testImage", 10, "testDescription");
     }
 

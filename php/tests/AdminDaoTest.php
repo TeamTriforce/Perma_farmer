@@ -18,7 +18,7 @@ class AdminDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new AdminDao();
+        $this->dao = new AdminDao(true);
         $this->entity = Admin::newInstance(0, "testLogin", "testPassword", "testToken");
     }
 

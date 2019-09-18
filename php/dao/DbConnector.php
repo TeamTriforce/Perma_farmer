@@ -83,4 +83,34 @@ class DbConnector
             return null;
         }
     }
+
+    /**
+     * Gets a mysql test connector object (PDO).
+     * @return null|PDO The test connector if success else null.
+     */
+    public function getTestConnector()
+    {
+        $baseStr = "mysql:dbname=%s;port=%s;charset=utf8";
+
+        if ($this->socket != null) {
+            $baseStr .= ";unix_socket=" . $this->socket;
+        } elseif ($this->host != null) {
+            $baseStr .= ";host=" . $this->host;
+        }
+
+        $connectStr = sprintf($baseStr, $this->dbName . "_test", $this->port);
+
+        try {
+            $db = new PDO($connectStr, $this->userName, $this->password);
+
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+            return $db;
+        } catch (PDOException $error) {
+            echo "An error occurred during the db connection.\n" . $error->getMessage();
+
+            return null;
+        }
+    }
 }

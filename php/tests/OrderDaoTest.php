@@ -18,7 +18,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new OrderDao();
+        $this->dao = new OrderDao(true);
         $dateAvailable = new DateTime();
         $datePicked = new DateTime();
         $this->entity = Order::newInstance(0, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
@@ -59,9 +59,9 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     {
         $orders = [];
         $customers = [];
-        $subscriptionDao = new SubscriptionDao();
-        $customerDao = new CustomerDao();
-        $productDao = new ProductDao();
+        $subscriptionDao = new SubscriptionDao(true);
+        $customerDao = new CustomerDao(true);
+        $productDao = new ProductDao(true);
         $prdId = 0;
 
         for ($i = 0; $i < 5; $i++) {
@@ -103,8 +103,8 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
 
     public function testUpdate()
     {
-        $subscriptionDao = new SubscriptionDao();
-        $customerDao = new CustomerDao();
+        $subscriptionDao = new SubscriptionDao(true);
+        $customerDao = new CustomerDao(true);
 
         $this->initRelated();
         $this->dao->create($this->entity);
@@ -168,7 +168,7 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
 
     public function testAddProduct()
     {
-        $productDao = new ProductDao();
+        $productDao = new ProductDao(true);
 
         $this->initRelated();
 
@@ -189,9 +189,9 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function initRelated() {
-        $subscriptionDao = new SubscriptionDao();
-        $productDao = new ProductDao();
-        $customerDao = new CustomerDao();
+        $subscriptionDao = new SubscriptionDao(true);
+        $productDao = new ProductDao(true);
+        $customerDao = new CustomerDao(true);
         $subscription = Subscription::newInstance(1, "label", 10, 1);
 
         $subscriptionDao->create($subscription);
@@ -208,9 +208,9 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function deleteRelated() {
-        $subscriptionDao = new SubscriptionDao();
-        $productDao = new ProductDao();
-        $customerDao = new CustomerDao();
+        $subscriptionDao = new SubscriptionDao(true);
+        $productDao = new ProductDao(true);
+        $customerDao = new CustomerDao(true);
         $subscriptionId = $customerDao->read($this->entity->getIdCustomer())->getIdSubscription();
 
         $customerDao->delete($this->entity->getIdCustomer());

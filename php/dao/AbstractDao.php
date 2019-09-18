@@ -16,17 +16,18 @@ abstract class AbstractDao
     protected $db;
 
     /**
-     * Defines the count alias.
+     * AbstractDao constructor.
+     * @param bool $test
      */
-    protected const COUNT = "count";
-
-    /**
-     * DbManager default constructor.
-     */
-    public function __construct()
+    public function __construct($test = false)
     {
         $connector = new DbConnector();
-        $this->db = $connector->getConnector();
+
+        if ($test) {
+            $this->db = $connector->getTestConnector();
+        } else {
+            $this->db = $connector->getConnector();
+        }
     }
 
 }
