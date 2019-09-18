@@ -1,175 +1,109 @@
--- phpMyAdmin SQL Dump
--- version 4.7.7
--- https://www.phpmyadmin.net/
---
--- Host: localhost:8889
--- Generation Time: Sep 16, 2019 at 12:34 PM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+#------------------------------------------------------------
+# Table: product
+#------------------------------------------------------------
 
---
--- Database: `Perma_farmer`
---
+CREATE TABLE `product`(
+        product_id          Int  Auto_increment  NOT NULL ,
+        product_price       Float NOT NULL ,
+        product_stock       Int NOT NULL ,
+        product_image       Varchar (255) NOT NULL ,
+        product_description Varchar (255) NOT NULL ,
+        product_label       Varchar (100) NOT NULL
+	,CONSTRAINT product_AK UNIQUE (product_label)
+	,CONSTRAINT product_PK PRIMARY KEY (product_id)
+)ENGINE=InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `article`
---
+#------------------------------------------------------------
+# Table: article
+#------------------------------------------------------------
 
-CREATE TABLE `article` (
-  `article_id` int(11) NOT NULL,
-  `article_title` varchar(255) NOT NULL UNIQUE,
-  `article_content` text NOT NULL,
-  `article_image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `article`(
+        article_id      Int  Auto_increment  NOT NULL ,
+        article_title   Varchar (255) NOT NULL ,
+        article_content Varchar (255) NOT NULL ,
+        article_image   Varchar (255) NOT NULL
+	,CONSTRAINT article_PK PRIMARY KEY (article_id)
+)ENGINE=InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `cart`
---
+#------------------------------------------------------------
+# Table: admin
+#------------------------------------------------------------
 
-CREATE TABLE `cart` (
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `product_quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `admin`(
+        admin_id        Int  Auto_increment  NOT NULL ,
+        admin_password  Varchar (255) NOT NULL ,
+        admin_authToken Varchar (255) ,
+        admin_login     Varchar (100) NOT NULL
+	,CONSTRAINT admin_AK UNIQUE (admin_login)
+	,CONSTRAINT admin_PK PRIMARY KEY (admin_id)
+)ENGINE=InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `customer`
---
+#------------------------------------------------------------
+# Table: subscription
+#------------------------------------------------------------
 
-CREATE TABLE `customer` (
-  `customer_id` int(11) NOT NULL,
-  `customer_firstName` varchar(50) NOT NULL,
-  `customer_lastName` varchar(50) NOT NULL,
-  `customer_password` varchar(50) NOT NULL,
-  `customer_email` varchar(50) NOT NULL UNIQUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `subscription`(
+        subscription_id     Int  Auto_increment  NOT NULL ,
+        subscription_label  Varchar (100) NOT NULL ,
+        subscription_price  Double NOT NULL ,
+        subscription_weight Float NOT NULL
+	,CONSTRAINT subscription_PK PRIMARY KEY (subscription_id)
+)ENGINE=InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `order`
---
+#------------------------------------------------------------
+# Table: customer
+#------------------------------------------------------------
 
-CREATE TABLE `order` (
-  `order_id` int(11) NOT NULL,
-  `order_availableDate` datetime NOT NULL,
-  `order_pickedDate` datetime NOT NULL,
-  `order_notificationSent` tinyint(1) NOT NULL,
-  `customer_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `customer`(
+        customer_id        Int  Auto_increment  NOT NULL ,
+        customer_firstName Varchar (100) NOT NULL ,
+        customer_lastName  Varchar (100) NOT NULL ,
+        customer_email     Varchar (100) NOT NULL ,
+        customer_password  Varchar (255) NOT NULL ,
+        customer_code      Varchar (255) NOT NULL ,
+        customer_authToken Varchar (255) ,
+        customer_idSubscription    Int NOT NULL
+	,CONSTRAINT customer_PK PRIMARY KEY (customer_id)
+	,CONSTRAINT customer_subscription_FK FOREIGN KEY (customer_idSubscription) REFERENCES subscription(subscription_id)
+)ENGINE=InnoDB;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `product`
---
+#------------------------------------------------------------
+# Table: order
+#------------------------------------------------------------
 
-CREATE TABLE `product` (
-  `product_id` int(11) NOT NULL,
-  `product_stock` double NOT NULL,
-  `product_price` float NOT NULL,
-  `product_label` varchar(50) NOT NULL UNIQUE,
-  `product_image` varchar(255)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `order`(
+        order_id               Int  Auto_increment  NOT NULL ,
+        order_availableDate    Datetime NOT NULL ,
+        order_pickedDate       Datetime NOT NULL ,
+        order_notificationSent Int NOT NULL ,
+        order_idCustomer            Int NOT NULL
+	,CONSTRAINT order_PK PRIMARY KEY (order_id)
 
---
--- Indexes for dumped tables
---
+	,CONSTRAINT order_customer_FK FOREIGN KEY (order_idCustomer) REFERENCES customer(customer_id)
+)ENGINE=InnoDB;
 
---
--- Indexes for table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`article_id`);
 
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`order_id`,`product_id`),
-  ADD KEY `cart_product0_FK` (`product_id`);
+#------------------------------------------------------------
+# Table: cart
+#------------------------------------------------------------
 
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_id`),
-  ADD UNIQUE KEY `customer_AK` (`customer_email`);
+CREATE TABLE `cart`(
+        product_id       Int NOT NULL ,
+        order_id         Int NOT NULL ,
+        product_quantity Int NOT NULL
+	,CONSTRAINT cart_PK PRIMARY KEY (product_id,order_id)
 
---
--- Indexes for table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_customer_FK` (`customer_id`);
+	,CONSTRAINT cart_product_FK FOREIGN KEY (product_id) REFERENCES product(product_id)
+	,CONSTRAINT cart_order0_FK FOREIGN KEY (order_id) REFERENCES `order`(order_id)
+)ENGINE=InnoDB;
 
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `product_AK` (`product_label`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `article`
---
-ALTER TABLE `article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `order`
---
-ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_order_FK` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `cart_product0_FK` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_customer_FK` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
