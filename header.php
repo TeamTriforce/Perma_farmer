@@ -1,4 +1,8 @@
-    <nav>
+<?php
+session_start()
+?>
+
+<nav>
         <div class="nav-part-1">
             <a href="index.php">
                 <img src="logo.png" class="nav-logo">
@@ -15,7 +19,13 @@
                     </div>
                     <div class="panier-text">
                         <p>Panier</p>
-                        <small>0 articles</small>
+                        <small><?php
+                            if ($_SESSION["cart"] != null && $_SESSION["cart"]->getProducts() != null) {
+                                echo count($_SESSION["cart"]->getProducts());
+                            } else {
+                                echo '0';
+                            }
+                            ?> articles</small>
                     </div>
                 </div>
             </a>

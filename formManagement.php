@@ -19,6 +19,10 @@ if (isset($_POST["addProductId"])) {
     $productDao = new ProductDao();
     $product = $productDao->read($_POST["addProductId"]);
 
+    if ($product == null) {
+        header('Location: error.php?errorCode=404');
+    }
+
     if (!in_array($product, $_SESSION["cart"]->getProducts())) {
         $_SESSION["cart"]->addProduct($product);
     }
@@ -32,9 +36,32 @@ if (isset($_POST["deleteProductId"])) {
     $productDao = new ProductDao();
     $product = $productDao->read($_POST["deleteProductId"]);
 
+    if ($product == null) {
+        header('Location: error.php?errorCode=404');
+    }
+
     $_SESSION["cart"]->removeProduct($product);
 
     header('Location: panier.php');
 
     exit();
+}
+
+if (isset($_POST["login"]) && isset($_POST["password"])) {
+    $customerDao = new CustomerDao();
+    $adminDao = new AdminDao();
+    $adminId = $adminDao->login($_POST["login"], $_POST["password"]);
+    $customerId = $customerDao->login($_POST["login"], $_POST["password"]);
+
+    if ($adminId != null) {
+        $_SESSION["id"] = $adminId[AdminSchema::ID];
+        $_SESSION["token"] = $adminId[AdminSchema::TOKEN];
+    } else if ($customerId) {
+        $_SESSION["id"] = $customerId[CustomerSchema::ID];
+        $_SESSION["token"] = $customerId[CustomerSchema::TOKEN];
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
 }
