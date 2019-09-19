@@ -18,7 +18,7 @@ class ArticleDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new ArticleDao(true);
+        $this->dao = new ArticleDao();
         $this->entity = Article::newInstance(0, "testTitle", "testContent", "testImage");
     }
 

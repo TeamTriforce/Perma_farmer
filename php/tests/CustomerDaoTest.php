@@ -18,7 +18,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new CustomerDao(true);
+        $this->dao = new CustomerDao();
         $this->entity = Customer::newInstance(0, "testFirstName", "testLastName", "testEmail", "testPassword", "testCode", "testToken", 0);
     }
 
@@ -52,7 +52,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
 
     public function testQueryAll()
     {
-        $subscriptionDao = new SubscriptionDao(true);
+        $subscriptionDao = new SubscriptionDao();
         $customers = [];
 
         for ($i = 0; $i < 5; $i++) {
@@ -77,7 +77,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
 
     public function testUpdate()
     {
-        $subscriptionDao = new SubscriptionDao(true);
+        $subscriptionDao = new SubscriptionDao();
 
         $this->initRelated();
         $this->dao->create($this->entity);
@@ -141,7 +141,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function initRelated() {
-        $subscriptionDao = new SubscriptionDao(true);
+        $subscriptionDao = new SubscriptionDao();
         $subscription = Subscription::newInstance(1, "label", 100, 8);
 
         $subscriptionDao->create($subscription);
@@ -150,7 +150,7 @@ class CustomerDaoTest extends \PHPUnit\Framework\TestCase
     }
 
     private function deleteRelated() {
-        $subscriptionDao = new SubscriptionDao(true);
+        $subscriptionDao = new SubscriptionDao();
 
         $subscriptionDao->delete($this->entity->getIdSubscription());
     }

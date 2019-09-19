@@ -18,7 +18,7 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new ProductDao(true);
+        $this->dao = new ProductDao();
         $this->entity = Product::newInstance(0, "testLabel", 10000, 0, "testImage", 10, "testDescription");
     }
 
@@ -110,5 +110,15 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
         \PHPUnit\Framework\Assert::assertTrue($this->dao->create($this->entity));
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->delete($this->entity->getId()));
+    }
+
+    public function testUpdateStock() {
+        $this->dao->create($this->entity);
+
+        $this->dao->updateStock($this->entity->getId(), 5);
+
+        \PHPUnit\Framework\Assert::assertEquals($this->entity->getStock() + 5, $this->dao->read($this->entity->getId())->getStock());
+
+        $this->dao->delete($this->entity->getId());
     }
 }

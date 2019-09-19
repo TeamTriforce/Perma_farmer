@@ -18,7 +18,7 @@ class SubscriptionDaoTest extends \PHPUnit\Framework\TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->dao = new SubscriptionDao(true);
+        $this->dao = new SubscriptionDao();
         $this->entity = Subscription::newInstance(0, "testLabel", 10, 50);
     }
 

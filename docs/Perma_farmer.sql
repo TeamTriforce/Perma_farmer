@@ -110,7 +110,7 @@ CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `order_availableDate` datetime NOT NULL,
   `order_pickedDate` datetime NOT NULL,
-  `order_notificationSent` int(11) NOT NULL,
+  `order_notificationSent` int(1) NOT NULL,
   `order_idCustomer` int(11) NOT NULL,
   `order_picked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
