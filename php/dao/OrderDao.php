@@ -226,6 +226,40 @@ class OrderDao extends AbstractDao
     }
 
     /**
+     * @param int $id
+     * @return array|null
+     */
+    public function queryCustomerOrders(int $id) {
+        try {
+            $orders = [];
+            $statement = sprintf("SELECT * FROM `%s` WHERE %s = :i",
+                OrderSchema::TABLE,
+                OrderSchema::CUSTOMER);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":i", $id, PDO::PARAM_INT);
+
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($data as $key) {
+                $order = new Order($key);
+
+                $order->setProducts($this->getAssociatedProducts($order->getId()));
+
+                $orders[] = $order;
+            }
+
+            $req->closeCursor();
+        } catch (PDOException $e) {
+            echo $e;
+
+            return null;
+        }
+
+        return $orders;
+    }
+
+    /**
      * @param Order $order
      * @return bool
      */
