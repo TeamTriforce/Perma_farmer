@@ -21,12 +21,12 @@ class CustomerFormatter
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3"> /* Avatar du client */
-                                        <img src="' . customer->getPhoto() . '"/>
+                                        <img src="' . $customer->getPhoto() . '"/>
                                     </div>
                                     <div class="col-md-9"> /* Informations du client */
-                                        <p>' . customer->getFirstName() . '</p>
-                                        <p>' . customer->getLastName() . '</p>
-                                        <p>' . customer->getLocalisation() . '</p>
+                                        <p>' . $customer->getFirstName() . '</p>
+                                        <p>' . $customer->getLastName() . '</p>
+                                        <p>' . $customer->getLocalisation() . '</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -35,24 +35,20 @@ class CustomerFormatter
                                 <div class="row">
                                     <form>
                                         <div class="form-group">
-                                            <label for="Nom">' . customer->getLastName() . '</label>
-                                            <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . customer->getLastName() . '">
+                                            <label for="Nom">' . $customer->getLastName() . '</label>
+                                            <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $customer->getLastName() . '">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Prenom">' . customer->getFirstName() . '</label>
-                                            <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . customer->getFirstName() . '">
+                                            <label for="Prenom">' . $customer->getFirstName() . '</label>
+                                            <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . $customer->getFirstName() . '">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Localisation">' . customer->getLocalisation() . '</label>
-                                            <input type="text" class="form-control" id="Localisation" aria-describedby="localisationHelp" placeholder="' . customer->getLocalisation() . '">
+                                            <label for="Mail">' . $customer->getEmail() . '</label>
+                                            <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getMail() . '">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Mail">' . customer->getMail() . '</label>
-                                            <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . customer->getMail() . '">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Password">' . customer->getPassword() . '</label>
-                                            <input type="password" class="form-control" id="Password" placeholder="' . customer->getPassword() . '">
+                                            <label for="Password">' . $customer->getPassword() . '</label>
+                                            <input type="password" class="form-control" id="Password" placeholder="' . $customer->getPassword() . '">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
@@ -67,8 +63,11 @@ class CustomerFormatter
                             <div class="col-md-6">
                                 <div class="row">
                                     <h2>Dernières commandes</h2>
-                                </div>
-                                <div class="row">
+                                </div>';
+
+            $orderDao = new OrderDao();
+            $orders = $orderDao->
+                                '<div class="row">
                                     <h3>Produits achetés</h3>
                                     <p>' . order->getProducts() . '</p>
                                     <div class="row">
