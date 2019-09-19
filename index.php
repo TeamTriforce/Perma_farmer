@@ -15,7 +15,7 @@
     </div>
 
 
-    <div class="container-fluid" style="margin-top: 50px;">
+    <div class="container-fluid" style="margin-top: 50px;" id="bannerEnd">
         <div class="row">
             <div class="col-md-4">
                 <img class="img-fluid" src="logo.png" />
@@ -27,75 +27,23 @@
         </div>
 
         <div>
-            <h2>Nos produits</h2>
+            <h2 class="text-center pt-3 pb-4">Produits ajoutés récemment</h2>
         </div>
+        <div class="div-produits">
+            <div class="row">
+                <?php
+                    $productDao = new ProductDao();
+                    $products = $productDao->queryAll();
 
-        <div class="row">
-            <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img />
-                <h4>Oeufs</h4>
-                <p></p>
+                    echo ProductFormatter::formatIndexList($products);
+                ?>
             </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Pommes de terre</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Carottes</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Salades</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Tomates</h4>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img />
-                <h4>Oignons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Courgettes</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Poivrons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Aubergines</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Brocolis</h4>
-                <p></p>
-            </div>
+        <div>
+        <div class="d-flex justify-content-center">
+            <a href="nos-produits.php" class="mb-4 btn-all-products">&#8594; Voir tous nos produits</a>
         </div>
     </div>
+    <script src="js/home.js"></script>
 </body>
 
 </html>
