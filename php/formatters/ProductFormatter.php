@@ -29,10 +29,14 @@ abstract class ProductFormatter
 	                    <div class="div-produit">
 	                        <div class="div-img-produit">
 	                            <div class="overlay-produit">
-                                     <img src="' . $product->getImage() . '" />
-                                     <h3>' . $product->getLabel() . '</h3>
+                                    <p class="bouton-produit">Plus de détails</p>
+                                    <div class="div-ajout-produit">
+                                        <img src="assets/plus.png" class="ajout-panier-img">
+                                    </div>
                                  </div>
+                                 <img src="' . $product->getImage() . '" />
                              </div>
+                             <h3>' . $product->getLabel() . '</h3>
                          </div>
                       </a></div>';
 
