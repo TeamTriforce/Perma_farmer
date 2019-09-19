@@ -1,20 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800&display=swap');
 
-html, body{
+html,
+body {
     height: 100%;
     font-family: 'Assistant', sans-serif;
     background-color: #e7e3da;
 }
 
-p{
+p {
     margin: 0;
 }
 
-a, a:hover, a:active{
+a,
+a:hover,
+a:active {
     text-decoration: none;
 }
 
-nav{
+nav {
     width: 100%;
     height: 80px;
     position: fixed;
@@ -23,7 +26,7 @@ nav{
     z-index: 9999;
 }
 
-.nav-part-1{
+.nav-part-1 {
     width: 50%;
     height: 80px;
     display: flex;
@@ -32,11 +35,11 @@ nav{
     padding-left: 20px;
 }
 
-.nav-logo{
+.nav-logo {
     height: 70px;
 }
 
-.nav-part-2{
+.nav-part-2 {
     width: 50%;
     height: 80px;
     display: flex;
@@ -44,58 +47,69 @@ nav{
     align-items: center;
 }
 
-.nav-part-2 a{
+.nav-part-2 a {
     color: white;
     font-size: 20px !important;
     transition: 0.3s;
 }
 
-.nav-part-2 a:hover{
+.nav-part-2 a:hover {
     color: #50a547;
     transform: scale(1.1);
 }
 
-.nav-part-2 a:hover .img-panier{
+.nav-part-2 a:hover .img-panier {
     animation: panierAnim 1s linear infinite;
     opacity: 0.8;
     padding: 5px;
     transition: 0.3s;
 }
 
-@keyframes panierAnim{
-    0%{transform: rotate(0deg);}
-    25%{transform: rotate(30deg);}
-    75%{transform: rotate(-30deg);}
-    100%{transform: rotate(0deg);}
+@keyframes panierAnim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(30deg);
+    }
+
+    75% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
-.img-panier{
+.img-panier {
     width: 40px;
     transition: 0.3s;
 }
 
-.panier-text{
+.panier-text {
     padding-left: 10px;
 }
 
-.panier-text p{
+.panier-text p {
     position: relative;
     top: 10px;
 }
 
-.panier-text small{
+.panier-text small {
     position: relative;
     top: -5px;
     font-size: 15px;
 }
 
-h2{
+h2 {
     text-transform: uppercase;
     color: #014946;
     font-size: 40px !important;
 }
 
-.banner-home{
+.banner-home {
     height: 100%;
     background-image: url(../assets/farm-background.jpg);
     background-position: center;
@@ -104,30 +118,32 @@ h2{
     background-size: cover;
 }
 
-.div-banner-logo{
+.div-banner-logo {
     width: 500px;
 }
 
-.banner-logo{
+.banner-logo {
     width: 100%;
 }
 
-.div-img-produit img{
+.div-img-produit img {
     width: 100%;
     object-fit: contain;
     transition-duration: 0.5s;
 }
 
-.div-produits a, .div-produits a:hover, .div-produits a:active{
+.div-produits a,
+.div-produits a:hover,
+.div-produits a:active {
     color: #002120;
     text-decoration: none;
-} 
+}
 
-.div-produit{
+.div-produit {
     margin: 10px 0px 20px 0px;
 }
 
-.div-produit h3{
+.div-produit h3 {
     margin: 0;
     padding: 10px 0px;
     font-family: 'Assistant';
@@ -135,36 +151,36 @@ h2{
     font-size: 18px !important;
 }
 
-.div-produit p{
+.div-produit p {
     margin: 0;
 }
 
-.div-img-produit{
+.div-img-produit {
     position: relative;
     overflow: hidden;
     transition-duration: 0.5s;
 }
 
-.overlay-produit{
+.overlay-produit {
     position: absolute;
     width: 100%;
     height: 0%;
-    background-color: rgba(1,73,70,0.8);
+    background-color: rgba(1, 73, 70, 0.8);
     transition-duration: 0.5s;
 }
 
-.div-produit:hover .overlay-produit{
+.div-produit:hover .overlay-produit {
     height: 100%;
     transition-duration: 0.5s;
 }
 
-.div-produit:hover .overlay-produit p{
+.div-produit:hover .overlay-produit p {
     opacity: 1;
     transition-duration: 0.5s;
     transition-delay: 0.2s;
 }
 
-.overlay-produit{
+.overlay-produit {
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
@@ -172,11 +188,11 @@ h2{
     justify-content: space-around;
 }
 
-.overlay-produit strong{
+.overlay-produit strong {
     font-size: 30px !important;
 }
 
-.overlay-produit p{
+.overlay-produit p {
     font-size: 18px;
     font-family: 'Assistant';
     color: white;
@@ -185,13 +201,13 @@ h2{
     margin-bottom: 10px;
 }
 
-.bouton-produit{
+.bouton-produit {
     border: 1px solid white;
     width: fit-content;
     padding: 5px;
 }
 
-.div-ajout-produit{
+.div-ajout-produit {
     height: 30px;
     width: 30px;
     position: absolute;
@@ -204,50 +220,50 @@ h2{
     transition: 0.5s;
 }
 
-.div-ajout-produit:hover .ajout-panier-img{
+.div-ajout-produit:hover .ajout-panier-img {
     transform: rotate(360deg);
     transition: 0.5s;
 }
 
-.ajout-panier-img{
+.ajout-panier-img {
     width: 20px;
     height: 20px;
     transition: 0.5s;
 }
 
-.img-produit-panier{
+.img-produit-panier {
     width: 100%;
 }
 
-.p-quantite{
+.p-quantite {
     padding-top: 25px;
     font-size: 20px;
 }
 
-.p-quantite-input{
+.p-quantite-input {
     font-size: 50px;
     cursor: pointer;
     user-select: none;
 }
 
-.description-article h3{
+.description-article h3 {
     color: #002120;
     text-transform: uppercase;
     font-size: 45px !important;
 }
 
-.description-article h4{
+.description-article h4 {
     color: #002120;
     text-transform: uppercase;
     font-size: 30px !important;
 }
 
-.description-article p{
+.description-article p {
     color: #002120;
     font-size: 18px !important;
 }
 
-.div-ajout-panier-article{
+.div-ajout-panier-article {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -261,64 +277,71 @@ h2{
     cursor: pointer;
 }
 
-@keyframes ajoutPanierArticle{
-    0%{}
-    100%{bottom: 0;}
+@keyframes ajoutPanierArticle {
+    0% {}
+
+    100% {
+        bottom: 0;
+    }
 }
 
-.div-ajout-panier-article p{
+.div-ajout-panier-article p {
     color: white;
     text-transform: uppercase;
     font-size: 20px !important;
     padding-right: 10px;
 }
 
-.div-ajout-panier-article img{
-    width:30px;
+.div-ajout-panier-article img {
+    width: 30px;
 }
 
-.avis-clients-div{
+.avis-clients-div {
     margin-bottom: 20px;
 }
 
-.avis-clients-div img{
+.avis-clients-div img {
     border-radius: 50%;
     width: 100%;
 }
 
-.etoiles-article{
+.etoiles-article {
     width: 80% !important;
 }
 
-.contact-form{
+.contact-form {
     width: 100%;
 }
-.contact-form .form-control{
-    border-radius:1rem;
+
+.contact-form .form-control {
+    border-radius: 1rem;
 }
-.contact-form form{
+
+.contact-form form {
     padding: 0px 14%;
 }
-.contact-form form .row{
+
+.contact-form form .row {
     margin-bottom: -7%;
 }
+
 .contact-form .btnContact {
     width: 50%;
     border: none;
     border-radius: 1rem;
     padding: 1.5%;
-    background: #dc3545;
+    background: #002120;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
 }
-.btnContactSubmit
-{
+
+.btnContactSubmit {
     width: 50%;
     border-radius: 1rem;
     padding: 1.5%;
     color: #fff;
-    background-color: #0062cc;
+    background-color: #102120;
     border: none;
     cursor: pointer;
 }
