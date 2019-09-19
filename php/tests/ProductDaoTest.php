@@ -111,4 +111,14 @@ class ProductDaoTest extends \PHPUnit\Framework\TestCase
 
         \PHPUnit\Framework\Assert::assertTrue($this->dao->delete($this->entity->getId()));
     }
+
+    public function testUpdateStock() {
+        $this->dao->create($this->entity);
+
+        $this->dao->updateStock($this->entity->getId(), 5);
+
+        \PHPUnit\Framework\Assert::assertEquals($this->entity->getStock() + 5, $this->dao->read($this->entity->getId())->getStock());
+
+        $this->dao->delete($this->entity->getId());
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 18, 2019 at 02:43 PM
+-- Generation Time: Sep 18, 2019 at 02:53 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Perma_farmer`
+-- Database: `Perma_farmer_test`
 --
 
 -- --------------------------------------------------------
@@ -33,13 +33,6 @@ CREATE TABLE `admin` (
   `admin_login` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `admin_password`, `admin_authToken`, `admin_login`) VALUES
-(1, '$2y$10$XhgixcTzW55FNxIbgEAk7./PhBlL/HlDh4kNC1Khe67X5d3odhLVS', '', 'root');
-
 -- --------------------------------------------------------
 
 --
@@ -52,14 +45,6 @@ CREATE TABLE `article` (
   `article_content` text NOT NULL,
   `article_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `article`
---
-
-INSERT INTO `article` (`article_id`, `article_title`, `article_content`, `article_image`) VALUES
-(1, 'Bienvenue sur Perma-Farmer', 'La ferme familiale Perma-Farmer propose à la vente, des paniers de légumes de saison aux particuliers et occasionnellement à des petits restaurateurs régionaux.\r\n \r\nLa ferme Perma-Farmer propose une culture biologique de fruits et légumes cultivés en permaculture. La ferme ne possède pas de label bio mais cultive ses productions sans produits phytosanitaires (désherbants, insecticides, engrais chimiques...).\r\n\r\nLes produits proposés par la ferme sont : \r\n- Des fruits et légumes de saison (pommes de terre, carottes, divers salades, ail, oignons, courgettes…)\r\n- Des œufs frais de poules, canards et d\'oies', 'presentation.jpg'),
-(2, 'Le concept Perma-Farmer', 'La vente de panier de légumes et fruits bios prend de l\'ampleur auprès des particuliers. Généralement, le particulier paie un abonnement mensuel pour une quantité de légumes hebdomadaire.\r\n\r\n2 types de paniers sont proposés dans le cadre de la ferme Perma-Farmer :\r\n- La petite formule qui correspond à un panier d\'environ 2,5 kg au prix de 12,50 €/panier (soit 48,40 €/mois)\r\n- La grande formule qui correspond à un panier d\'environ 7 kg au prix de 24,90 €/panier (soit 111,60 €/mois)\r\n\r\nLe fonctionnement est le suivant : \r\n- Le particulier souscrit à un abonnement mensuel.\r\n- Une fois par semaine, celui-ci va récupérer ses légumes à la ferme.', 'concept.jpg');
 
 -- --------------------------------------------------------
 
@@ -89,16 +74,6 @@ CREATE TABLE `customer` (
   `customer_authToken` varchar(255) NOT NULL,
   `customer_idSubscription` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `customer_firstName`, `customer_lastName`, `customer_email`, `customer_password`,
-`customer_code`, `customer_authToken`, customer_idSubscription) VALUES
-(1, 'Jean Bobby', 'Lapointe', 'jeanbobby@lapointe.fr', '$2y$10$MTHtFL/C9qep85pnW9iFfOjQiYpQ2c29odbXadl/3.ypAxqqtGi/O',
-'997261136b85a8a630b5d4ca5f2ee82d', '', 1);
-
 
 -- --------------------------------------------------------
 
@@ -130,27 +105,6 @@ CREATE TABLE `product` (
   `product_label` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`product_id`, `product_price`, `product_stock`, `product_image`, `product_description`, `product_label`) VALUES
-(1, 1, 100, 'pomme.jpg', 'Pommes de saison.', 'Pomme'),
-(2, 2, 20, 'kiwi.jpg', 'Kiwis de saison.', 'Kiwi'),
-(3, 1.5, 100, 'poire.jpg', 'Poires de saison.', 'Poire'),
-(4, 2, 200, 'peche.jpg', 'Pêches de saison.', 'Pêche'),
-(5, 3, 50, 'abricot.jpg', 'Abricots de saison.', 'Abricot'),
-(6, 2, 100, 'poireau.jpg', 'Poireaux de saison.', 'Poireau'),
-(7, 1, 300, 'pommeDeTerre.jpg', 'Pommes de terre de saison.', 'Pomme de terre'),
-(8, 1.5, 300, 'courgette.jpg', 'Courgettes de saison.', 'Courgette'),
-(9, 3, 200, 'tomate.jpg', 'Tomates de saison.', 'Tomate'),
-(10, 2.5, 400, 'aubergine.jpg', 'Aubergines de saison.', 'Aubergine'),
-(11, 4, 500, 'champignon.jpg', 'Champignons de saison.', 'Champignon'),
-(12, 2, 300, 'oeuf.jpg', 'Oeufs frais de poules élevées en plein air.', 'Oeuf'),
-(13, 3, 250, 'fraise.jpg', 'Fraises de saison.', 'Fraise'),
-(14, 2, 70, 'concombre.jpg', 'Concombres de saison.', 'Concombre'),
-(15, 1.5, 450, 'oignon.jpg', 'Oignons de saison.', 'Oignon');
-
 -- --------------------------------------------------------
 
 --
@@ -163,14 +117,6 @@ CREATE TABLE `subscription` (
   `subscription_price` double NOT NULL,
   `subscription_weight` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `subscription`
---
-
-INSERT INTO `subscription` (`subscription_id`, `subscription_label`, `subscription_price`, `subscription_weight`) VALUES
-(1, 'Petite formule', 48.4, 2.5),
-(2, 'Grande formule', 111.6, 7);
 
 --
 -- Indexes for dumped tables

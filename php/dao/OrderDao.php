@@ -71,7 +71,7 @@ class OrderDao extends AbstractDao
 
             $order = new Order($data);
 
-            $order->setProducts($this->getAssociatedProducts($order));
+            $order->setProducts($this->getAssociatedProducts($order->getId()));
         } catch (PDOException $e) {
             echo $e;
 
@@ -145,7 +145,11 @@ class OrderDao extends AbstractDao
     }
 
     public function addProduct(Order $order, Product $product) {
+        $productDao = new ProductDao();
+
         try {
+            $productDao->updateStock($product->getId(), -$product->getQuantity());
+
             $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:io, :ip, :q)",
                 OrderSchema::JOINED_TABLE,
                 OrderSchema::ID,
@@ -168,7 +172,11 @@ class OrderDao extends AbstractDao
     }
 
     public function removeProduct(Order $order, Product $product) {
+        $productDao = new ProductDao();
+
         try {
+            $productDao->updateStock($product->getId(), $product->getQuantity());
+
             $statement = sprintf("DELETE FROM `%s` WHERE %s = :io AND %s = :ip",
                 OrderSchema::JOINED_TABLE,
                 OrderSchema::ID,
@@ -202,7 +210,7 @@ class OrderDao extends AbstractDao
             foreach ($data as $key) {
                 $order = new Order($key);
 
-                $order->setProducts($this->getAssociatedProducts($order));
+                $order->setProducts($this->getAssociatedProducts($order->getId()));
 
                 $orders[] = $order;
             }
@@ -223,7 +231,11 @@ class OrderDao extends AbstractDao
      */
     private function createAssociatedProducts(Order $order) {
         try {
+            $productDao = new ProductDao();
+
             foreach ($order->getProducts() as $product) {
+                $productDao->updateStock($product->getId(), -$product->getQuantity());
+
                 $statement = sprintf("INSERT INTO `%s` (%s, %s, %s) VALUES (:io, :ip, :q)",
                     OrderSchema::JOINED_TABLE,
                     OrderSchema::ID,
@@ -247,10 +259,10 @@ class OrderDao extends AbstractDao
     }
 
     /**
-     * @param Order $order
+     * @param int $id
      * @return array|null
      */
-    private function getAssociatedProducts(Order $order) {
+    private function getAssociatedProducts(int $id) {
         $products = [];
 
         try {
@@ -259,7 +271,7 @@ class OrderDao extends AbstractDao
                 OrderSchema::ID);
             $req = $this->db->prepare($statement);
 
-            $req->bindValue(":i", $order->getId(), PDO::PARAM_INT);
+            $req->bindValue(":i", $id, PDO::PARAM_INT);
             $req->execute();
 
             $result = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -285,7 +297,15 @@ class OrderDao extends AbstractDao
      * @return bool
      */
     private function deleteAssociateProducts(int $id) {
+        $productDao = new ProductDao();
+
         try {
+            $products = $this->getAssociatedProducts($id);
+
+            foreach ($products as $product) {
+                $productDao->updateStock($product->getId(), $product->getQuantity());
+            }
+
             $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", OrderSchema::JOINED_TABLE, OrderSchema::ID);
             $req = $this->db->prepare($statement);
 

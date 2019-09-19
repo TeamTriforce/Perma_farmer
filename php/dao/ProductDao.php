@@ -71,6 +71,9 @@ class ProductDao extends AbstractDao
             return null;
         }
 
+        var_dump($data);
+        var_dump($id);
+
         return new Product($data);
     }
 
@@ -179,6 +182,32 @@ class ProductDao extends AbstractDao
         }
 
         return $products;
+    }
+
+    /**
+     * @param int $id
+     * @param int $diff
+     * @return bool
+     */
+    public function updateStock(int $id, int $diff) {
+        try {
+            $statement = sprintf("UPDATE `%s` SET %s = (%s + :d) WHERE %s = :i",
+                ProductSchema::TABLE,
+                ProductSchema::STOCK,
+                ProductSchema::STOCK,
+                ProductSchema::ID);
+            $req = $this->db->prepare($statement);
+
+            $req->bindValue(":d", $diff, PDO::PARAM_INT);
+            $req->bindValue(":i", $id, PDO::PARAM_INT);
+            $req->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e;
+
+            return false;
+        }
     }
 
 }
