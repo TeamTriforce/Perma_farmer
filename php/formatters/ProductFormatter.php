@@ -93,5 +93,29 @@ abstract class ProductFormatter
                 </div>
             </div>';
     }
+    
+    public static function formatArticles(Product $product)
+    {
+        return '<div class="row" style="margin-bottom: 10px;">
+                    <div class="col-md-12">
+                        <p><i>' . $product->getLabel() . '</i></p>
+                        <strong>Description :</strong>
+                        <p>' . $product->getDescription() . '</p>
+                        <p><strong>Prix : </strong>' . $product->getPrice() . '</p>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterArticle">Ajouter</button>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierArticle">Modifier</button>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerArticle">Supprimer</button>
+                    </div>
+                </div>';
+    }
 
 }
