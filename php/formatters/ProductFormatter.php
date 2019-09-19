@@ -11,7 +11,8 @@ require_once dirname(__FILE__) . "/../Autoloader.php";
 abstract class ProductFormatter
 {
 
-    public static function formatProductsList($products) {
+    public static function formatProductsList($products)
+    {
         $str = '';
         $rowNb = 0;
         $firstRow = true;
@@ -29,9 +30,15 @@ abstract class ProductFormatter
 	                    <div class="div-produit">
 	                        <div class="div-img-produit">
 	                            <div class="overlay-produit">
-                                    <p class="bouton-produit">Plus de détails</p>
+	                                <form method="GET" action="article.php">
+	                                    <input type="hidden" name="id" value="' . $product->getId() . '">
+	                                    <input type="submit" class="bouton-produit" value="Plus de détails">
+                                    </form>
                                     <div class="div-ajout-produit">
-                                        <img src="assets/plus.png" class="ajout-panier-img">
+                                        <form method="POST" action="formManagement.php">
+	                                        <input type="hidden" name="addProductId" value="' . $product->getId() . '">
+	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img">
+                                        </form>
                                     </div>
                                  </div>
                                  <img src="' . $product->getImage() . '" />
@@ -51,30 +58,23 @@ abstract class ProductFormatter
         return $str;
     }
 
-   public static function formatProductDetail(Product $product) {
-       return '<div class="div-ajout-panier-article">
-        <p>Ajouter au panier</p>
-        <img src="' . $product->getImage() . '">
-    </div>
-    <div class="container-fluid" style="padding-top: 100px;">
-        <div class="row">
+    public static function formatProductDetail(Product $product)
+    {
+        return '<div class="row">
             <div class="col-md-6">
-                <img src="assets/produits/oeufs.jpg" class="img-fluid">
+                <img src="' . $product->getImage() . '" class="img-fluid">
             </div>
             <div class="col-md-6 description-article">
                 <h3>' . $product->getLabel() . '</h3><br>
-                <h4>Description</h4>
-                <p>' . $product->getDescription() . '</p><br>
-                <h4>Prix</h4>
-                <p><strong>' . $product->getPrice() . ' €</strong></p>
-                <h4>Stock</h4>
-                <p><strong>' . $product->getStock() . '</strong></p>
+                <p>' . $product->getDescription() . '</p>
+                <h4>Stock : <strong>' . $product->getStock() . '</strong></h4>
             </div>
         </div>';
-   }
+    }
 
-   public static function formatCart(Product $product) {
-       return '<div class="col-md-6 pb-4">
+    public static function formatCart(Product $product)
+    {
+        return '<div class="col-md-6 pb-4">
                 <div class="row">
                     <div class="col-md-10 offest-md-1">
                         <div class="row">
@@ -83,23 +83,15 @@ abstract class ProductFormatter
                             </div>
                             <div class="col-md-8">
                                 <h3>' . $product->getLabel() . '</h3>
-                                <p>' . $product->getDescription() . '</p>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <p class="p-quantite">Quantité: ' . $product->getQuantity() . '</p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="row">
-                                            <div class="col-md-4"><p class="p-quantite-input">-</p></div>
-                                            <div class="col-md-4 offest-md-4"><p class="p-quantite-input">+</p></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <form method="POST" action="formManagement.php">
+	                                <input type="hidden" name="deleteProductId" value="' . $product->getId() . '">
+	                                <input type="submit" value="x">
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>';
-   }
+    }
 
 }
