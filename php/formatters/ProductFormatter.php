@@ -18,31 +18,31 @@ abstract class ProductFormatter
 
         foreach ($products as $product) {
             if ($firstRow) {
-                $str .= '<div class="row">
-                             <div class="col-md-2 offset-md-1">
-                                 <img src="' . $product->getImage() . '" />
-                                 <h4>' . $product->getLabel() . '</h4>
-                             </div>';
+                $str .= '<div class="col-md-2 offset-md-1">';
 
                 $firstRow = false;
             } else {
-                $str .= '<div class="col-md-2">
-                             <img src="' . $product->getImage() . '" />
-                             <h4>' . $product->getLabel() . '</h4>
-                         </div>';
+                $str .= '<div class="col-md-2">';
             }
+
+            $str .= '<a href="article.php">
+	                    <div class="div-produit">
+	                        <div class="div-img-produit">
+	                            <div class="overlay-produit">
+                                     <img src="' . $product->getImage() . '" />
+                                     <h3>' . $product->getLabel() . '</h3>
+                                 </div>
+                             </div>
+                         </div>
+                      </a></div>';
 
             $rowNb++;
 
             if ($rowNb == 5) {
                 $firstRow = true;
                 $rowNb = 0;
-
-                $str .= '</div>';
             }
         }
-
-        $str .= '<div>';
 
         return $str;
     }

@@ -135,21 +135,16 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_price`, `product_stock`, `product_image`, `product_description`, `product_label`) VALUES
-(1, 1, 100, 'pomme.jpg', 'Pommes de saison.', 'Pomme'),
-(2, 2, 20, 'kiwi.jpg', 'Kiwis de saison.', 'Kiwi'),
-(3, 1.5, 100, 'poire.jpg', 'Poires de saison.', 'Poire'),
-(4, 2, 200, 'peche.jpg', 'Pêches de saison.', 'Pêche'),
-(5, 3, 50, 'abricot.jpg', 'Abricots de saison.', 'Abricot'),
-(6, 2, 100, 'poireau.jpg', 'Poireaux de saison.', 'Poireau'),
-(7, 1, 300, 'pommeDeTerre.jpg', 'Pommes de terre de saison.', 'Pomme de terre'),
-(8, 1.5, 300, 'courgette.jpg', 'Courgettes de saison.', 'Courgette'),
-(9, 3, 200, 'tomate.jpg', 'Tomates de saison.', 'Tomate'),
-(10, 2.5, 400, 'aubergine.jpg', 'Aubergines de saison.', 'Aubergine'),
-(11, 4, 500, 'champignon.jpg', 'Champignons de saison.', 'Champignon'),
-(12, 2, 300, 'oeuf.jpg', 'Oeufs frais de poules élevées en plein air.', 'Oeuf'),
-(13, 3, 250, 'fraise.jpg', 'Fraises de saison.', 'Fraise'),
-(14, 2, 70, 'concombre.jpg', 'Concombres de saison.', 'Concombre'),
-(15, 1.5, 450, 'oignon.jpg', 'Oignons de saison.', 'Oignon');
+(1, 1, 100, 'assets/produits/salade.jpg', 'Salade de saison.', 'Salade'),
+(2, 2, 20, 'assets/produits/brocolis.jpeg', 'Brocolis de saison.', 'Brocoli'),
+(3, 1.5, 100, 'assets/produits/carottes.jpeg', 'Carottes de saison.', 'Carrote'),
+(6, 2, 100, 'assets/produits/poivrons.jpg', 'Poivrons de saison.', 'Poivron'),
+(7, 1, 300, 'assets/produits/pommes-de-terre.jpg', 'Pommes de terre de saison.', 'Pomme de terre'),
+(8, 1.5, 300, 'assets/produits/courgettes.jpg', 'Courgettes de saison.', 'Courgette'),
+(9, 3, 200, 'assets/produits/tomates.jpg', 'Tomates de saison.', 'Tomate'),
+(10, 2.5, 400, 'assets/produits/aubergines.jpg', 'Aubergines de saison.', 'Aubergine'),
+(12, 2, 300, 'assets/produits/oeufs.jpg', 'Oeufs frais de poules élevées en plein air.', 'Oeuf'),
+(15, 1.5, 450, 'assets/produits/oignons.jpeg', 'Oignons de saison.', 'Oignon');
 
 -- --------------------------------------------------------
 
