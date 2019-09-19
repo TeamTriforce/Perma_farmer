@@ -23,6 +23,8 @@ class Product extends AbstractEntity
 
     private $stock;
 
+    private $description;
+
     /**
      *
      * @param $id
@@ -31,9 +33,10 @@ class Product extends AbstractEntity
      * @param $quantity
      * @param $image
      * @param $stock
+     * @param $description
      * @return Product
      */
-    public static function newInstance($id, $label, $price, $quantity, $image, $stock)
+    public static function newInstance($id, $label, $price, $quantity, $image, $stock, $description)
     {
         $product = new Product([]);
 
@@ -43,6 +46,7 @@ class Product extends AbstractEntity
         $product->setQuantity($quantity);
         $product->setImage($image);
         $product->setStock($stock);
+        $product->setDescription($description);
 
         return $product;
     }
@@ -122,7 +126,7 @@ class Product extends AbstractEntity
     /**
      * @param mixed $image
      */
-    public function setImage($image): void
+    public function setImage($image)
     {
         $this->image = $image;
     }
@@ -141,6 +145,22 @@ class Product extends AbstractEntity
     public function setStock($stock)
     {
         $this->stock = $stock;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
 }

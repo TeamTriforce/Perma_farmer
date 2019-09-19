@@ -8,6 +8,7 @@
 
 abstract class CustomerSchema
 {
+
     const TABLE = "customer";
 
     const ID = "customer_id";
@@ -19,5 +20,11 @@ abstract class CustomerSchema
     const EMAIL = "customer_email";
 
     const PASSWORD = "customer_password";
+
+    const CODE = "customer_code";
+
+    const TOKEN = "customer_authToken";
+    
+    const SUBSCRIPTION = "customer_idSubscription";
 
 }

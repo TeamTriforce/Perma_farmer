@@ -8,6 +8,7 @@
 
 abstract class AbstractEntity
 {
+
     /**
      *	@param Array $params
      *	@return void

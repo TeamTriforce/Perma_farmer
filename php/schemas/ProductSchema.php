@@ -8,6 +8,7 @@
 
 abstract class ProductSchema
 {
+
     const TABLE = "product";
 
     const ID = "product_id";
@@ -19,5 +20,7 @@ abstract class ProductSchema
     const STOCK = "product_stock";
 
     const IMAGE = "product_image";
+
+    const DESCRIPTION = "product_description";
 
 }

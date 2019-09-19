@@ -8,6 +8,7 @@
 
 abstract class ArticleSchema
 {
+
     const TABLE = "article";
 
     const ID = "article_id";
