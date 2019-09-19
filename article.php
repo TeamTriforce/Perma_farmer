@@ -34,7 +34,7 @@
             }
         ?>
         <div>
-            <h2 class="text-center pt-3 pb-4">Avis clients</h2>
+            <h2 class="text-center pt-3 pb-4 title-h2">Avis clients</h2>
         </div>
         <div class="row">
             <div class="col-md-6">

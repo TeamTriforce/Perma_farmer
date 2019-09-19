@@ -51,7 +51,7 @@ class DbConnector
         $this->userName = "root";
         $this->password = "root";
         $this->dbName = "Perma_farmer";
-        $this->port = "8889";
+        $this->port = "3306";
     }
 
     /**

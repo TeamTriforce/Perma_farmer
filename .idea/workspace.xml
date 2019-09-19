@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245d0815-04c7-42b7-8118-43faa54b75f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/formManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nos-produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/nos-produits.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/panier.php" beforeDir="false" afterPath="$PROJECT_DIR$/panier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/dao/ProductDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/ProductDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/entities/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/formatters/ProductFormatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/formatters/ProductFormatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/dao/DbConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/DbConnector.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +53,7 @@
           <entry key="ini" value="1" />
           <entry key="json" value="1" />
           <entry key="md" value="1" />
-          <entry key="php" value="183" />
+          <entry key="php" value="184" />
           <entry key="png" value="1" />
           <entry key="sql" value="13" />
           <entry key="xml" value="2" />
@@ -65,7 +66,7 @@
           <entry key="Ini" value="1" />
           <entry key="JSON" value="1" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="183" />
+          <entry key="PHP" value="184" />
           <entry key="SQL" value="13" />
           <entry key="XML" value="2" />
         </counts>
@@ -73,7 +74,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="json" value="7" />
-          <entry key="php" value="15581" />
+          <entry key="php" value="15585" />
           <entry key="sql" value="311" />
           <entry key="txt" value="17" />
           <entry key="xml" value="54" />
@@ -83,7 +84,7 @@
         <counts>
           <entry key="HTML" value="33" />
           <entry key="JSON" value="7" />
-          <entry key="PHP" value="15548" />
+          <entry key="PHP" value="15552" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="311" />
           <entry key="XML" value="54" />
@@ -141,7 +142,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/entities/Order.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="738">
@@ -150,9 +151,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/contact.php">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/php/dao/DbConnector.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -167,8 +172,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/panier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+            <state relative-caret-position="75">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -176,8 +181,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="738">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
         </entry>
@@ -195,7 +200,7 @@
         <entry file="file://$PROJECT_DIR$/head.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="59" />
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -257,7 +262,6 @@
         <option value="$PROJECT_DIR$/api/login.php" />
         <option value="$PROJECT_DIR$/php/schemas/OrderSchema.php" />
         <option value="$PROJECT_DIR$/api/orders.php" />
-        <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
         <option value="$PROJECT_DIR$/php/dao/AbstractDao.php" />
         <option value="$PROJECT_DIR$/docs/Perma_farmer_test.sql" />
         <option value="$PROJECT_DIR$/php/dao/ProductDao.php" />
@@ -288,6 +292,7 @@
         <option value="$PROJECT_DIR$/php/formatters/ProductFormatter.php" />
         <option value="$PROJECT_DIR$/formManagement.php" />
         <option value="$PROJECT_DIR$/php/entities/Order.php" />
+        <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
       </list>
     </option>
   </component>
@@ -472,7 +477,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568636368567</updated>
-      <workItem from="1568636369674" duration="63938000" />
+      <workItem from="1568636369674" duration="64067000" />
     </task>
     <servers />
   </component>
@@ -509,7 +514,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63938000" />
+    <option name="totallyTimeSpent" value="64067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="24" width="1680" height="1027" extended-state="6" />
@@ -644,13 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-222">
           <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/dao/DbConnector.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -877,7 +875,7 @@
     <entry file="file://$PROJECT_DIR$/head.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="59" />
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -890,15 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/panier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="738">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
@@ -923,6 +914,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
           <caret line="181" column="33" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/dao/DbConnector.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
         </state>
       </provider>
     </entry>

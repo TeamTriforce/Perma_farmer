@@ -16,6 +16,13 @@ include("header.php");
 <div class="d-flex justify-content-center align-items-center banner-home">
     <div class="div-banner-logo"><img src="logo.png" class="banner-logo"></div>
 </div>
+    <?php
+        if (!isset($_SESSION["cart"])) {
+            $_SESSION["cart"] = new Order([]);
+        }
+    ?>
+    
+    <style>nav{background-color: transparent;}</style>
 
 
 <div class="container-fluid" style="margin-top: 50px;" id="bannerEnd">
@@ -48,6 +55,7 @@ include("header.php");
     <div>
         <div class="d-flex justify-content-center">
             <a href="nos-produits.php" class="mb-4 btn-all-products">&#8594; Voir tous nos produits</a>
+            </div>
         </div>
     </div>
 </div>
