@@ -11,79 +11,45 @@ require_once dirname(__FILE__) . "/../Autoloader.php";
 abstract class ProductFormatter
 {
 
-    public static function formatIndexList($products) {
+    public static function formatProductsList($products) {
         $str = '';
         $rowNb = 0;
         $firstRow = true;
 
         foreach ($products as $product) {
             if ($firstRow) {
-                $str .= '<div class="row">
-                             <div class="col-md-2 offset-md-1">
-                                 <img src="' . $product->getImage() . '" />
-                                 <h4>' . $product->getLabel() . '</h4>
-                             </div>';
+                $str .= '<div class="col-md-2 offset-md-1">';
 
                 $firstRow = false;
             } else {
-                $str .= '<div class="col-md-2">
-                             <img src="' . $product->getImage() . '" />
-                             <h4>' . $product->getLabel() . '</h4>
-                         </div>';
+                $str .= '<div class="col-md-2">';
             }
+
+            $str .= '<a href="article.php">
+	                    <div class="div-produit">
+	                        <div class="div-img-produit">
+	                            <div class="overlay-produit">
+                                    <p class="bouton-produit">Plus de détails</p>
+                                    <div class="div-ajout-produit">
+                                        <img src="assets/plus.png" class="ajout-panier-img">
+                                    </div>
+                                 </div>
+                                 <img src="' . $product->getImage() . '" />
+                             </div>
+                             <h3>' . $product->getLabel() . '</h3>
+                         </div>
+                      </a></div>';
 
             $rowNb++;
 
             if ($rowNb == 5) {
                 $firstRow = true;
                 $rowNb = 0;
-
-                $str .= '</div>';
             }
         }
 
-        $str .= '<div>';
-
         return $str;
     }
-
-   public static function formatProductsList($products) {
-       $str = '';
-       $rowNb = 0;
-       $firstRow = true;
-
-       foreach ($products as $product) {
-           if ($firstRow) {
-               $str .= '<div class="col-md-2 offset-md-1">';
-
-               $firstRow = false;
-           } else {
-               $str .= '<div class="col-md-2">';
-           }
-
-           $str .= '<a href="#">
-                        <div class="div-produit">
-                            <div class="div-img-produit">
-                                <p><strong>' . $product->getLabel() . '</strong></p>
-                                <p class="bouton-produit">Plus de détails</p>
-                                <div class="div-ajout-produit">
-                                    <img src="assets/ajout-panier.png" class="ajout-panier-img">
-                                </div>
-                            </div>
-                            <img src="' . $product->getImage() . '"/>
-                        </div>
-                    </a></div>';
-
-           $rowNb++;
-
-           if ($rowNb == 5) {
-               $firstRow = true;
-               $rowNb = 0;
-           }
-       }
-
-       return $str;
-   }
 
    public static function formatProductDetail(Product $product) {
        return '<div class="div-ajout-panier-article">

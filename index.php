@@ -8,6 +8,10 @@
 <body>
     <?php
         include("header.php");
+
+        if (!isset($_SESSION["cart"])) {
+            $_SESSION["cart"] = new Order([]);
+        }
     ?>
 
     <div class="d-flex justify-content-center align-items-center banner-home">
@@ -29,14 +33,15 @@
         <div>
             <h2 class="text-center pt-3 pb-4">Produits ajoutés récemment</h2>
         </div>
-        <div class="div-produits">
+            <div class="div-produits">
             <div class="row">
                 <?php
                     $productDao = new ProductDao();
                     $products = $productDao->queryAll();
 
-                    echo ProductFormatter::formatIndexList($products);
+                    echo ProductFormatter::formatProductsList($products);
                 ?>
+            </div>
             </div>
         <div>
         <div class="d-flex justify-content-center">
