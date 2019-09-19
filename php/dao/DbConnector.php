@@ -49,9 +49,9 @@ class DbConnector
         $this->socket = "/Applications/MAMP/tmp/mysql/mysql.sock";
         $this->host = "localhost";
         $this->userName = "root";
-        $this->password = "root";
+        $this->password = "";
         $this->dbName = "Perma_farmer";
-        $this->port = "8889";
+        $this->port = "3306";
     }
 
     /**

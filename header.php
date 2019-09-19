@@ -1,6 +1,8 @@
     <nav>
         <div class="nav-part-1">
-            <img src="logo.png" class="nav-logo">
+            <a href="index.php">
+                <img src="logo.png" class="nav-logo">
+            </a>
         </div>
         <div class="nav-part-2">
             <a href="index.php">Accueil</a>

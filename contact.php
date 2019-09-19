@@ -12,9 +12,9 @@
 
     <div class="container-fluid contact-form">
         <div style="padding-top: 80px;">
-            <h2 class="text-center pt-3 pb-4">Contactez-nous</h2>
+            <h2 class="text-center pt-3 pb-4 title-h2">Contactez-nous</h2>
         </div>
-        <form method="post">
+        <form method="post" class="form-anim">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

@@ -13,6 +13,8 @@
             $_SESSION["cart"] = new Order([]);
         }
     ?>
+    
+    <style>nav{background-color: transparent;}</style>
 
     <div class="d-flex justify-content-center align-items-center banner-home">
         <div class="div-banner-logo"><img src="logo.png" class="banner-logo"></div>
@@ -46,6 +48,7 @@
         <div>
         <div class="d-flex justify-content-center">
             <a href="nos-produits.php" class="mb-4 btn-all-products">&#8594; Voir tous nos produits</a>
+            </div>
         </div>
     </div>
     <script src="js/home.js"></script>
