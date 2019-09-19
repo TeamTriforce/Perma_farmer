@@ -11,7 +11,7 @@
     ?>
     <div class="container-fluid div-produits" style="padding-top: 80px;">
         <div>
-            <h2 class="text-center pt-3 pb-4">Nos produits</h2>
+            <h2 class="text-center pt-3 pb-4 title-h2">Nos produits</h2>
         </div>
         <div class="row">
             <?php

@@ -8,26 +8,33 @@
 <body>
     <?php
         include("header.php");
+
+        if (!isset($_GET["id"])) {
+            header('Location: index.php');
+
+            exit();
+        }
     ?>
     <div class="div-ajout-panier-article">
         <p>Ajouter au panier</p>
         <img src="assets/ajout-panier.png">
     </div>
     <div class="container-fluid" style="padding-top: 100px;">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="assets/produits/oeufs.jpg" class="img-fluid">
-            </div>
-            <div class="col-md-6 description-article">
-                <h3>Oeufs</h3><br>
-                <h4>Description</h4>
-                <p>Eius populus ab incunabulis primis ad usque pueritiae tempus extremum, quod annis circumcluditur fere trecentis, circummurana pertulit bella, deinde aetatem ingressus.</p><br>
-                <h4>Prix</h4>
-                <p><strong>1,99 €</strong> les 6 oeufs</p>
-            </div>
-        </div>
+        <?php
+            $productDao = new ProductDao();
+            $product = $productDao->read($_GET["id"]);
+
+            if ($product == null) {
+                // TODO : Create a 404 page.
+                header('Location: index.php');
+
+                exit();
+            } else {
+                echo ProductFormatter::formatProductDetail($product);
+            }
+        ?>
         <div>
-            <h2 class="text-center pt-3 pb-4">Avis clients</h2>
+            <h2 class="text-center pt-3 pb-4 title-h2">Avis clients</h2>
         </div>
         <div class="row">
             <div class="col-md-6">

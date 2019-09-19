@@ -71,9 +71,6 @@ class ProductDao extends AbstractDao
             return null;
         }
 
-        var_dump($data);
-        var_dump($id);
-
         return new Product($data);
     }
 

@@ -163,4 +163,24 @@ class Order extends AbstractEntity
         $this->picked = $picked;
     }
 
+    /**
+     * @param Product $product
+     */
+    public function addProduct(Product $product) {
+        if ($this->products == null) {
+            $this->products = [];
+        }
+
+        $this->products[] = $product;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct(Product $product) {
+        if (($key = array_search($product, $this->products)) !== false) {
+            unset($this->products[$key]);
+        }
+    }
+
 }

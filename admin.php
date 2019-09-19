@@ -12,7 +12,7 @@
 
     <div class="container-fluid contact-form">
         <div style="padding-top: 80px;">
-            <h2 class="text-center pt-3 pb-4">Administration</h2>
+            <h2 class="text-center pt-3 pb-4 title-h2">Administration</h2>
         </div>
         <div class="row justify-content-around">
 
