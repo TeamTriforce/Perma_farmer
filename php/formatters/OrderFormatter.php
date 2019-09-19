@@ -1,4 +1,4 @@
-<?php /* Commandes */
+<?php
 /**
  * Created by PhpStorm.
  * User: mahsyaj
@@ -6,7 +6,9 @@
  * Time: 10:33
  */
 
-class OrderFormatter
+require_once dirname(__FILE__) . "/../Autoloader.php";
+
+abstract class OrderFormatter
 {
     
 }

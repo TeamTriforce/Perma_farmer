@@ -29,71 +29,13 @@
         <div>
             <h2>Nos produits</h2>
         </div>
+        <div>
+        <?php
+            $productDao = new ProductDao();
+            $products = $productDao->queryAll();
 
-        <div class="row">
-            <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img />
-                <h4>Oeufs</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Pommes de terre</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Carottes</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Salades</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Tomates</h4>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2 offset-md-1">
-                <!-- image produit -->
-                <img />
-                <h4>Oignons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Courgettes</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Poivrons</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Aubergines</h4>
-                <p></p>
-            </div>
-            <div class="col-md-2">
-                <!-- image produit -->
-                <img />
-                <h4>Brocolis</h4>
-                <p></p>
-            </div>
+            echo ProductFormatter::formatIndexList($products);
+        ?>
         </div>
     </div>
 </body>
