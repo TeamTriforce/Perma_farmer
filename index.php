@@ -39,7 +39,7 @@
                     $productDao = new ProductDao();
                     $products = $productDao->queryAll();
 
-                    echo ProductFormatter::formatIndexList($products);
+                    echo ProductFormatter::formatProductsList($products);
                 ?>
             </div>
             </div>
