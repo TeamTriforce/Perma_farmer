@@ -1,16 +1,16 @@
 <?php /* Clients */
+
 /**
  * Created by PhpStorm.
  * User: mahsyaj
  * Date: 16/09/2019
  * Time: 10:32
  */
-
 class CustomerFormatter
 {
-    public static function format(Customer $customer) 
-        {
-            $str = '<div class="container">
+    public static function format(Customer $customer)
+    {
+        $str = '<div class="container">
                         <div class="row">
                             <h1>Profil</h1>
                         </div>
@@ -65,18 +65,26 @@ class CustomerFormatter
                                     <h2>Dernières commandes</h2>
                                 </div>';
 
-            $orderDao = new OrderDao();
-            $orders = $orderDao->
-                                '<div class="row">
-                                    <h3>Produits achetés</h3>
-                                    <p>' . order->getProducts() . '</p>
-                                    <div class="row">
-                                        <p>' . order->getPickedDate() . '</p>
-                                        <p>' . order->getPriceOrder() . '</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>';
+        $orderDao = new OrderDao();
+        $orders = $orderDao->queryCustomerOrders($customer->getId());
+
+        foreach ($orders as $order) {
+            $str .= '<div class="row">
+                             <h3>Produits achetés</h3>';
+
+            foreach ($order->getProducts() as $product) {
+                $str .= '<p>' . $product->getLabel() . '</p>';
+            }
+
+            $str .= '<div class="row">
+                             <p>' . $order->getPickedDate() . '</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>';
         }
+
+        return $str;
+    }
 }

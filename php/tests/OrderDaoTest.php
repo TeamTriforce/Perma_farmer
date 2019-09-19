@@ -101,6 +101,52 @@ class OrderDaoTest extends \PHPUnit\Framework\TestCase
         }
     }
 
+    public function testQueryCustomerOrders()
+    {
+        $orders = [];
+        $subscriptionDao = new SubscriptionDao();
+        $customerDao = new CustomerDao();
+        $productDao = new ProductDao();
+        $prdId = 0;
+
+        $subscription = Subscription::newInstance(0, "Label", 20, 10);
+
+        $subscriptionDao->create($subscription);
+
+        $customer = Customer::newInstance(0, "first", "last", "mail", "password", "code", "token", $subscription->getId());
+
+        $customerDao->create($customer);
+
+        for ($i = 0; $i < 5; $i++) {
+            $dateAvailable = new DateTime();
+            $datePicked = new DateTime();
+            $order = Order::newInstance($i, $dateAvailable->format("Y-m-d H:i:s"), $datePicked->format("Y-m-d H:i:s"), false,
+                [Product::newInstance($i, "label" . $prdId, $prdId, $prdId, "img" . $prdId, $prdId, "description")], $customer->getId(), 0);
+
+            foreach ($order->getProducts() as $product) {
+                $productDao->create($product);
+            }
+
+            $this->dao->create($order);
+
+            $orders[] = $order;
+            $prdId++;
+        }
+
+        \PHPUnit\Framework\Assert::assertEquals(5, count($this->dao->queryCustomerOrders($customer->getId())));
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->dao->delete($orders[$i]->getId());
+
+            foreach ($orders[$i]->getProducts() as $product) {
+                $productDao->delete($product->getId());
+            }
+        }
+
+        $customerDao->delete($customer->getId());
+        $subscriptionDao->delete($subscription->getId());
+    }
+
     public function testUpdate()
     {
         $subscriptionDao = new SubscriptionDao();
