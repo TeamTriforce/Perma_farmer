@@ -104,6 +104,38 @@ abstract class CustomerFormatter
                         </div>
                     </div>';
     }
+    
+    public static function formatAdminUtilisateurs(Customer $customer) {
+        return '<div class="col-md-12">
+                    <strong>' . $customer->getFirstName() . $customer->getLastName() . '</strong>
+                    <p>' . $customer->getEmail() . '</p>
+                    <p>' . $customer->getCode() . '</p>
+                </div>';
+    }
+    
+    public static function formatAdminUtilisateursModificationModal(Customer $customer) {
+        return '<form>
+                    <div class="form-group">
+                        <label for="Nom">' . $customer->getLastName() . '</label>
+                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $customer->getLastName() . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="Prenom">' . $customer->getFirstName() . '</label>
+                        <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . $customer->getFirstName() . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="Mail">' . $customer->getEmail() . '</label>
+                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getMail() . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">' . $customer->getPassword() . '</label>
+                        <input type="password" class="form-control" id="Password" placeholder="' . $customer->getPassword() . '">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>';
+    }
+    
+    
 }
 
 
