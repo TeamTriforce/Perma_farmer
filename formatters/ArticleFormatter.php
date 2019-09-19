@@ -1,4 +1,4 @@
-<?php
+<?php /* Articles */
 /**
  * Created by PhpStorm.
  * User: mahsyaj

@@ -1,4 +1,4 @@
-<?php
+<?php /* Produits */
 /**
  * Created by PhpStorm.
  * User: mahsyaj
