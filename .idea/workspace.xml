@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245d0815-04c7-42b7-8118-43faa54b75f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/orders.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/formManagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/dao/OrderDao.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/OrderDao.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/entities/AbstractEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/entities/AbstractEntity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panier.php" beforeDir="false" afterPath="$PROJECT_DIR$/panier.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +45,7 @@
           <entry key="ini" value="1" />
           <entry key="json" value="1" />
           <entry key="md" value="3" />
-          <entry key="php" value="201" />
+          <entry key="php" value="202" />
           <entry key="png" value="1" />
           <entry key="sql" value="13" />
           <entry key="xml" value="2" />
@@ -62,7 +58,7 @@
           <entry key="Ini" value="1" />
           <entry key="JSON" value="1" />
           <entry key="Markdown" value="3" />
-          <entry key="PHP" value="201" />
+          <entry key="PHP" value="202" />
           <entry key="SQL" value="13" />
           <entry key="XML" value="2" />
         </counts>
@@ -71,7 +67,7 @@
         <counts>
           <entry key="json" value="7" />
           <entry key="md" value="285" />
-          <entry key="php" value="16393" />
+          <entry key="php" value="16400" />
           <entry key="sql" value="311" />
           <entry key="txt" value="17" />
           <entry key="xml" value="54" />
@@ -82,7 +78,7 @@
           <entry key="HTML" value="33" />
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="285" />
-          <entry key="PHP" value="16360" />
+          <entry key="PHP" value="16367" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="311" />
           <entry key="XML" value="54" />
@@ -122,8 +118,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/head.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="59" />
+            <state relative-caret-position="375">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/panier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -169,11 +174,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="19" column="85" selection-start-line="19" selection-start-column="85" selection-end-line="19" selection-end-column="85" />
+            <state relative-caret-position="434">
+              <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -181,15 +186,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/php/entities/Admin.php">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_2.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="309" column="9" selection-start-line="309" selection-start-column="9" selection-end-line="309" selection-end-column="9" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -211,6 +207,7 @@
       <find>se</find>
       <find>session</find>
       <find>deleteAssociateProducts</find>
+      <find>products</find>
     </findStrings>
     <replaceStrings>
       <replace>catch \(PDOException \$e\) \{\n            return false\;</replace>
@@ -267,8 +264,6 @@
         <option value="$PROJECT_DIR$/nos-produits.php" />
         <option value="$PROJECT_DIR$/docs/Perma_farmer.sql" />
         <option value="$PROJECT_DIR$/formManagment.php" />
-        <option value="$PROJECT_DIR$/head.php" />
-        <option value="$PROJECT_DIR$/panier.php" />
         <option value="$PROJECT_DIR$/php/formatters/ProductFormatter.php" />
         <option value="$PROJECT_DIR$/php/entities/Order.php" />
         <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
@@ -282,6 +277,8 @@
         <option value="$PROJECT_DIR$/php/entities/AbstractEntity.php" />
         <option value="$PROJECT_DIR$/formManagement.php" />
         <option value="$PROJECT_DIR$/article.php" />
+        <option value="$PROJECT_DIR$/head.php" />
+        <option value="$PROJECT_DIR$/panier.php" />
       </list>
     </option>
   </component>
@@ -314,32 +311,6 @@
             <path>
               <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
               <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="produits" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Perma_farmer" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Perma_farmer" type="b2602c69:ProjectViewProjectNode" />
@@ -465,7 +436,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568636368567</updated>
-      <workItem from="1568636369674" duration="67263000" />
+      <workItem from="1568636369674" duration="67832000" />
     </task>
     <servers />
   </component>
@@ -502,7 +473,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67263000" />
+    <option name="totallyTimeSpent" value="67832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="24" width="1680" height="1027" extended-state="6" />
@@ -783,13 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/panier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/dao/DbConnector.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -886,13 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/head.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -912,8 +869,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="85" selection-start-line="19" selection-start-column="85" selection-end-line="19" selection-end-column="85" />
+        <state relative-caret-position="434">
+          <caret line="34" column="20" lean-forward="true" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/panier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
         </state>
       </provider>
     </entry>
