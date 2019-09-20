@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
-  `admin_authToken` varchar(255) NOT NULL,
+  `admin_authToken` varchar(255) DEFAULT "",
   `admin_login` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -70,7 +70,7 @@ INSERT INTO `article` (`article_id`, `article_title`, `article_content`, `articl
 CREATE TABLE `cart` (
   `product_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `product_quantity` int(11) NOT NULL
+  `product_quantity` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -86,7 +86,7 @@ CREATE TABLE `customer` (
   `customer_email` varchar(100) NOT NULL,
   `customer_password` varchar(255) NOT NULL,
   `customer_code` varchar(255) NOT NULL,
-  `customer_authToken` varchar(255) NOT NULL,
+  `customer_authToken` varchar(255) DEFAULT "",
   `customer_idSubscription` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -96,8 +96,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `customer_firstName`, `customer_lastName`, `customer_email`, `customer_password`,
 `customer_code`, `customer_authToken`, customer_idSubscription) VALUES
-(1, 'Jean Bobby', 'Lapointe', 'jeanbobby@lapointe.fr', '$2y$10$MTHtFL/C9qep85pnW9iFfOjQiYpQ2c29odbXadl/3.ypAxqqtGi/O',
-'997261136b85a8a630b5d4ca5f2ee82d', '', 1);
+(1, 'Jean Bobby', 'Lapointe', 'jeanbobby@lapointe.fr', '$2y$10$CCsrXAIU9HlkhYTlC1nfaeRr8QH/.KODdHi2WNBitORut9dT5VEoW', '', 1);
 
 
 -- --------------------------------------------------------
@@ -108,9 +107,9 @@ INSERT INTO `customer` (`customer_id`, `customer_firstName`, `customer_lastName`
 
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
-  `order_availableDate` datetime NOT NULL,
-  `order_pickedDate` datetime NOT NULL,
-  `order_notificationSent` int(1) NOT NULL,
+  `order_availableDate` datetime ,
+  `order_pickedDate` datetime ,
+  `order_notificationSent` int(1) NOT NULL DEFAULT '0',
   `order_idCustomer` int(11) NOT NULL,
   `order_picked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

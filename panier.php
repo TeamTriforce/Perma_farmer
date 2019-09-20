@@ -21,6 +21,9 @@ include("header.php");
             foreach ($_SESSION["cart"]->getProducts() as $product) {
                 echo ProductFormatter::formatCart($product);
             }
+
+            echo '<form method="POST" action="formManagement.php"><input type="hidden" name="checkout" value="1">
+                    <input type="submit" value="Commander"></form>';
         }
         ?>
         </div>
