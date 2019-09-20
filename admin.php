@@ -169,6 +169,51 @@ include("head.php");
                         ?>
 
                     </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="supprimerAdmin" tabindex="-1" role="dialog" aria-labelledby="supprimerAdmin" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="supprimerAdmin">Supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Supprimer l'administrateur
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"><a href="#supprimerAdmin" data-toggle="modal">Valider</a></button>
+                                    <script>
+                                        $('#supprimerAdmin').on('show.bs.modal', function(e) {
+
+                                            var admin_id = $(e.relatedTarget).data('deleteadminid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
+
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "deleteAdminId";
+                                            input.value = admin_id;
+
+                                            form.method = "POST";
+                                            form.action = "formManagement.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+
+                                            submit.click();
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-bottom: 10px;">
                         <div class="col-md-12 text-center" style="margin-bottom: 10px;">
                             <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterAdmin">Ajouter un administrateur</button>
