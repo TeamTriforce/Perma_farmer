@@ -21,14 +21,14 @@ a:active {
 nav {
     width: 100%;
     height: 80px;
-    position: fixed;
+    position: fixed !important;
     background-color: #002120;
     display: flex;
     z-index: 9999;
 }
 
 .nav-part-1 {
-    width: 50%;
+    width: 40%;
     height: 80px;
     display: flex;
     justify-content: flex-start;
@@ -38,10 +38,12 @@ nav {
 
 .nav-logo {
     height: 70px;
+    position: relative;
+    top: -8px;
 }
 
 .nav-part-2 {
-    width: 50%;
+    width: 60%;
     height: 80px;
     display: flex;
     justify-content: space-around;
@@ -65,6 +67,19 @@ nav {
     padding: 5px;
     transition: 0.3s;
 }
+
+.navbar-nav .nav-link {
+        display: flex;
+    align-items: center;
+    margin-right: 20px;
+    }
+
+.navbar-toggler {
+    top: 25px;
+    position: fixed;
+    right: 20px;
+}
+
 
 @keyframes panierAnim {
     0% {
@@ -111,14 +126,20 @@ h2 {
     margin: 0;
 }
 
-.title-h2{
-    animation: anim-h2-title 1s 0.5s ease-in-out forwards; 
+.title-h2 {
+    animation: anim-h2-title 1s 0.5s ease-in-out forwards;
     opacity: 0;
 }
 
-@keyframes anim-h2-title{
-    0%{transform: translateY(-100px);}
-    100%{transform: translateY(0); opacity: 1;}
+@keyframes anim-h2-title {
+    0% {
+        transform: translateY(-100px);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .banner-home {
@@ -131,9 +152,14 @@ h2 {
     animation: easeBanner 2s ease-in-out forwards;
 }
 
-@keyframes easeBanner{
-    0%{opacity: 0;}
-    100%{opacity: 1;}
+@keyframes easeBanner {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .div-banner-logo {
@@ -142,9 +168,15 @@ h2 {
     animation: animLogoBanner 1s 0.5s ease-in-out forwards;
 }
 
-@keyframes animLogoBanner{
-    0%{transform: translateX(-200px) scale(0);}
-    100%{opacity: 1; transform: translateX(0px) scale(1);}
+@keyframes animLogoBanner {
+    0% {
+        transform: translateX(-200px) scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px) scale(1);
+    }
 }
 
 .banner-logo {
@@ -157,14 +189,20 @@ h2 {
     transition-duration: 0.5s;
 }
 
-.div-produits{
+.div-produits {
     animation: anim-produits 1s ease-in-out forwards;
     opacity: 0;
 }
 
-@keyframes anim-produits{
-    0%{transform: translateX(-100%);}
-    100%{transform: translateX(0%); opacity: 1;}
+@keyframes anim-produits {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
 }
 
 .div-produits a,
@@ -204,21 +242,21 @@ h2 {
     transition-duration: 0.5s;
 }
 
-.form-ajout-panier{
+.form-ajout-panier {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 2;
 }
 
-.form-ajout-panier input{
+.form-ajout-panier input {
     width: 100%;
     height: 100%;
     background-color: transparent;
     border: none;
 }
 
-.form-commande input{
+.form-commande input {
     background-color: #014946;
     color: white;
     font-size: 20px;
@@ -230,25 +268,25 @@ h2 {
     transition: 0.2s;
 }
 
-.form-delete-article{
+.form-delete-article {
     width: 30px;
     background-color: #eee;
     color: #014946;
     border: #014946 solid 2px;
 }
 
-.form-commande input:hover{
+.form-commande input:hover {
     transform: scale(1.1);
 }
 
-.form-login input{
+.form-login input {
     border: #014946 2px solid;
     padding: 5px;
     width: 300px;
     color: #014946;
 }
 
-.form-login input:hover{
+.form-login input:hover {
     background-color: #eee;
 }
 
@@ -263,7 +301,7 @@ h2 {
     transition-delay: 0.2s;
 }
 
-.div-produit:hover .bouton-produit{
+.div-produit:hover .bouton-produit {
     opacity: 1;
 }
 
@@ -401,14 +439,20 @@ h2 {
     width: 80% !important;
 }
 
-.form-anim{
+.form-anim {
     animation: form-anim 1.5s ease-in-out forwards;
     opacity: 0;
 }
 
-@keyframes form-anim{
-    0%{transform: translateY(100px);}
-    100%{transform: translateY(0); opacity: 1;}
+@keyframes form-anim {
+    0% {
+        transform: translateY(100px);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .contact-form {
@@ -448,13 +492,34 @@ h2 {
     cursor: pointer;
 }
 
-.btn-all-products{
+.btn-all-products {
     font-family: 'Assistant';
     font-size: 20px !important;
     color: #102120 !important;
 }
 
-.btn-all-products:hover{
+.btn-all-products:hover {
     color: green !important;
     text-decoration: underline !important;
+}
+
+@media screen and (max-width: 991px) {
+    #navbarNavAltMarkup {
+        position: relative;
+        top: 154px;
+        text-align: right;
+        width: fit-content;
+        background-color: #002120;
+        right: -16px;
+        padding-right: 30px;
+    }
+    
+    .nav-part-2 {
+    width: 200px;
+    }
+    
+    .navbar-nav .nav-link {
+        display: block;
+        margin-right: 0;
+    }
 }
