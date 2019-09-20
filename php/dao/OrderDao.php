@@ -88,7 +88,7 @@ class OrderDao extends AbstractDao
     public function delete(int $id)
     {
         try {
-            $this->deleteAssociateProducts($id);
+            $this->deleteAssociatedProducts($id);
 
             $statement = sprintf("DELETE FROM `%s` WHERE %s = :i", OrderSchema::TABLE, OrderSchema::ID);
             $req = $this->db->prepare($statement);
@@ -112,7 +112,7 @@ class OrderDao extends AbstractDao
     public function update(Order $order)
     {
         try {
-            $this->deleteAssociateProducts($order->getId());
+            $this->deleteAssociatedProducts($order->getId());
 
             $statement = sprintf("UPDATE `%s` SET %s = :ad, %s = :pd, %s = :ns, %s = :ci, %s = :p WHERE %s = :i",
                 OrderSchema::TABLE,
@@ -263,7 +263,7 @@ class OrderDao extends AbstractDao
      * @param Order $order
      * @return bool
      */
-    private function createAssociatedProducts(Order $order) {
+    public function createAssociatedProducts(Order $order) {
         try {
             $productDao = new ProductDao();
 
@@ -296,7 +296,7 @@ class OrderDao extends AbstractDao
      * @param int $id
      * @return array|null
      */
-    private function getAssociatedProducts(int $id) {
+    public function getAssociatedProducts(int $id) {
         $products = [];
 
         try {
@@ -330,7 +330,7 @@ class OrderDao extends AbstractDao
      * @param int $id
      * @return bool
      */
-    private function deleteAssociateProducts(int $id) {
+    public function deleteAssociatedProducts(int $id) {
         $productDao = new ProductDao();
 
         try {
