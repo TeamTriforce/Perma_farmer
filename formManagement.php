@@ -229,7 +229,7 @@ if (isset($_POST["createProduct"])) {
 
     if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
         $productDao = new ProductDao();
-        $product = Product::newInstance(0, $_POST["label"], (int)$_POST["price"], 0, $_POST["image"], (int)$_POST["stock"], $_POST["description"]);
+        $product = Product::newInstance(0, $_POST["label"], (float)$_POST["price"], 0, $_POST["image"], (int)$_POST["stock"], $_POST["description"]);
 
         if (!$productDao->create($product)) {
             header('Location: error.php?errorCode=404');
@@ -340,3 +340,222 @@ if (isset($_POST["createSubscription"])) {
 
 // ADMIN UPDATE CALLS
 
+if (isset($_POST["updateProductId"])) {
+    $adminDao = new AdminDao();
+
+    if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        $productDao = new ProductDao();
+        $product = $productDao->read($_POST["updateProductId"]);
+
+        if ($product == null) {
+            header('Location: error.php?errorCode=404');
+
+            exit();
+        } else {
+            if (isset($_POST["label"])) {
+                $product->setLabel($_POST["label"]);
+            }
+
+            if (isset($_POST["price"])) {
+                $product->setPrice((float)$_POST["price"]);
+            }
+
+            if (isset($_POST["image"])) {
+                $product->setLabel($_POST["image"]);
+            }
+
+            if (isset($_POST["stock"])) {
+                $product->setLabel((int)$_POST["stock"]);
+            }
+
+            if (isset($_POST["description"])) {
+               $product->setDescription($_POST["description"]);
+            }
+
+            if (!$productDao->update($product)) {
+                header('Location: error.php?errorCode=404');
+
+                exit();
+            } else {
+                header('Location: admin.php');
+
+                exit();
+            }
+        }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["updateCustomerId"])) {
+    $adminDao = new AdminDao();
+
+    if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        $customerDao = new CustomerDao();
+        $customer = $customerDao->read($_POST["updateCustomerId"]);//Customer::newInstance(0, $_POST["firstName"], $_POST["lastName"], $_POST["email"], $_POST["password"], "", "", $_POST["idSubscription"]);
+
+        if ($customer == null) {
+            header('Location: error.php?errorCode=404');
+
+            exit();
+        } else {
+            if (isset($_POST["firstName"])) {
+                $customer->setFirstName($_POST["firstName"]);
+            }
+
+            if (isset($_POST["lastName"])) {
+                $customer->setFirstName($_POST["lastName"]);
+            }
+
+            if (isset($_POST["email"])) {
+                $customer->setFirstName($_POST["email"]);
+            }
+
+            if (isset($_POST["password"])) {
+                $customer->setFirstName($_POST["password"]);
+            }
+
+            if (isset($_POST["idSubscription"])) {
+                $customer->setFirstName($_POST["idSubscription"]);
+            }
+
+            if (!$customerDao->update($customer)) {
+                header('Location: error.php?errorCode=404');
+
+                exit();
+            } else {
+                header('Location: admin.php');
+
+                exit();
+            }
+        }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["updateAdminId"])) {
+    $adminDao = new AdminDao();
+
+    if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        $admin = $adminDao->read($_POST["updateAdminId"]);//Admin::newInstance(0, $_POST["login"], $_POST["password"], "");
+
+        if ($admin == null) {
+            header('Location: error.php?errorCode=404');
+
+            exit();
+        } else {
+            if (isset($_POST["login"])) {
+                $admin->setLogin($_POST["login"]);
+            }
+
+            if (isset($_POST["password"])) {
+                $admin->setLogin($_POST["password"]);
+            }
+
+            if (!$adminDao->update($admin)) {
+                header('Location: error.php?errorCode=404');
+
+                exit();
+            } else {
+                header('Location: admin.php');
+
+                exit();
+            }
+        }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["updateOrderId"])) {
+    $adminDao = new AdminDao();
+
+    if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        $orderDao = new OrderDao();
+        $order = $orderDao->read($_POST["updateOrderId"]);//Order::newInstance(0, null, null, false, [], $_POST["idCustomer"], false);
+
+        if (!$orderDao->create($order)) {
+            header('Location: error.php?errorCode=404');
+
+            exit();
+        } else {
+            if (isset($_POST["availableDate"])) {
+                $order->setAvailableDate($_POST["availableDate"]);
+            }
+
+            if (isset($_POST["pickedDate"])) {
+                $order->setAvailableDate($_POST["pickedDate"]);
+            }
+
+            if (isset($_POST["picked"])) {
+                $order->setAvailableDate($_POST["picked"]);
+            }
+
+            if (isset($_POST["notificationSent"])) {
+                $order->setAvailableDate($_POST["notificationSent"]);
+            }
+
+            if (!$orderDao->update($order)) {
+                header('Location: error.php?errorCode=404');
+
+                exit();
+            } else {
+                header('Location: admin.php');
+
+                exit();
+            }
+        }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["updateSubscriptionId"])) {
+    $adminDao = new AdminDao();
+
+    if (isset($_SESSION["id"]) && isset($_SESSION["token"]) && $adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        $subscriptionDao = new SubscriptionDao();
+        $subscription = Subscription::newInstance(0, $_POST["label"], (float)$_POST["price"], (float)$_POST["weight"]);
+
+        if (!$subscriptionDao->create($subscription)) {
+            header('Location: error.php?errorCode=404');
+
+            exit();
+        } else {
+            if (isset($_POST["label"])) {
+                $subscription->setLabel($_POST["label"]);
+            }
+
+            if (isset($_POST["price"])) {
+                $subscription->setPrice((float)$_POST["price"]);
+            }
+
+            if (isset($_POST["weight"])) {
+                $subscription->setWeight((float)$_POST["weight"]);
+            }
+
+            if (!$subscriptionDao->update($subscription)) {
+                header('Location: error.php?errorCode=404');
+
+                exit();
+            } else {
+                header('Location: admin.php');
+
+                exit();
+            }
+        }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}

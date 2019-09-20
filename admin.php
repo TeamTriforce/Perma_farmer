@@ -20,7 +20,12 @@ include("head.php");
                 <div class="row" style="margin-bottom: 10px;">
 
                     <?php
-                    echo CustomerFormatter::formatAdminUtilisateurs($customer);
+                    $customerDao = new customerDao();
+                    $customer = $customerDao->queryAll();
+                    
+                    foreach ($customer as $customer) {
+                        echo CustomerFormatter::formatAdminUtilisateurs($customer);
+                    }
                     ?>
 
                     <!-- Modal -->
@@ -61,7 +66,16 @@ include("head.php");
                                     Voulez-vous vraiment supprimer cet utilisateur ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success">Valider</button>
+                                    <button type="button" class="btn btn-success"><a href="#supprimerUtilisateur" data-toggle="modal" data-customer-id="my_id_value">Valider</a></button>
+                                    <script>
+                                        $('#supprimerUtilisateur').on('show.bs.modal', function(e) {
+
+                                            var customer_id = $(e.relatedTarget).data('delete-customer-id');
+                                            
+                                            console.log (customer_id);
+
+                                        });
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +93,12 @@ include("head.php");
                 <div class="row">
 
                     <?php
-                    echo OrderFormatter::formatAdminContenuApercu($order);
+                    $orderDao = new orderDao();
+                    $order = $orderDao->queryAll();
+                    
+                    foreach ($order as $order) {
+                        echo OrderFormatter::formatAdminContenuApercu($order);
+                    }
                     ?>
 
                     <!-- Modal -->
@@ -95,7 +114,12 @@ include("head.php");
                                 <div class="modal-body">
 
                                     <?php
-                                    echo OrderFormatter::formatAdminContenuModal($order);
+                                    $orderDao = new orderDao();
+                                    $order = $orderDao->queryAll();
+                    
+                                    foreach ($order as $order) {
+                                        echo OrderFormatter::formatAdminContenuModal($order);
+                                    }
                                     ?>
 
                                 </div>
@@ -111,7 +135,7 @@ include("head.php");
 
 
         </div>
-        <div class="row justify-content-around" style="margin-top: 50px;">
+        <div class="row justify-content-around" style="margin-top: 50px; margin-bottom: 50px;">
             <div class="col-md-5 col-sm-10" style="border: solid black 2px;">
                 <div>
                     <h4 class="text-center">Liste admin</h4>
@@ -120,7 +144,13 @@ include("head.php");
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1" style="border: solid black 2px; margin-bottom:20px;">
 
                         <?php
-                        echo AdminFormatter::formatAdminUser($admin);
+                        $adminDao = new adminDao();
+                        $admin = $adminDao->queryAll();
+                    
+                        foreach ($admin as $admin) {
+                        
+                            echo AdminFormatter::formatAdminUser($admin);
+                        }
                         ?>
 
                     </div>
@@ -129,7 +159,7 @@ include("head.php");
                             <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterAdmin">Ajouter un administrateur</button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="ajouterAvis" tabindex="-1" role="dialog" aria-labelledby="ajouterAdmin" aria-hidden="true">
+                            <div class="modal fade" id="ajouterAdmin" tabindex="-1" role="dialog" aria-labelledby="ajouterAdmin" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -142,21 +172,20 @@ include("head.php");
                                             <form>
                                                 <div class="form-group">
                                                     <label for="Nom">Nom</label>
-                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="Nom">
+                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Prenom">Prenom</label>
-                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="Prenom">
+                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Mail">E-mail</label>
-                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="Mail">
+                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Password">Mot-de-passe</label>
-                                                    <input type="password" class="form-control" id="Password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="Password">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -180,28 +209,13 @@ include("head.php");
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1" style="border: solid black 2px; margin-bottom:20px;">
 
                         <?php
-                        echo ProductFormatter::formatArticles($product);
+                        $productDao = new productDao();
+                        $product = $productDao->queryAll();
+                    
+                        foreach ($product as $product) {
+                            echo ProductFormatter::formatArticles($product);
+                        }
                         ?>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="ajouterArticle" tabindex="-1" role="dialog" aria-labelledby="ajouterArticle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="ajouterArticle">Ajout</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Ajouter le produit !
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Valider</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="modifierArticle" tabindex="-1" role="dialog" aria-labelledby="modifierArticle" aria-hidden="true">
@@ -230,7 +244,7 @@ include("head.php");
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="supprimerArticle">Modifier</h5>
+                                        <h5 class="modal-title" id="supprimerArticle">Supprimer</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -264,7 +278,7 @@ include("head.php");
                                             <form>
                                                 <div class="form-group">
                                                     <label for="Nom">Nom</label>
-                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="Nom">
+                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Description">Description</label>
@@ -272,9 +286,8 @@ include("head.php");
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Prix">Prix</label>
-                                                    <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp" placeholder="Prix">
+                                                    <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp">
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">

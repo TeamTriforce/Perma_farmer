@@ -113,7 +113,7 @@ abstract class CustomerFormatter
                         <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
 
                             <div class="col-md-12">
-                                <strong>' . $customer->getFirstName() . $customer->getLastName() . '</strong>
+                                <strong>' . '[' . $customer->getId() . ']' . ' ' . $customer->getFirstName() . ' ' . $customer->getLastName() . '</strong>
                                 <p>' . $customer->getEmail() . '</p>
                                 <p>' . $customer->getCode() . '</p>
                             </div>
@@ -123,7 +123,7 @@ abstract class CustomerFormatter
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerUtilisateur">Supprimer</button>
+                                <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerUtilisateur" data-delete-customer-id>Supprimer</button>
                             </div>
                         </div>
                     </div>';
@@ -133,22 +133,21 @@ abstract class CustomerFormatter
     {
         return '<form>
                     <div class="form-group">
-                        <label for="Nom">' . $customer->getLastName() . '</label>
+                        <label for="Nom">Nom</label>
                         <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $customer->getLastName() . '">
                     </div>
                     <div class="form-group">
-                        <label for="Prenom">' . $customer->getFirstName() . '</label>
+                        <label for="Prenom">Prenom</label>
                         <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . $customer->getFirstName() . '">
                     </div>
                     <div class="form-group">
-                        <label for="Mail">' . $customer->getEmail() . '</label>
-                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getMail() . '">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getEmail() . '">
                     </div>
                     <div class="form-group">
-                        <label for="Password">' . $customer->getPassword() . '</label>
+                        <label for="Password">Mot-de-passe</label>
                         <input type="password" class="form-control" id="Password" placeholder="' . $customer->getPassword() . '">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>';
     }
     
