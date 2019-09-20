@@ -10,7 +10,8 @@ require_once dirname(__FILE__) . "/../Autoloader.php";
 
 abstract class OrderFormatter
 {
-    public static function formatAdminContenuApercu(Order $order) {
+    public static function formatAdminContenuApercu(Order $order) 
+    {
         return '
         <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1" style="border: solid black 2px; margin-bottom:20px;">
             <div class="row">
@@ -26,7 +27,8 @@ abstract class OrderFormatter
         </div>';
     }
     
-    public static function formatAdminContenuModal(Order $order) {
+    public static function formatAdminContenuModal(Order $order) 
+    {
         return '
         <h3>Commande du client n°<strong>' . $order->getIdCustomer . '</strong></h3>
         <ul>
