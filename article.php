@@ -16,10 +16,11 @@
         }
     ?>
     <div class="div-ajout-panier-article">
-        <form method="POST" action="formManagement.php">
+        <form method="POST" action="formManagement.php" class="form-ajout-panier">
             <input type="hidden" name="addProductId" value="<?php echo $_GET["id"] ?>">
-            <input type="submit" src="Ajouter au pannier" class="ajout-panier-img">
+            <input type="submit" class="ajout-panier-img" value="">
         </form>
+        <p>Ajouter au panier</p>
         <img src="assets/ajout-panier.png">
     </div>
     <div class="container-fluid" style="padding-top: 100px;">
