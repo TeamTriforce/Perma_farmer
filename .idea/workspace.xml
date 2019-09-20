@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="245d0815-04c7-42b7-8118-43faa54b75f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/panier.php" beforeDir="false" afterPath="$PROJECT_DIR$/panier.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +45,7 @@
           <entry key="ini" value="1" />
           <entry key="json" value="1" />
           <entry key="md" value="3" />
-          <entry key="php" value="216" />
+          <entry key="php" value="217" />
           <entry key="png" value="2" />
           <entry key="sql" value="14" />
           <entry key="xml" value="2" />
@@ -57,7 +58,7 @@
           <entry key="Ini" value="1" />
           <entry key="JSON" value="1" />
           <entry key="Markdown" value="3" />
-          <entry key="PHP" value="216" />
+          <entry key="PHP" value="217" />
           <entry key="SQL" value="14" />
           <entry key="XML" value="2" />
         </counts>
@@ -67,7 +68,7 @@
           <entry key="css" value="27" />
           <entry key="json" value="7" />
           <entry key="md" value="285" />
-          <entry key="php" value="19366" />
+          <entry key="php" value="19392" />
           <entry key="sql" value="332" />
           <entry key="txt" value="17" />
           <entry key="xml" value="54" />
@@ -79,7 +80,7 @@
           <entry key="HTML" value="51" />
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="285" />
-          <entry key="PHP" value="19315" />
+          <entry key="PHP" value="19341" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="332" />
           <entry key="XML" value="54" />
@@ -176,11 +177,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/contact.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="25" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/panier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="141" selection-start-line="18" selection-start-column="141" selection-end-line="18" selection-end-column="141" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -191,15 +204,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-717">
               <caret line="39" column="112" selection-start-line="39" selection-start-column="112" selection-end-line="39" selection-end-column="112" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Perma_farmer.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -308,13 +312,13 @@
         <option value="$PROJECT_DIR$/php/formatters/ProductFormatter.php" />
         <option value="$PROJECT_DIR$/logout.php" />
         <option value="$PROJECT_DIR$/header.php" />
-        <option value="$PROJECT_DIR$/panier.php" />
         <option value="$PROJECT_DIR$/docs/Perma_farmer.sql" />
         <option value="$PROJECT_DIR$/php/formatters/CustomerFormatter.php" />
         <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
         <option value="$PROJECT_DIR$/formManagement.php" />
         <option value="$PROJECT_DIR$/admin.php" />
         <option value="$PROJECT_DIR$/mail.php" />
+        <option value="$PROJECT_DIR$/panier.php" />
         <option value="$PROJECT_DIR$/contact.php" />
       </list>
     </option>
@@ -483,7 +487,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568636368567</updated>
-      <workItem from="1568636369674" duration="78489000" />
+      <workItem from="1568636369674" duration="78712000" />
     </task>
     <servers />
   </component>
@@ -520,7 +524,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78489000" />
+    <option name="totallyTimeSpent" value="78712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="24" width="1680" height="1027" extended-state="6" />
@@ -854,16 +858,6 @@
     <entry file="file://$PROJECT_DIR$/php/schemas/CustomerSchema.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/panier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/php/dao/OrderDao.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2846">
@@ -955,10 +949,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/panier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="141" selection-start-line="18" selection-start-column="141" selection-end-line="18" selection-end-column="141" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/contact.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        <state relative-caret-position="255">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="25" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />

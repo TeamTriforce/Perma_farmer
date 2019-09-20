@@ -16,7 +16,7 @@ include("header.php");
         <div class="row">
             <?php
         if ($_SESSION["cart"] == null || $_SESSION["cart"]->getProducts() == null || count($_SESSION["cart"]->getProducts()) == 0) {
-            echo '<strong class="pl-4">Il n\'y a aucun produit dans le panier.</strong>';
+            echo '<div style=\'margin: auto; text-align: center\'><strong class="pl-4">Il n\'y a aucun produit dans le panier.</strong></div>';
         } else {
             foreach ($_SESSION["cart"]->getProducts() as $product) {
                 echo ProductFormatter::formatCart($product);

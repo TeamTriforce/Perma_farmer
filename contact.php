@@ -22,7 +22,7 @@
                 $message = "Une erreur est survenue lors de l'envoi du mail.";
             }
 
-            echo "<div><strong>$message</strong></div>"
+            echo "<div style='margin: auto; text-align: center'><strong>$message</strong></div>"
             ?>
         <form method="POST" class="form-anim" action="mail.php">
             <div class="row">
