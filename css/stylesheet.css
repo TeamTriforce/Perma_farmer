@@ -203,6 +203,18 @@ h2 {
     transition-duration: 0.5s;
 }
 
+.form-ajout-panier{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility: hidden;
+}
+
+.form-ajout-panier input{
+    width: 100%;
+    height: 100%;
+}
+
 .div-produit:hover .overlay-produit {
     height: 100%;
     transition-duration: 0.5s;
@@ -212,6 +224,10 @@ h2 {
     opacity: 1;
     transition-duration: 0.5s;
     transition-delay: 0.2s;
+}
+
+.div-produit:hover .bouton-produit{
+    opacity: 1;
 }
 
 .overlay-produit {
@@ -239,6 +255,10 @@ h2 {
     border: 1px solid white;
     width: fit-content;
     padding: 5px;
+    background: transparent;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
 }
 
 .div-ajout-produit {

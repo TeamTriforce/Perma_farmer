@@ -16,13 +16,14 @@ if (!isset($_GET["errorCode"])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
+<body>
+    <?php
 include("head.php");
 ?>
 
-<h1>Une erreur est survenue.</h1>
-<p>
-    <?php
+    <h1>Une erreur est survenue.</h1>
+    <p>
+        <?php
     switch ($_GET["errorCode"]) {
         case 401:
             $msg = "Utilisateur non authentifié";
@@ -40,6 +41,7 @@ include("head.php");
 
     echo $msg;
     ?>
-</p>
+    </p>
 </body>
+
 </html>
