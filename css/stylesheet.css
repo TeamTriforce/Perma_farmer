@@ -69,10 +69,10 @@ nav {
 }
 
 .navbar-nav .nav-link {
-        display: flex;
+    display: flex;
     align-items: center;
     margin-right: 20px;
-    }
+}
 
 .navbar-toggler {
     top: 25px;
@@ -513,13 +513,20 @@ h2 {
         right: -16px;
         padding-right: 30px;
     }
-    
+
     .nav-part-2 {
-    width: 200px;
+        width: 200px;
     }
-    
+
     .navbar-nav .nav-link {
         display: block;
         margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .avis-client-p {
+        padding: 20px 20px 40px 20px;
+        border-bottom: dashed #ddd 2px;
     }
 }
