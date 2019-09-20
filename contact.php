@@ -14,17 +14,16 @@
         <div style="padding-top: 80px;">
             <h2 class="text-center pt-3 pb-4 title-h2">Contactez-nous</h2>
         </div>
-        <div>
+
             <?php
             if (isset($_GET["sent"]) && $_GET["sent"] == "1") {
                 $message = "Mail envoyé avec succes.";
-            } else {
+            } else if (isset($_GET["sent"]) && $_GET["sent"] == "0") {
                 $message = "Une erreur est survenue lors de l'envoi du mail.";
             }
 
-            echo "<strong>$message</strong>"
+            echo "<div><strong>$message</strong></div>"
             ?>
-        </div>
         <form method="POST" class="form-anim" action="mail.php">
             <div class="row">
                 <div class="col-md-6">
