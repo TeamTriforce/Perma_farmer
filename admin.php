@@ -66,14 +66,29 @@ include("head.php");
                                     Voulez-vous vraiment supprimer cet utilisateur ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success"><a href="#supprimerUtilisateur" data-toggle="modal" data-customer-id="my_id_value">Valider</a></button>
+                                    <button type="button" class="btn btn-success"><a href="#supprimerUtilisateur" data-toggle="modal">Valider</a></button>
                                     <script>
                                         $('#supprimerUtilisateur').on('show.bs.modal', function(e) {
 
-                                            var customer_id = $(e.relatedTarget).data('delete-customer-id');
-                                            
-                                            console.log (customer_id);
+                                            var customer_id = $(e.relatedTarget).data('deletecustomerid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
 
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "deleteCustomerId";
+                                            input.value = customer_id;
+
+                                            form.method = "POST";
+                                            form.action = "formManagement.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+
+                                            submit.click();
                                         });
                                     </script>
                                 </div>
@@ -253,7 +268,31 @@ include("head.php");
                                         Supprimer le produit !
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Valider</button>
+                                        <button type="button" class="btn btn-success"><a href="#supprimerArticle" data-toggle="modal">Valider</a></button>
+                                    <script>
+                                        $('#supprimerArticle').on('show.bs.modal', function(e) {
+
+                                            var product_id = $(e.relatedTarget).data('deleteproductid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
+
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "deleteProductId";
+                                            input.value = product_id;
+
+                                            form.method = "POST";
+                                            form.action = "formManagement.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+
+                                            submit.click();
+                                        });
+                                    </script>
                                     </div>
                                 </div>
                             </div>
