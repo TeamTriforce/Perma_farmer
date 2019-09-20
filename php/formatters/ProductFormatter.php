@@ -35,11 +35,11 @@ abstract class ProductFormatter
 	                                    <input type="submit" class="bouton-produit" value="Plus de détails">
                                     </form>
                                     <div class="div-ajout-produit">
-                                    <img src="assets/plus.png" class="ajout-panier-img">
                                         <form method="POST" action="formManagement.php" class="form-ajout-panier">
 	                                        <input type="hidden" name="addProductId" value="' . $product->getId() . '">
-	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img">
+	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img" >
                                         </form>
+                                        <img src="assets/plus.png" class="ajout-panier-img">
                                     </div>
                                  </div>
                                  <img src="' . $product->getImage() . '" />

@@ -12,6 +12,7 @@ session_start()
             <a href="index.php">Accueil</a>
             <a href="nos-produits.php">Nos produits</a>
             <a href="contact.php">Contact</a>
+            <a href="login.php">Login</a>
             <a href="panier.php">
                 <div class="d-flex align-items-center">
                     <div>
