@@ -12,5 +12,7 @@ $content="From: $name \n Email: $email \n Message: $message";
 $recipient = "youremail@here.com";
 $mailheader = "From: $email \r\n";
 mail($recipient, $subject, $content, $mailheader) or die("Error!");
-echo "Email sent!";
-?>
+
+header("Location: contact.php?sent=true");
+
+exit();
