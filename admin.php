@@ -113,27 +113,30 @@ include("head.php");
                                             </button>
                                         </div>
                                         <div class="modal-body text-left">
-                                            <form>
+                                            <form method="POST" action="formManagement.php">
                                                 <div class="form-group">
                                                     <label for="Nom">Nom</label>
-                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
+                                                    <input type="text" class="form-control" name="lastName" aria-describedby="lastNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Prenom">Prenom</label>
-                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp">
+                                                    <input type="text" class="form-control" name="firstName" aria-describedby="firstNameHelp">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="Mail">E-mail</label>
-                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp">
+                                                    <label for="Email">E-mail</label>
+                                                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Password">Mot-de-passe</label>
-                                                    <input type="password" class="form-control" id="Password">
+                                                    <input type="password" class="form-control" name="password">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="Abonnement">Abonnement</label>
+                                                    <input type="number" class="form-control" name="idSubscription">
+                                                </div>
+                                                <input type="hidden" name="createCustomer" value="1">
+                                                <input type="submit" value="Créer">
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success">Valider</button>
                                         </div>
                                     </div>
                                 </div>
