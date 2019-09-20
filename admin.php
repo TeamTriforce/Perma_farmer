@@ -268,7 +268,31 @@ include("head.php");
                                         Supprimer le produit !
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Valider</button>
+                                        <button type="button" class="btn btn-success"><a href="#supprimerArticle" data-toggle="modal">Valider</a></button>
+                                    <script>
+                                        $('#supprimerArticle').on('show.bs.modal', function(e) {
+
+                                            var product_id = $(e.relatedTarget).data('deleteproductid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
+
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "deleteProductId";
+                                            input.value = product_id;
+
+                                            form.method = "POST";
+                                            form.action = "formManagement.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+
+                                            submit.click();
+                                        });
+                                    </script>
                                     </div>
                                 </div>
                             </div>
