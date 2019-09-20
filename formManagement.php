@@ -34,7 +34,7 @@ if (isset($_POST["addProductId"])) {
 
 if (isset($_POST["removeProductId"])) {
     $productDao = new ProductDao();
-    $product = $productDao->read((int)($_POST["deleteProductId"]));
+    $product = $productDao->read((int)($_POST["removeProductId"]));
 
     if ($product == null) {
         header('Location: error.php?errorCode=404');
@@ -45,33 +45,6 @@ if (isset($_POST["removeProductId"])) {
     header('Location: panier.php');
 
     exit();
-}
-
-if (isset($_POST["login"]) && isset($_POST["password"])) {
-    $customerDao = new CustomerDao();
-    $adminDao = new AdminDao();
-    $adminId = $adminDao->login($_POST["login"], $_POST["password"]);
-    $customerId = $customerDao->login($_POST["login"], $_POST["password"]);
-
-    if ($adminId != null) {
-        $_SESSION["id"] = $adminId[AdminSchema::ID];
-        $_SESSION["token"] = $adminId[AdminSchema::TOKEN];
-
-        header('Location: admin.php');
-
-        exit();
-    } else if ($customerId != null) {
-        $_SESSION["id"] = $customerId[CustomerSchema::ID];
-        $_SESSION["token"] = $customerId[CustomerSchema::TOKEN];
-
-        header('Location: index.php');
-
-        exit();
-    } else {
-        header('Location: error.php?errorCode=403');
-
-        exit();
-    }
 }
 
 if (isset($_POST["checkout"])) {
@@ -556,6 +529,33 @@ if (isset($_POST["updateSubscriptionId"])) {
                 exit();
             }
         }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["authLogin"]) && isset($_POST["authPassword"])) {
+    $customerDao = new CustomerDao();
+    $adminDao = new AdminDao();
+    $adminId = $adminDao->login($_POST["authLogin"], $_POST["authPassword"]);
+    $customerId = $customerDao->login($_POST["authLogin"], $_POST["authPassword"]);
+
+    if ($adminId != null) {
+        $_SESSION["id"] = $adminId[AdminSchema::ID];
+        $_SESSION["token"] = $adminId[AdminSchema::TOKEN];
+
+        header('Location: admin.php');
+
+        exit();
+    } else if ($customerId != null) {
+        $_SESSION["id"] = $customerId[CustomerSchema::ID];
+        $_SESSION["token"] = $customerId[CustomerSchema::TOKEN];
+
+        header('Location: index.php');
+
+        exit();
     } else {
         header('Location: error.php?errorCode=403');
 

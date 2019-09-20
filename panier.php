@@ -26,12 +26,17 @@ include("header.php");
         ?>
         </div>
     </div>
-    <div class="d-flex justify-content-center form-anim">
+
+    <?php
+    if ($_SESSION["cart"] != null && $_SESSION["cart"]->getProducts() != null && count($_SESSION["cart"]->getProducts()) > 0) {
+        echo '<div class="d-flex justify-content-center form-anim">
         <form method="POST" action="formManagement.php" class="form-commande">
         <input type="hidden" name="checkout" value="1">
         <input type="submit" value="Commander">
         </form>
-    </div>
+    </div>';
+    }
+    ?>
 </body>
 
 </html>

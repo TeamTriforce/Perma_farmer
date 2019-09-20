@@ -45,15 +45,15 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 avis-clients-div">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-4 col-4">
                                 <img src="assets/clients/mathieu.jpg">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-5 col-5">
                                 <strong>Mathieu Hubert</strong>
                                 <p>42 ans</p>
                                 <img src="assets/etoiles/etoiles-5.png" class="etoiles-article">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 avis-client-p">
                                 <p>Eius populus ab incunabulis primis ad usque pueritiae tempus extremum, quod annis circumcluditur fere trecentis, circummurana pertulit bella, deinde aetatem ingressus.</p>
                             </div>
                         </div>
@@ -64,15 +64,15 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 avis-clients-div">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-4 col-4">
                                 <img src="assets/clients/nicolas.PNG">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-5 col-5">
                                 <strong>Nicolas Caoulan</strong>
                                 <p>24 ans</p>
                                 <img src="assets/etoiles/etoiles-2.png" class="etoiles-article">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 avis-client-p">
                                 <p>Eius populus ab incunabulis primis ad usque pueritiae tempus extremum, quod annis circumcluditur fere trecentis, circummurana pertulit bella, deinde aetatem ingressus.</p>
                             </div>
                         </div>
@@ -83,15 +83,15 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 avis-clients-div">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-4 col-4">
                                 <img src="assets/clients/denis.jpg">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-5 col-5">
                                 <strong>Denis Legourrierec</strong>
                                 <p>57 ans</p>
                                 <img src="assets/etoiles/etoiles-4.png" class="etoiles-article">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 avis-client-p">
                                 <p>Eius populus ab incunabulis primis ad usque pueritiae tempus extremum, quod annis circumcluditur fere trecentis, circummurana pertulit bella, deinde aetatem ingressus.</p>
                             </div>
                         </div>
@@ -102,15 +102,15 @@
                 <div class="row">
                     <div class="col-md-10 offset-md-1 avis-clients-div">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-4 col-4">
                                 <img src="assets/clients/erwan.jpg">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-sm-5 col-5">
                                 <strong>Erwan Le Hellard</strong>
                                 <p>22 ans</p>
                                 <img src="assets/etoiles/etoiles-5.png" class="etoiles-article">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-7 avis-client-p">
                                 <p>Eius populus ab incunabulis primis ad usque pueritiae tempus extremum, quod annis circumcluditur fere trecentis, circummurana pertulit bella, deinde aetatem ingressus.</p>
                             </div>
                         </div>

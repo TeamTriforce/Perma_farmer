@@ -16,8 +16,8 @@ include("header.php");
         </div>
     <div class="d-flex justify-content-center pt-4">
         <form method="POST" action="formManagement.php" class="d-flex flex-column align-items-center form-login form-anim">
-            <input type="text" name="login" placeholder="Identifiant/Email"><br>
-            <input type="password" name="password" placeholder="Mot de passe"><br>
+            <input type="text" name="authLogin" placeholder="Identifiant/Email"><br>
+            <input type="password" name="authPassword" placeholder="Mot de passe"><br>
             <input type="submit" value="Connexion">
         </form>
     </div>
