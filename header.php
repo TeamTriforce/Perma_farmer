@@ -33,7 +33,7 @@ session_start()
                             <p>Panier</p>
                             <small>
                                 <?php
-                            if ($_SESSION["cart"] != null && $_SESSION["cart"]->getProducts() != null) {
+                            if (isset($_SESSION["cart"]) && $_SESSION["cart"]->getProducts() != null) {
                                 echo count($_SESSION["cart"]->getProducts());
                             } else {
                                 echo '0';

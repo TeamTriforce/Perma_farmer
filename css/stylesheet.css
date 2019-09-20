@@ -529,4 +529,12 @@ h2 {
         padding: 20px 20px 40px 20px;
         border-bottom: dashed #ddd 2px;
     }
+    
+    .overlay-produit {
+    height: 100%;
+}
+    
+    .bouton-produit {
+    opacity: 1;
+}
 }
