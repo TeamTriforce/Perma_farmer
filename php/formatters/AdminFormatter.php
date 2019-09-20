@@ -32,7 +32,7 @@ abstract class AdminFormatter
     {
         return '<div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                     <div class="col-md-6 text-left">
-                        <strong>' . $customer->getFirstName() . $customer->getLastName() . '</strong>
+                        <strong>' . '[' . $admin->getId() . ']' . ' ' . $admin->getLogin() . '</strong>
                     </div>
 
                     <div class="col-md-3 text-center">
@@ -44,7 +44,7 @@ abstract class AdminFormatter
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="ajouterAdmin" tabindex="-1" role="dialog" aria-labelledby="modifierAdmin" aria-hidden="true">
+                    <div class="modal fade" id="modifierAdmin" tabindex="-1" role="dialog" aria-labelledby="modifierAdmin" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -56,14 +56,9 @@ abstract class AdminFormatter
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <label for="Prenom">Prenom</label>
-                                            <input type="text" class="form-control" id="Prenom" placeholder="Prenom">
+                                            <label for="Prenom">Login</label>
+                                            <input type="text" class="form-control" id="Prenom" placeholder="' . $admin->getLogin() . '">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="Nom">Nom</label>
-                                            <input type="text" class="form-control" id="Nom" placeholder="Nom">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -74,11 +69,11 @@ abstract class AdminFormatter
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="ajouterAdmin" tabindex="-1" role="dialog" aria-labelledby="ajouterAdmin" aria-hidden="true">
+                    <div class="modal fade" id="supprimerAdmin" tabindex="-1" role="dialog" aria-labelledby="supprimerAdmin" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="ajouterAdmin">Supprimer</h5>
+                                    <h5 class="modal-title" id="supprimerAdmin">Supprimer</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

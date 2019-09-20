@@ -37,7 +37,7 @@ abstract class ProductFormatter
                                     <div class="div-ajout-produit">
                                         <form method="POST" action="formManagement.php" class="form-ajout-panier">
 	                                        <input type="hidden" name="addProductId" value="' . $product->getId() . '">
-	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img" >
+	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img" value="">
                                         </form>
                                         <img src="assets/plus.png" class="ajout-panier-img">
                                     </div>
@@ -99,21 +99,17 @@ abstract class ProductFormatter
     {
         return '<div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-12">
-                        <p><i>' . $product->getLabel() . '</i></p>
+                        <p><i>' . '[' . $product->getId() . ']' . ' ' . $product->getLabel() . '</i></p>
                         <strong>Description :</strong>
                         <p>' . $product->getDescription() . '</p>
-                        <p><strong>Prix : </strong>' . $product->getPrice() . '</p>
+                        <p><strong>Prix : </strong>' . $product->getPrice() . ' €</p>
                     </div>
 
-                    <div class="col-md-4 text-center">
-                        <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterArticle">Ajouter</button>
-                    </div>
-
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-6 text-center">
                         <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierArticle">Modifier</button>
                     </div>
 
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-6 text-center">
                         <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerArticle">Supprimer</button>
                     </div>
                 </div>';
@@ -134,7 +130,6 @@ abstract class ProductFormatter
                         <label for="Prix">Prix</label>
                         <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp" placeholder="' . $product->getPrice() . '">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form> ';
     }
 
