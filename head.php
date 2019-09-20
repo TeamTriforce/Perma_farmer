@@ -20,8 +20,6 @@
     <?php
     require_once dirname(__FILE__) . "/php/Autoloader.php";
 
-    session_start();
-
     if (!isset($_SESSION["cart"])) {
         $_SESSION["cart"] = new Order([]);
         $_SESSION["cart"]->setProducts([]);

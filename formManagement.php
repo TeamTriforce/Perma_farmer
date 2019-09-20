@@ -558,7 +558,7 @@ if (isset($_POST["authLogin"]) && isset($_POST["authPassword"])) {
         exit();
     } else {
         header('Location: error.php?errorCode=403');
-        
+
         exit();
     }
 }
