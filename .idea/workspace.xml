@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245d0815-04c7-42b7-8118-43faa54b75f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/dao/DbConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/dao/DbConnector.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formManagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/formManagement.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +67,7 @@
           <entry key="css" value="27" />
           <entry key="json" value="7" />
           <entry key="md" value="285" />
-          <entry key="php" value="19862" />
+          <entry key="php" value="19864" />
           <entry key="sql" value="332" />
           <entry key="txt" value="17" />
           <entry key="xml" value="54" />
@@ -81,7 +79,7 @@
           <entry key="HTML" value="51" />
           <entry key="JSON" value="7" />
           <entry key="Markdown" value="285" />
-          <entry key="PHP" value="19811" />
+          <entry key="PHP" value="19813" />
           <entry key="PLAIN_TEXT" value="17" />
           <entry key="SQL" value="332" />
           <entry key="XML" value="54" />
@@ -109,16 +107,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/formManagement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
+            <state relative-caret-position="224">
+              <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="388">
@@ -321,8 +319,8 @@
         <option value="$PROJECT_DIR$/panier.php" />
         <option value="$PROJECT_DIR$/contact.php" />
         <option value="$PROJECT_DIR$/php/dao/DbConnector.php" />
-        <option value="$PROJECT_DIR$/formManagement.php" />
         <option value="$PROJECT_DIR$/admin.php" />
+        <option value="$PROJECT_DIR$/formManagement.php" />
       </list>
     </option>
   </component>
@@ -490,7 +488,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568636368567</updated>
-      <workItem from="1568636369674" duration="80950000" />
+      <workItem from="1568636369674" duration="81023000" />
     </task>
     <servers />
   </component>
@@ -527,7 +525,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80950000" />
+    <option name="totallyTimeSpent" value="81023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="24" width="1680" height="1027" extended-state="6" />
@@ -934,13 +932,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/formManagement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="388">
@@ -969,6 +960,13 @@
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#15117#15124#1#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formManagement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
         </state>
       </provider>
     </entry>

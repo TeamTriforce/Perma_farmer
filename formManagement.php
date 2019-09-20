@@ -34,7 +34,7 @@ if (isset($_POST["addProductId"])) {
 
 if (isset($_POST["removeProductId"])) {
     $productDao = new ProductDao();
-    $product = $productDao->read((int)($_POST["deleteProductId"]));
+    $product = $productDao->read((int)($_POST["removeProductId"]));
 
     if ($product == null) {
         header('Location: error.php?errorCode=404');
