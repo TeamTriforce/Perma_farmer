@@ -1,7 +1,3 @@
-<?php
-session_start()
-?>
-
 <nav class="navbar navbar-expand-lg">
     <div class="nav-part-1">
         <a href="index.php">
@@ -18,6 +14,8 @@ session_start()
                 <a class="nav-item nav-link" href="nos-produits.php">Nos produits</a>
                 <a class="nav-item nav-link" href="contact.php">Contact</a>
                 <?php
+                require_once dirname(__FILE__) . "/php/Autoloader.php";
+                
                     if (isset($_SESSION["id"]) && isset($_SESSION["token"])) {
                         echo '<a class="nav-item nav-link" href="logout.php">Logout</a>';
                     } else {

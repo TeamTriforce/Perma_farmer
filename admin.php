@@ -60,7 +60,46 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success">Sauvegarder</button>
+                                    <button type="button" class="btn btn-success"><a href="#modifierUtilisateur" data-toggle="modal">Sauvegarder</a></button>
+
+                                    <script>
+                                        $('#modifierUtilisateur').on('show.bs.modal', function(e) {
+
+                                            var customer_id = $(e.relatedTarget).data('modifycustomerid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
+
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "modifyCustomerId";
+                                            input.value = customer_id;
+
+                                            input.type = "text";
+                                            input.name = "modifyCustomerId";
+
+                                            input.type = "text";
+                                            input.name = "modifyCustomerId";
+
+                                            input.type = "email";
+                                            input.name = "modifyCustomerId";
+
+                                            input.type = "password";
+                                            input.name = "modifyCustomerId";
+
+                                            input.type = "text";
+                                            input.name = "modifyCustomerId";
+
+                                            form.method = "POST";
+                                            form.action = "admin.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+                                        });
+
+                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -104,13 +143,14 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
 
                                             submit.click();
                                         });
+
                                     </script>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
 
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="col-md-12 text-center" style="margin-bottom: 10px;">
@@ -229,7 +269,7 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
                         ?>
 
                     </div>
-                    
+
                     <!-- Modal -->
                     <div class="modal fade" id="supprimerAdmin" tabindex="-1" role="dialog" aria-labelledby="supprimerAdmin" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -268,12 +308,13 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
 
                                             submit.click();
                                         });
+
                                     </script>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-bottom: 10px;">
                         <div class="col-md-12 text-center" style="margin-bottom: 10px;">
                             <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterAdmin">Ajouter un administrateur</button>
@@ -341,10 +382,40 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
                                     <div class="modal-body">
                                         <?php
                                         echo ProductFormatter::formatArticlesForm($product);
-                                        ?>                                    
+                                        ?>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Valider</button>
+                                        <button type="button" class="btn btn-success"><a href="#modifierArticle" data-toggle="modal">Sauvegarder</a></button>
+
+                                        <script>
+                                            $('#modifierArticle').on('show.bs.modal', function(e) {
+
+                                                var customer_id = $(e.relatedTarget).data('modifyarticleid');
+                                                var form = document.createElement("form");
+                                                var input = document.createElement("input");
+                                                var submit = document.createElement("input");
+
+                                                submit.type = "submit";
+
+                                                input.type = "hidden";
+                                                input.name = "modifyArticleId";
+                                                input.value = customer_id;
+
+                                                input.type = "text";
+                                                input.name = "modifyArticleId";
+
+                                                input.type = "text";
+                                                input.name = "modifyArticleId";
+
+                                                form.method = "POST";
+                                                form.action = "admin.php";
+
+                                                form.appendChild(input);
+                                                form.appendChild(submit);
+                                                document.body.appendChild(form);
+                                            });
+
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -365,30 +436,31 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-success"><a href="#supprimerArticle" data-toggle="modal">Valider</a></button>
-                                    <script>
-                                        $('#supprimerArticle').on('show.bs.modal', function(e) {
+                                        <script>
+                                            $('#supprimerArticle').on('show.bs.modal', function(e) {
 
-                                            var product_id = $(e.relatedTarget).data('deleteproductid');
-                                            var form = document.createElement("form");
-                                            var input = document.createElement("input");
-                                            var submit = document.createElement("input");
+                                                var product_id = $(e.relatedTarget).data('deleteproductid');
+                                                var form = document.createElement("form");
+                                                var input = document.createElement("input");
+                                                var submit = document.createElement("input");
 
-                                            submit.type = "submit";
+                                                submit.type = "submit";
 
-                                            input.type = "hidden";
-                                            input.name = "deleteProductId";
-                                            input.value = product_id;
+                                                input.type = "hidden";
+                                                input.name = "deleteProductId";
+                                                input.value = product_id;
 
-                                            form.method = "POST";
-                                            form.action = "formManagement.php";
+                                                form.method = "POST";
+                                                form.action = "formManagement.php";
 
-                                            form.appendChild(input);
-                                            form.appendChild(submit);
-                                            document.body.appendChild(form);
+                                                form.appendChild(input);
+                                                form.appendChild(submit);
+                                                document.body.appendChild(form);
 
-                                            submit.click();
-                                        });
-                                    </script>
+                                                submit.click();
+                                            });
+
+                                        </script>
                                     </div>
                                 </div>
                             </div>
@@ -425,7 +497,11 @@ if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Prix">Prix</label>
+<<<<<<< Updated upstream
                                                     <input type="number" step="0.01" class="form-control" name="price" aria-describedby="emailHelp">
+=======
+                                                    <input type="text" class="form-control" id="Prix" aria-describedby="prixHelp">
+>>>>>>> Stashed changes
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Image">Image</label>

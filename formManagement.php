@@ -359,7 +359,7 @@ if (isset($_POST["updateProductId"])) {
             }
         }
     } else {
-        header('Location: error.php?errorCode=403');
+        //header('Location: error.php?errorCode=403');
 
         exit();
     }

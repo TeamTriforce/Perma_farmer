@@ -119,7 +119,7 @@ abstract class CustomerFormatter
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierUtilisateur">Modifier</button>
+                                <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierUtilisateur" data-modifyCustomerId="' . $customer->getId() . '">Modifier</button>
                             </div>
 
                             <div class="col-md-6 text-center">
@@ -131,22 +131,26 @@ abstract class CustomerFormatter
     
     public static function formatAdminUtilisateursModificationModal(Customer $customer) 
     {
-        return '<form>
+        return '<form action="admin.php" method="POST">
                     <div class="form-group">
                         <label for="Nom">Nom</label>
-                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $customer->getLastName() . '">
+                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" value="' . $customer->getLastName() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Prenom">Prenom</label>
-                        <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . $customer->getFirstName() . '">
+                        <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" value="' . $customer->getFirstName() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getEmail() . '">
+                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" value="' . $customer->getEmail() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Password">Mot-de-passe</label>
-                        <input type="password" class="form-control" id="Password" placeholder="' . $customer->getPassword() . '">
+                        <input type="password" class="form-control" id="Password" value="' . $customer->getPassword() . '" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Subscription">Souscription</label>
+                        <input type="text" class="form-control" id="Subscription" aria-describedby="Subscription" value="' . $customer->getIdSubscription() . '" required>
                     </div>
                 </form>';
     }

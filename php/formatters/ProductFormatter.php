@@ -106,9 +106,9 @@ abstract class ProductFormatter
                     </div>
 
                     <div class="col-md-6 text-center">
-                        <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierArticle">Modifier</button>
+                        <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierArticle" data-modifyArticleId="' . $product->getId() . '">Modifier</button>
                     </div>
-
+                    
                     <div class="col-md-6 text-center">
                         <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerArticle" data-deleteProductId="' . $product->getId() . '">Supprimer</button>
                     </div>
@@ -120,15 +120,15 @@ abstract class ProductFormatter
         return '<form>
                     <div class="form-group">
                         <label for="Nom">Nom</label>
-                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $product->getLabel() . '">
+                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" value="' . $product->getLabel() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Description">Description</label>
-                        <textarea class="form-control" id="Description" rows="3" placeholder="' . $product->getDescription() . '"></textarea>
+                        <textarea class="form-control" id="Description" rows="3" value="' . $product->getDescription() . '"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="Prix">Prix</label>
-                        <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp" placeholder="' . $product->getPrice() . '">
+                        <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp" value="' . $product->getPrice() . '" required>
                     </div>
                 </form> ';
     }

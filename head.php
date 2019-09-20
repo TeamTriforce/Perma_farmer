@@ -1,3 +1,8 @@
+<?php
+require_once dirname(__FILE__) . "/php/Autoloader.php";
+
+session_start()
+?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +23,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <?php
-    require_once dirname(__FILE__) . "/php/Autoloader.php";
 
     if (!isset($_SESSION["cart"])) {
         $_SESSION["cart"] = new Order([]);
