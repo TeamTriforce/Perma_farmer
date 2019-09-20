@@ -47,33 +47,6 @@ if (isset($_POST["removeProductId"])) {
     exit();
 }
 
-if (isset($_POST["login"]) && isset($_POST["password"])) {
-    $customerDao = new CustomerDao();
-    $adminDao = new AdminDao();
-    $adminId = $adminDao->login($_POST["login"], $_POST["password"]);
-    $customerId = $customerDao->login($_POST["login"], $_POST["password"]);
-
-    if ($adminId != null) {
-        $_SESSION["id"] = $adminId[AdminSchema::ID];
-        $_SESSION["token"] = $adminId[AdminSchema::TOKEN];
-
-        header('Location: admin.php');
-
-        exit();
-    } else if ($customerId != null) {
-        $_SESSION["id"] = $customerId[CustomerSchema::ID];
-        $_SESSION["token"] = $customerId[CustomerSchema::TOKEN];
-
-        header('Location: index.php');
-
-        exit();
-    } else {
-        header('Location: error.php?errorCode=403');
-
-        exit();
-    }
-}
-
 if (isset($_POST["checkout"])) {
     $customerDao = new CustomerDao();
 
@@ -556,6 +529,33 @@ if (isset($_POST["updateSubscriptionId"])) {
                 exit();
             }
         }
+    } else {
+        header('Location: error.php?errorCode=403');
+
+        exit();
+    }
+}
+
+if (isset($_POST["login"]) && isset($_POST["password"])) {
+    $customerDao = new CustomerDao();
+    $adminDao = new AdminDao();
+    $adminId = $adminDao->login($_POST["login"], $_POST["password"]);
+    $customerId = $customerDao->login($_POST["login"], $_POST["password"]);
+
+    if ($adminId != null) {
+        $_SESSION["id"] = $adminId[AdminSchema::ID];
+        $_SESSION["token"] = $adminId[AdminSchema::TOKEN];
+
+        header('Location: admin.php');
+
+        exit();
+    } else if ($customerId != null) {
+        $_SESSION["id"] = $customerId[CustomerSchema::ID];
+        $_SESSION["token"] = $customerId[CustomerSchema::TOKEN];
+
+        header('Location: index.php');
+
+        exit();
     } else {
         header('Location: error.php?errorCode=403');
 

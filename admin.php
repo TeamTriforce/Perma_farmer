@@ -21,9 +21,9 @@ include("head.php");
 
                     <?php
                     $customerDao = new customerDao();
-                    $customer = $customerDao->queryAll();
+                    $customers = $customerDao->queryAll();
                     
-                    foreach ($customer as $customer) {
+                    foreach ($customers as $customer) {
                         echo CustomerFormatter::formatAdminUtilisateurs($customer);
                     }
                     ?>
@@ -95,8 +95,51 @@ include("head.php");
                             </div>
                         </div>
                     </div>
+                    
+                    
 
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="col-md-12 text-center" style="margin-bottom: 10px;">
+                            <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterUtilisateur">Ajouter un client</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="ajouterUtilisateur" tabindex="-1" role="dialog" aria-labelledby="ajouterUtilisateur" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="ajouterUtilisateur">Ajouter</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-left">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="Nom">Nom</label>
+                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Prenom">Prenom</label>
+                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Mail">E-mail</label>
+                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Password">Mot-de-passe</label>
+                                                    <input type="password" class="form-control" id="Password">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success">Valider</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <img src="assets/arrow-down.png" />
                     </div>
                 </div>
@@ -169,6 +212,51 @@ include("head.php");
                         ?>
 
                     </div>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="supprimerAdmin" tabindex="-1" role="dialog" aria-labelledby="supprimerAdmin" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="supprimerAdmin">Supprimer</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Supprimer l'administrateur
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"><a href="#supprimerAdmin" data-toggle="modal">Valider</a></button>
+                                    <script>
+                                        $('#supprimerAdmin').on('show.bs.modal', function(e) {
+
+                                            var admin_id = $(e.relatedTarget).data('deleteadminid');
+                                            var form = document.createElement("form");
+                                            var input = document.createElement("input");
+                                            var submit = document.createElement("input");
+
+                                            submit.type = "submit";
+
+                                            input.type = "hidden";
+                                            input.name = "deleteAdminId";
+                                            input.value = admin_id;
+
+                                            form.method = "POST";
+                                            form.action = "formManagement.php";
+
+                                            form.appendChild(input);
+                                            form.appendChild(submit);
+                                            document.body.appendChild(form);
+
+                                            submit.click();
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-bottom: 10px;">
                         <div class="col-md-12 text-center" style="margin-bottom: 10px;">
                             <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterAdmin">Ajouter un administrateur</button>
@@ -183,28 +271,19 @@ include("head.php");
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form>
+                                        <div class="modal-body text-left">
+                                            <form method="POST" action="formManagement.php">
                                                 <div class="form-group">
-                                                    <label for="Nom">Nom</label>
-                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Prenom">Prenom</label>
-                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="Mail">E-mail</label>
-                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp">
+                                                    <label for="Login">Login</label>
+                                                    <input type="text" class="form-control" name="login" aria-describedby="lastNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Password">Mot-de-passe</label>
-                                                    <input type="password" class="form-control" id="Password">
+                                                    <input type="password" class="form-control" name="password">
                                                 </div>
+                                                <input type="hidden" name="createAdmin" value="1">
+                                                <input type="submit" value="Créer">
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success">Valider</button>
                                         </div>
                                     </div>
                                 </div>
@@ -225,9 +304,9 @@ include("head.php");
 
                         <?php
                         $productDao = new productDao();
-                        $product = $productDao->queryAll();
+                        $products = $productDao->queryAll();
                     
-                        foreach ($product as $product) {
+                        foreach ($products as $product) {
                             echo ProductFormatter::formatArticles($product);
                         }
                         ?>
@@ -314,23 +393,30 @@ include("head.php");
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form method="POST" action="formManagement.php">
                                                 <div class="form-group">
-                                                    <label for="Nom">Nom</label>
-                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
+                                                    <label for="Label">Label</label>
+                                                    <input type="text" class="form-control" name="label" aria-describedby="lastNameHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Description">Description</label>
-                                                    <textarea class="form-control" id="Description" rows="3"></textarea>
+                                                    <textarea class="form-control" name="description" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Stock">Stock</label>
+                                                    <input type="number" step="0.01" class="form-control" name="stock" aria-describedby="emailHelp">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="Prix">Prix</label>
-                                                    <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp">
+                                                    <input type="number" step="0.01" class="form-control" name="price" aria-describedby="emailHelp">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="Image">Image</label>
+                                                    <input type="text" class="form-control" name="image" aria-describedby="emailHelp">
+                                                </div>
+                                                <input type="hidden" name="createProduct" value="1">
+                                                <input type="submit" value="Créer">
                                             </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success">Valider</button>
                                         </div>
                                     </div>
                                 </div>
