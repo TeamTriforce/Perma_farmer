@@ -3,6 +3,20 @@
 
 <?php
 include("head.php");
+
+if (!isset($_SESSION['id']) && !isset($_SESSION['token'])) {
+    header('Location: index.php');
+
+    exit();
+} else {
+    $adminDao = new AdminDao();
+
+    if (!$adminDao->checkToken($_SESSION["id"], $_SESSION["token"])) {
+        header('Location: index.php');
+
+        exit();
+    }
+}
 ?>
 
 <body>

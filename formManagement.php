@@ -536,11 +536,11 @@ if (isset($_POST["updateSubscriptionId"])) {
     }
 }
 
-if (isset($_POST["login"]) && isset($_POST["password"])) {
+if (isset($_POST["authLogin"]) && isset($_POST["authPassword"])) {
     $customerDao = new CustomerDao();
     $adminDao = new AdminDao();
-    $adminId = $adminDao->login($_POST["login"], $_POST["password"]);
-    $customerId = $customerDao->login($_POST["login"], $_POST["password"]);
+    $adminId = $adminDao->login($_POST["authLogin"], $_POST["authPassword"]);
+    $customerId = $customerDao->login($_POST["authLogin"], $_POST["authPassword"]);
 
     if ($adminId != null) {
         $_SESSION["id"] = $adminId[AdminSchema::ID];
@@ -558,7 +558,7 @@ if (isset($_POST["login"]) && isset($_POST["password"])) {
         exit();
     } else {
         header('Location: error.php?errorCode=403');
-
+        
         exit();
     }
 }

@@ -19,9 +19,9 @@ session_start()
                 <a class="nav-item nav-link" href="contact.php">Contact</a>
                 <?php
                     if (isset($_SESSION["id"]) && isset($_SESSION["token"])) {
-                        echo '<a class="nav-item nav-link" href=\"logout.php\">Logout</a>';
+                        echo '<a class="nav-item nav-link" href="logout.php">Logout</a>';
                     } else {
-                        echo '<a class="nav-item nav-link" href=\"login.php\">Login</a>';
+                        echo '<a class="nav-item nav-link" href="login.php">Login</a>';
                     }
                 ?>
                 <a href="panier.php">
