@@ -9,15 +9,16 @@
 require_once dirname(__FILE__) . "/php/Autoloader.php";
 
 session_start();
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('memory_limit', '1G');
 error_reporting(E_ALL);
-
 if (isset($_POST["addProductId"])) {
     $productDao = new ProductDao();
-    $product = $productDao->read($_POST["addProductId"]);
+
+    var_dump(($_POST["addProductId"]));
+    var_dump((int)($_POST["addProductId"]));
+    $product = $productDao->read((int)($_POST["addProductId"]));
 
     if ($product == null) {
         header('Location: error.php?errorCode=404');
@@ -34,7 +35,7 @@ if (isset($_POST["addProductId"])) {
 
 if (isset($_POST["deleteProductId"])) {
     $productDao = new ProductDao();
-    $product = $productDao->read($_POST["deleteProductId"]);
+    $product = $productDao->read((int)($_POST["deleteProductId"]));
 
     if ($product == null) {
         header('Location: error.php?errorCode=404');

@@ -50,7 +50,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["token"])) {
                 echo "Order not found.";
             }
         } else if (isset($_DELETE["id"])) {
-            if ($orderDao->delete($_DELETE["id"])) {
+            if ($orderDao->deleteAssociatedProducts($_DELETE["id"]) && $orderDao->delete($_DELETE["id"])) {
                 $response_code = 200;
 
                 echo "Successfully deleted.";
