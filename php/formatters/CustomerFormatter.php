@@ -10,7 +10,8 @@ require_once dirname(__FILE__) . "/../Autoloader.php";
 
 abstract class CustomerFormatter
 {
-    public static function formatProfile(Customer $customer) {
+    public static function formatProfile(Customer $customer) 
+    {
         $str = '<div class="container">
                         <div class="row">
                             <h1>Profil</h1>
@@ -21,7 +22,7 @@ abstract class CustomerFormatter
                                     <h2>Informations personnelles</h2>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-9"> /* Informations du client */
+                                    <div class="col-md-9">
                                         <p>' . $customer->getFirstName() . '</p>
                                         <p>' . $customer->getLastName() . '</p>
                                         <p>' . $customer->getEmail() . '</p>
@@ -33,20 +34,20 @@ abstract class CustomerFormatter
                                 <div class="row">
                                     <form>
                                         <div class="form-group">
-                                            <label for="Nom">' . $customer->getLastName() . '</label>
-                                            <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $customer->getLastName() . '">
+                                            <label for="Nom">Nom</label>
+                                            <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="Nom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Prenom">' . $customer->getFirstName() . '</label>
-                                            <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="' . $customer->getFirstName() . '">
+                                            <label for="Prenom">Prenom</label>
+                                            <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" placeholder="Prenom">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Mail">' . $customer->getEmail() . '</label>
-                                            <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="' . $customer->getMail() . '">
+                                            <label for="Mail">E-mail</label>
+                                            <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" placeholder="Mail">
                                         </div>
                                         <div class="form-group">
-                                            <label for="Password">' . $customer->getPassword() . '</label>
-                                            <input type="password" class="form-control" id="Password" placeholder="' . $customer->getPassword() . '">
+                                            <label for="Password">Mot-de-passe</label>
+                                            <input type="password" class="form-control" id="Password" placeholder="Password">
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
@@ -86,7 +87,8 @@ abstract class CustomerFormatter
         return $str;
     }
 
-    public static function formatAdminList(Customer $customer) {
+    public static function formatAdminList(Customer $customer) 
+    {
         return '<div class="row">
                         <div class="col-md-10 offset-md-1" style="border: solid black 2px; margin-bottom:20px;">
                             <div class="row">
@@ -105,15 +107,30 @@ abstract class CustomerFormatter
                     </div>';
     }
     
-    public static function formatAdminUtilisateurs(Customer $customer) {
-        return '<div class="col-md-12">
-                    <strong>' . $customer->getFirstName() . $customer->getLastName() . '</strong>
-                    <p>' . $customer->getEmail() . '</p>
-                    <p>' . $customer->getCode() . '</p>
-                </div>';
+    public static function formatAdminUtilisateurs(Customer $customer) 
+    {
+        return '<div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1" style="border: solid black 2px; margin-bottom:20px;">
+                        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+
+                            <div class="col-md-12">
+                                <strong>' . $customer->getFirstName() . $customer->getLastName() . '</strong>
+                                <p>' . $customer->getEmail() . '</p>
+                                <p>' . $customer->getCode() . '</p>
+                            </div>
+
+                            <div class="col-md-6 text-center">
+                                <button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#modifierUtilisateur">Modifier</button>
+                            </div>
+
+                            <div class="col-md-6 text-center">
+                                <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerUtilisateur">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>';
     }
     
-    public static function formatAdminUtilisateursModificationModal(Customer $customer) {
+    public static function formatAdminUtilisateursModificationModal(Customer $customer) 
+    {
         return '<form>
                     <div class="form-group">
                         <label for="Nom">' . $customer->getLastName() . '</label>

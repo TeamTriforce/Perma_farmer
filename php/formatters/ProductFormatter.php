@@ -118,5 +118,24 @@ abstract class ProductFormatter
                     </div>
                 </div>';
     }
+    
+        public static function formatArticlesForm(Product $product)
+    {
+        return '<form>
+                    <div class="form-group">
+                        <label for="Nom">Nom</label>
+                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" placeholder="' . $product->getLabel() . '">
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea class="form-control" id="Description" rows="3" placeholder="' . $product->getDescription() . '"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="Prix">Prix</label>
+                        <input type="text" class="form-control" id="Prix" aria-describedby="emailHelp" placeholder="' . $product->getPrice() . '">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form> ';
+    }
 
 }
