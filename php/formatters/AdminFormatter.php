@@ -40,7 +40,7 @@ abstract class AdminFormatter
                     </div>
 
                     <div class="col-md-3 text-center">
-                        <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerAdmin">Supprimer</button>
+                        <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerAdmin" data-deleteAdminId="' . $admin->getId() . '">Supprimer</button>
                     </div>
 
                     <!-- Modal -->
@@ -67,27 +67,6 @@ abstract class AdminFormatter
                             </div>
                         </div>
                     </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="supprimerAdmin" tabindex="-1" role="dialog" aria-labelledby="supprimerAdmin" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="supprimerAdmin">Supprimer</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Supprimer l\'administrateur
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success">Valider</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>';
     }
 

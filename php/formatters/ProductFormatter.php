@@ -85,7 +85,7 @@ abstract class ProductFormatter
                             <div class="col-md-8">
                                 <h3>' . $product->getLabel() . '</h3>
                                 <form method="POST" action="formManagement.php">
-	                                <input type="hidden" name="deleteProductId" value="' . $product->getId() . '">
+	                                <input type="hidden" name="removeProductId" value="' . $product->getId() . '">
 	                                <input type="submit" value="x" class="form-delete-article">
                                 </form>
                             </div>
@@ -110,7 +110,7 @@ abstract class ProductFormatter
                     </div>
 
                     <div class="col-md-6 text-center">
-                        <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerArticle">Supprimer</button>
+                        <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerArticle" data-deleteProductId="' . $product->getId() . '">Supprimer</button>
                     </div>
                 </div>';
     }

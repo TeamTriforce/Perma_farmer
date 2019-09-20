@@ -32,7 +32,7 @@ if (isset($_POST["addProductId"])) {
     exit();
 }
 
-if (isset($_POST["deleteProductId"])) {
+if (isset($_POST["removeProductId"])) {
     $productDao = new ProductDao();
     $product = $productDao->read((int)($_POST["deleteProductId"]));
 

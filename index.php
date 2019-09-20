@@ -31,8 +31,7 @@ include("header.php");
             <h1>Perma Farmer</h1>
             <p class="lead">Nous avons ouvert nos portes à Rennes en Mars 2018.<br/>De la volaille à la crémerie, des
                 légumes aux boissons, en passant par l‘épicerie fine, ces produits sont tous de véritables produits
-                fermiers, avec la qualité et les saveurs qui leur sont propres.<br> All you get is this text and a
-                mostly barebones HTML document.</p>
+                fermiers, avec la qualité et les saveurs qui leur sont propres.</p>
         </div>
     </div>
 
