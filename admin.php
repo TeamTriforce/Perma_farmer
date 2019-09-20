@@ -95,8 +95,51 @@ include("head.php");
                             </div>
                         </div>
                     </div>
+                    
+                    
 
                     <div class="col-md-10 offset-md-1 col-sm-10 offset-sm-1 text-center" style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="col-md-12 text-center" style="margin-bottom: 10px;">
+                            <button type="button" class="btn-sm btn btn-primary" data-toggle="modal" data-target="#ajouterUtilisateur">Ajouter un client</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="ajouterUtilisateur" tabindex="-1" role="dialog" aria-labelledby="ajouterUtilisateur" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="ajouterUtilisateur">Ajouter</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body text-left">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="Nom">Nom</label>
+                                                    <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Prenom">Prenom</label>
+                                                    <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Mail">E-mail</label>
+                                                    <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Password">Mot-de-passe</label>
+                                                    <input type="password" class="form-control" id="Password">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success">Valider</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <img src="assets/arrow-down.png" />
                     </div>
                 </div>
@@ -228,7 +271,7 @@ include("head.php");
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body text-left">
                                             <form>
                                                 <div class="form-group">
                                                     <label for="Nom">Nom</label>
