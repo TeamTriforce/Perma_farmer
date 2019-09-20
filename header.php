@@ -12,7 +12,13 @@ session_start()
             <a href="index.php">Accueil</a>
             <a href="nos-produits.php">Nos produits</a>
             <a href="contact.php">Contact</a>
-            <a href="login.php">Login</a>
+            <?php
+                if (isset($_SESSION["id"]) && isset($_SESSION["token"])) {
+                    echo "<a href=\"logout.php\">Logout</a>";
+                } else {
+                    echo "<a href=\"login.php\">Login</a>";
+                }
+            ?>
             <a href="panier.php">
                 <div class="d-flex align-items-center">
                     <div>

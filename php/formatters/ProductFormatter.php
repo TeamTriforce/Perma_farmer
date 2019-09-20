@@ -37,7 +37,7 @@ abstract class ProductFormatter
                                     <div class="div-ajout-produit">
                                         <form method="POST" action="formManagement.php" class="form-ajout-panier">
 	                                        <input type="hidden" name="addProductId" value="' . $product->getId() . '">
-	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img" >
+	                                        <input type="submit" src="assets/plus.png" class="ajout-panier-img" value="">
                                         </form>
                                         <img src="assets/plus.png" class="ajout-panier-img">
                                     </div>
