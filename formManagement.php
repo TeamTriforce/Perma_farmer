@@ -9,7 +9,10 @@
 require_once dirname(__FILE__) . "/php/Autoloader.php";
 
 session_start();
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set('memory_limit', '1G');
+error_reporting(E_ALL);
 if (isset($_POST["addProductId"])) {
     $productDao = new ProductDao();
     $product = $productDao->read((int)($_POST["addProductId"]));
@@ -135,7 +138,7 @@ if (isset($_POST["deleteCustomerId"])) {
 
             exit();
         } else {
-            $productDao->delete($customer->getId());
+            echo $customerDao->delete($customer->getId());
 
             header('Location: admin.php');
 
