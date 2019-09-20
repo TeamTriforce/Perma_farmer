@@ -86,7 +86,7 @@ abstract class ProductFormatter
                                 <h3>' . $product->getLabel() . '</h3>
                                 <form method="POST" action="formManagement.php">
 	                                <input type="hidden" name="deleteProductId" value="' . $product->getId() . '">
-	                                <input type="submit" value="x">
+	                                <input type="submit" value="x" class="form-delete-article">
                                 </form>
                             </div>
                         </div>

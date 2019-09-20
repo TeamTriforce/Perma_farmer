@@ -108,6 +108,7 @@ h2 {
     text-transform: uppercase;
     color: #014946;
     font-size: 40px !important;
+    margin: 0;
 }
 
 .title-h2{
@@ -215,6 +216,40 @@ h2 {
     height: 100%;
     background-color: transparent;
     border: none;
+}
+
+.form-commande input{
+    background-color: #014946;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 20px;
+    transition: 0.2s;
+}
+
+.form-delete-article{
+    width: 30px;
+    background-color: #eee;
+    color: #014946;
+    border: #014946 solid 2px;
+}
+
+.form-commande input:hover{
+    transform: scale(1.1);
+}
+
+.form-login input{
+    border: #014946 2px solid;
+    padding: 5px;
+    width: 300px;
+    color: #014946;
+}
+
+.form-login input:hover{
+    background-color: #eee;
 }
 
 .div-produit:hover .overlay-produit {
@@ -331,6 +366,7 @@ h2 {
     animation: ajoutPanierArticle 1s ease-in-out forwards;
     user-select: none;
     cursor: pointer;
+    z-index: 2;
 }
 
 @keyframes ajoutPanierArticle {
