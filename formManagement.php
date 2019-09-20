@@ -337,11 +337,11 @@ if (isset($_POST["updateProductId"])) {
             }
 
             if (isset($_POST["image"])) {
-                $product->setLabel($_POST["image"]);
+                $product->setImage($_POST["image"]);
             }
 
             if (isset($_POST["stock"])) {
-                $product->setLabel((int)$_POST["stock"]);
+                $product->setStock((int)$_POST["stock"]);
             }
 
             if (isset($_POST["description"])) {
@@ -382,19 +382,19 @@ if (isset($_POST["updateCustomerId"])) {
             }
 
             if (isset($_POST["lastName"])) {
-                $customer->setFirstName($_POST["lastName"]);
+                $customer->setLastName($_POST["lastName"]);
             }
 
             if (isset($_POST["email"])) {
-                $customer->setFirstName($_POST["email"]);
+                $customer->setEmail($_POST["email"]);
             }
 
             if (isset($_POST["password"])) {
-                $customer->setFirstName($_POST["password"]);
+                $customer->setPassword($_POST["password"]);
             }
 
             if (isset($_POST["idSubscription"])) {
-                $customer->setFirstName($_POST["idSubscription"]);
+                $customer->setIdSubscription($_POST["idSubscription"]);
             }
 
             if (!$customerDao->update($customer)) {
@@ -430,7 +430,7 @@ if (isset($_POST["updateAdminId"])) {
             }
 
             if (isset($_POST["password"])) {
-                $admin->setLogin($_POST["password"]);
+                $admin->setPassword($_POST["password"]);
             }
 
             if (!$adminDao->update($admin)) {
@@ -467,15 +467,15 @@ if (isset($_POST["updateOrderId"])) {
             }
 
             if (isset($_POST["pickedDate"])) {
-                $order->setAvailableDate($_POST["pickedDate"]);
+                $order->setPickedDate($_POST["pickedDate"]);
             }
 
             if (isset($_POST["picked"])) {
-                $order->setAvailableDate($_POST["picked"]);
+                $order->setPicked($_POST["picked"]);
             }
 
             if (isset($_POST["notificationSent"])) {
-                $order->setAvailableDate($_POST["notificationSent"]);
+                $order->setNotificationSent($_POST["notificationSent"]);
             }
 
             if (!$orderDao->update($order)) {

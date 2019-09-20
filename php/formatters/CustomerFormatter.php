@@ -131,31 +131,30 @@ abstract class CustomerFormatter
     
     public static function formatAdminUtilisateursModificationModal(Customer $customer) 
     {
-        return '<form action="admin.php" method="POST">
+        return '<form action="formManagement.php" method="POST">
                     <div class="form-group">
                         <label for="Nom">Nom</label>
-                        <input type="text" class="form-control" id="Nom" aria-describedby="lastNameHelp" value="' . $customer->getLastName() . '" required>
+                        <input type="text" class="form-control" name="lastName" id="Nom" aria-describedby="lastNameHelp" value="' . $customer->getLastName() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Prenom">Prenom</label>
-                        <input type="text" class="form-control" id="Prenom" aria-describedby="firstNameHelp" value="' . $customer->getFirstName() . '" required>
+                        <input type="text" class="form-control" name="firstName" id="Prenom" aria-describedby="firstNameHelp" value="' . $customer->getFirstName() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Email">Email</label>
-                        <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" value="' . $customer->getEmail() . '" required>
+                        <input type="email" class="form-control" name="email" id="Mail" aria-describedby="emailHelp" value="' . $customer->getEmail() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Password">Mot-de-passe</label>
-                        <input type="password" class="form-control" id="Password" value="' . $customer->getPassword() . '" required>
+                        <input type="password" class="form-control" name="password" id="Password" value="' . $customer->getPassword() . '" required>
                     </div>
                     <div class="form-group">
                         <label for="Subscription">Souscription</label>
-                        <input type="text" class="form-control" id="Subscription" aria-describedby="Subscription" value="' . $customer->getIdSubscription() . '" required>
+                        <input type="text" class="form-control" name="idSubscription" id="Subscription" aria-describedby="Subscription" value="' . $customer->getIdSubscription() . '" required>
                     </div>
+                    <input type="hidden" name="updateCustomerId" value="' . $customer->getId() . '">
+                    <input type="submit" value="Modifier"">
                 </form>';
     }
-    
-    
 }
-
 
