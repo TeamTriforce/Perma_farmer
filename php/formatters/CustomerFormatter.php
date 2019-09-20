@@ -123,7 +123,7 @@ abstract class CustomerFormatter
                             </div>
 
                             <div class="col-md-6 text-center">
-                                <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerUtilisateur">Supprimer</button>
+                                <button type="button" class="btn-sm btn btn-danger" data-toggle="modal" data-target="#supprimerUtilisateur" data-delete-customer-id>Supprimer</button>
                             </div>
                         </div>
                     </div>';

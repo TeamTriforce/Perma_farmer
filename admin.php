@@ -66,13 +66,14 @@ include("head.php");
                                     Voulez-vous vraiment supprimer cet utilisateur ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success"><a href="#my_modal" data-toggle="modal" data-customer-id="my_id_value">Valider</a></button>
+                                    <button type="button" class="btn btn-success"><a href="#supprimerUtilisateur" data-toggle="modal" data-customer-id="my_id_value">Valider</a></button>
                                     <script>
-                                        $('#my_modal').on('show.bs.modal', function(e) {
+                                        $('#supprimerUtilisateur').on('show.bs.modal', function(e) {
 
-                                            var customer_id = $(e.relatedTarget).data('customer-id');
+                                            var customer_id = $(e.relatedTarget).data('delete-customer-id');
+                                            
+                                            console.log (customer_id);
 
-                                            $(e.currentTarget).find('input[name="customerId"]').val(customerId);
                                         });
                                     </script>
                                 </div>
