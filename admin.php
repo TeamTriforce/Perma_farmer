@@ -19,9 +19,9 @@ include("head.php");
                 <h4 class="text-center">Liste utilisateurs</h4>
                 <div class="row" style="margin-bottom: 10px;">
 
-                    <!--<?php
+                    <?php
                     echo CustomerFormatter::formatAdminUtilisateurs($customer);
-                    ?>-->
+                    ?>
 
                     <!-- Modal -->
                     <div class="modal fade" id="modifierUtilisateur" tabindex="-1" role="dialog" aria-labelledby="modifierUtilisateur" aria-hidden="true">
